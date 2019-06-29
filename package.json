@@ -1,0 +1,16 @@
+{
+  "name": "batbot_2.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.0",
+    "nodemon": "^1.19.0",
+    "request": "^2.88.0"
+  }
+}
