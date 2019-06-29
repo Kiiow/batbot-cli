@@ -10,7 +10,6 @@ const clear = require('./command/clear.js');
 const wiki = require('./command/wiki.js');
 const blague = require('./command/blague.js');
 const infos = require('./command/infos.js');
-const pokeload = require('./command/pokeload.js');
 
 var myFunc = {
   ping : { filename : ping, action : "action" },
