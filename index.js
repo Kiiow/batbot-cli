@@ -10,6 +10,8 @@ const clear = require('./command/clear.js');
 const wiki = require('./command/wiki.js');
 const blague = require('./command/blague.js');
 const infos = require('./command/infos.js');
+const pokeload = require('./command/pokeload.js');
+const pokeInfo = require('./command/pokeinfo.js');
 
 var myFunc = {
   ping : { filename : ping, action : "action" },
@@ -22,7 +24,10 @@ var myFunc = {
   wiki : { filename : wiki, action: "search"},
   blague : { filename: blague, action: "getRandomBlague" },
   profile : { filename: infos, action: "getProfile" },
-  help : { filename: infos, action: "botCommandsInfos" }
+  help : { filename: infos, action: "botCommandsInfos" },
+  // pokeload : { filename: pokeload, action: "pokeLoad" },
+  pokeinfo : { filename: pokeInfo, action: "pokeInfo" },
+  pokestats : {filename: pokeInfo, action: "pokeStats" }
 };
 
 Bot.on('ready', function(){
