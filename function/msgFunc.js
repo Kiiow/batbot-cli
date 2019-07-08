@@ -65,6 +65,17 @@ class msgFunc{
     });
   }
 
+  /**
+   * Renvoie le message avec la première lettre en capital
+   * @param  {[String]} str [String à caps]
+   * @return {[String]}     [String capsé]
+   */
+  static firstLetterCaps(str){
+    return str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+      return letter.toUpperCase();
+    });
+  }
+
 }
 
 module.exports = msgFunc;

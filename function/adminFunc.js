@@ -72,6 +72,23 @@ class adminFunc {
     callback(null, userData, found);
   }
 
+    /**
+   * Supprimme tous les items avec la valeur fournie present dans le tableau
+   * @param  {[Array]} arr         [Tableau à traiter]
+   * @param  {[Array.Object]} searchValue [Item à supprimmer (String, object, ...)]
+   * @return {[Array]}             [Tableau traité]
+   */
+  static removeItemByString(arr, searchValue){
+    var what, a = arguments, L = a.length, ax;
+    while (L > 1 && arr.length) {
+        what = a[--L];
+        while ((ax= arr.indexOf(what)) !== -1) {
+            arr.splice(ax, 1);
+        }
+    }
+    return arr;
+  }
+
 }
 
 module.exports = adminFunc;
