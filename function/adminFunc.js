@@ -56,13 +56,13 @@ class adminFunc {
   /**
    * Retourne l'utilisateur avec l'id donné
    * @param  {[Int]}   user_id  [id de l'utilisateur]
-   * @param  {[JSONObject]}   JSONObj  [Object JSON des utilisateurs]
+   * @param  {[Array]}   JSONArr  [Liste des utilisateurs]
    * @param  {Function} callback [Callback Function]
    */
-  static getUser(user_id, JSONObj, callback){
+  static getUser(user_id, JSONArr, callback){
     var userData;
     var found = true;
-    JSONObj.users.forEach(function(user){
+    JSONArr.users.forEach(function(user){
       if(user.user_id == user_id){
         userData = user;
         return true;

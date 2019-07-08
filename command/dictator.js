@@ -10,15 +10,11 @@ class Dictator{
    */
   static kick(message){
     message.delete();
-    var thiss =this;
+    var thiss = this;
     if(message.mentions.users.first() == undefined){
-      var noMentionVal = {
-        color : 16711680,
-        author_name : message.member.nickname,
-        author_avatar : message.author.avatarURL,
-        description : ':x: Vous devez **mentionner** quelqu\'un pour cette commande \n `.kick <user>`'
-      };
-      msgFunc.sendEmbed(message, noMentionVal);
+      msgFunc.sendError(message,
+        ":x: Vous devez **mentionner** quelqu\'un pour cette commande \n `.kick <user>`"
+      );
       return false;
     }
     fs.readFile('./JSONFiles/user.json', function (err, data) {
@@ -27,24 +23,17 @@ class Dictator{
       var JSONObj = JSON.parse(data);
       if(thiss.isAdmin(JSONObj, message.author.id)){
         message.guild.member(message.mentions.users.first()).kick();
-        var kickVal = {
+        msgFunc.sendEmbed(message, {
           color : 65280,
           author_name : message.mentions.users.first().username,
           author_avatar : 'https://cdn.discordapp.com/avatars/' + message.mentions.users.first().id + '/' + message.mentions.users.first().avatar + '.webp',
           description : 'L\'utilisateur '  + message.mentions.users.first().username + ' à bien été kick',
-        };
-        msgFunc.sendEmbed(message, kickVal);
+        });
       }else{
-        var description = ':x: Vous n\'avez pas les autorisation nécessaires pour kick quelqu\'un.';
-        var footer = '.kick @' + message.mentions.users.first().username;
-        var val = {
-          color : 16711680,
-          author_name : message.member.nickname,
-          author_avatar : message.author.avatarURL,
-          description : description,
-          footer : footer
-        };
-        msgFunc.sendEmbed(message, val);
+        msgFunc.sendError(message,
+          ":x: Vous n\'avez pas les autorisation nécessaires pour kick quelqu\'un.",
+          '.kick @' + message.mentions.users.first().username
+        );
       }
     });
 
@@ -102,12 +91,7 @@ class Dictator{
    */
   static prison(message){
     message.delete();
-    var val = {
-      author_name : message.author.nickname,
-      author_avatar : message.author.avatarURL,
-      description : "Ca marche pas encore"
-    }
-    msgFunc.sendEmbed(message, val);
+    msgFunc.sendCommingSoon(message);
   }
 
   /**

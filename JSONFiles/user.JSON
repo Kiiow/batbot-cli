@@ -1,4 +1,85 @@
 {
 	"users": [
+		{
+			"user_id": "231826744192139264",
+			"username": "JeanDictateur👑",
+			"level": 4,
+			"xp": 2947,
+			"last_message": {
+				"content": "<:jpp:400280849146183681>",
+				"timestamp": 1562626168518
+			},
+			"admin": 1
+		},
+		{
+			"user_id": "359044179126386689",
+			"username": "Le Roi Chômeur",
+			"level": 4,
+			"xp": 2700,
+			"last_message": {
+				"content": "<:KappaLUL:379994313607872512>",
+				"timestamp": 1562532361786
+			}
+		},
+		{
+			"user_id": "142942291126910976",
+			"username": "LeBosseur",
+			"level": 3,
+			"xp": 659,
+			"last_message": {
+				"content": "C'est pour les gros Pokémons",
+				"timestamp": 1562259920170
+			}
+		},
+		{
+			"user_id": "270607572208320512",
+			"username": "IssouGaming",
+			"level": 4,
+			"xp": 1192,
+			"last_message": {
+				"content": "pourtant Sardoche proposait des révisions pour le bac S <:KappaLUL:379994313607872512>",
+				"timestamp": 1562530943335
+			}
+		},
+		{
+			"user_id": "221346055051018242",
+			"username": "Le petit nicolas",
+			"level": 4,
+			"xp": 2917,
+			"last_message": {
+				"content": "<@359044179126386689> ta pote Julia elle vient de rater son bac pour la 2eme fois plutôt smart la ptite",
+				"timestamp": 1562530700786
+			}
+		},
+		{
+			"user_id": "191278491973582848",
+			"username": "Mayv",
+			"level": 3,
+			"xp": 475,
+			"last_message": {
+				"content": "https://pbs.twimg.com/media/D--tCPMXUAE3W1g?format=jpg&name=large",
+				"timestamp": 1562626089573
+			}
+		},
+		{
+			"user_id": "219541276725346304",
+			"username": "Zenwinks",
+			"level": 1,
+			"xp": 35,
+			"last_message": {
+				"content": "Ça s'arrête à combien du coup ?",
+				"timestamp": 1562268622178
+			}
+		},
+		{
+			"user_id": "156127664741023744",
+			"username": "Attila le Eins",
+			"level": 2,
+			"xp": 115,
+			"last_message": {
+				"content": "https://coub.com/view/1uk3no",
+				"timestamp": 1562533784979
+			}
+		}
 	]
 }

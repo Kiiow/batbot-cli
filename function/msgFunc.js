@@ -37,6 +37,34 @@ class msgFunc{
       } });
   }
 
+  /**
+   * Envoie un message comming soon
+   * @param  {[Discord.message]} message [message de l'utilisateur]
+   */
+  static sendCommingSoon(message){
+    this.sendEmbed(message, {
+      color : 16711680,
+      author_name : message.member.nickname,
+      author_avatar : message.author.avatarURL,
+      description : "**Comming soon**"
+    });
+  }
+
+  /**
+   * Envoie un message d'erreur dans le chat
+   * @param  {[Discord.message]} message [message de l'utilisateur]
+   * @param  {[String]} txt     [message à envoyer]
+   */
+  static sendError(message, txt, footer){
+    this.sendEmbed(message, {
+      color : 16711680,
+      author_name : message.member.displayName,
+      author_avatar : message.author.avatarURL,
+      description : txt,
+      footer : footer
+    });
+  }
+
 }
 
 module.exports = msgFunc;
