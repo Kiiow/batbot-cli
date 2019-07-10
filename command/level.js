@@ -10,7 +10,7 @@ class Level{
   * Si l'utilisateur n'est pas le Bot
   * et le message >= 15 caractères
   * alors gagne de l'xp (+/- 15% de la taille du msg)
-  * @param  {[Discord.message]} message [message de l'utilisateur]
+  * @param  {[Discord.message]} message [Message de l'utilisateur]
   * @return {[Boolean]}         [False si error ou utilisateur = BatBot]
   */
   static action(message){

@@ -9,7 +9,8 @@ class Clear{
       if(admin){
         var nbMessage = parseInt((message.content.split(" "))[1]);
         if(!isNaN(nbMessage)){
-          message.channel.bulkDelete(nbMessage);
+          message.channel.bulkDelete(nbMessage)
+            .catch(console.error);
           if((message.content.split(" "))[2] != undefined){
             var s = '';
             if(nbMessage > 1) s = 's';
@@ -33,7 +34,7 @@ class Clear{
           color : 16711680,
           author_name : message.member.displayName,
           author_avatar : message.author.avatarURL,
-          description : "Vous devez être administrateur pour utiliser cette commande"
+          description : "Vous devez être administrateur pour supprimer des messages"
         });
       }
     });

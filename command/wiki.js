@@ -5,11 +5,12 @@ class Wiki{
 
   static search(message){
     message.delete();
-    var searchItem = (message.content.slice(6)).replace(' ', '%20');
+    var searchItem = message.content.split(' ')[1];
     if(searchItem == undefined){
-      console.log("vous voulez rien chercher ?");
-      // SendEmbed => pas de mot à chercher ?
+      msgFunc.sendError(message, "Vous devez renseigner quelque chose à rechercher `.wiki <info>`");
       return false;
+    }else{
+      searchItem = searchItem.replace(' ', '%20');
     }
     var url = this.createWikiUrl(searchItem);
     adminFunc.ajaxRequest(url, function(err, body){
