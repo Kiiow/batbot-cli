@@ -17,14 +17,22 @@ class msgFunc{
       footer : val.footer,
       url : val.url
     };
+    if(isNaN(val.color)){
+      switch(val.color){
+        case "success":
+          value.color = 65280;
+          break;
+        case "error":
+          value.color = 16711680;
+          break;
+        default:
+          value.color = 4886754;
+      }
+    }
     for(var param in value){
       if(value[param] == undefined){
         value[param] = '';
-        if(param == "color"){
-          value[param] = 4886754;
-        }
       }
-
     }
     message.channel.send('', {
       embed: {
@@ -40,13 +48,15 @@ class msgFunc{
   /**
    * Envoie un message comming soon
    * @param  {[Discord.message]} message [message de l'utilisateur]
+   * @param {[String]} footer [footer du message]
    */
-  static sendCommingSoon(message){
+  static sendCommingSoon(message, footer){
     this.sendEmbed(message, {
       color : 16711680,
       author_name : message.member.nickname,
       author_avatar : message.author.avatarURL,
-      description : "**Comming soon**"
+      description : "**Comming soon**",
+      footer : footer
     });
   }
 

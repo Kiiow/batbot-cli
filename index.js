@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const Bot = new Discord.Client();
+const Config = require('./config.json');
 
 const ping = require('./command/ping.js');
 const level = require('./command/level.js');
@@ -12,10 +13,11 @@ const blague = require('./command/blague.js');
 const infos = require('./command/infos.js');
 const pokeload = require('./command/pokeload.js');
 const pokeInfo = require('./command/pokeinfo.js');
+const emoji = require('./command/emoji.js');
 
 var myFunc = {
   ping : { filename : ping, action : "action" },
-  add_admin : { filename : admin, action : "add_admin" },
+  admin_add : { filename : admin, action : "add_admin" },
   stop : { filename : stop, action : "action" },
   kick : { filename : dictator, action : "kick" },
   ban : { filename : dictator, action : "ban" },
@@ -27,10 +29,19 @@ var myFunc = {
   help : { filename: infos, action: "botCommandsInfos" },
   // pokeload : { filename: pokeload, action: "pokeLoad" },
   pokeinfo : { filename: pokeInfo, action: "pokeInfo" },
-  pokestats : {filename: pokeInfo, action: "pokeStats" }
+  pokestats : { filename: pokeInfo, action: "pokeStats" },
+  emoji_add : { filename: emoji, action: "addEmoji"},
+  emojilist : { filename: emoji, action: "emojiList" },
+  top : { filename: infos, action: "top" }
 };
 
 Bot.on('ready', function(){
+  Bot.user.setPresence({
+    game: {
+      name: 'vos messages (.help)',
+      type: "WATCHING"
+    }
+  });
   console.log('bot Online');
 });
 
@@ -45,12 +56,10 @@ Bot.on('message', function(message){
     if(func == undefined) func = "help";
     message.content = message.content.replace('<@' + Bot.user.id + '> ', '.');
   }
-  if(func != undefined){
-    if(myFunc[func] != undefined){
-      let action = myFunc[func].action;
-      let filename = myFunc[func].filename;
-      filename[action](message);
-    }else console.log("function " + func + " does not exist");
+  if(func != undefined && myFunc[func] != undefined){
+    let action = myFunc[func].action;
+    let filename = myFunc[func].filename;
+    filename[action](message);
   }
   return false;
 });
@@ -58,4 +67,4 @@ Bot.on('message', function(message){
 
 
 // Connexion du Bot avec son Token
-Bot.login((require('./config.json')).token);
+Bot.login(Config.token);

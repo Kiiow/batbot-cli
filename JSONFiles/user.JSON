@@ -3,62 +3,62 @@
 		{
 			"user_id": "231826744192139264",
 			"username": "JeanDictateur👑",
-			"level": 4,
-			"xp": 3002,
+			"level": 5,
+			"xp": 6156,
 			"last_message": {
-				"content": ".pokeinfo charizard",
-				"timestamp": 1562627056416
+				"content": "🏁 🆚 🏆 🥇 🥈 🥉",
+				"timestamp": 1562716438818
 			},
 			"admin": 1
 		},
 		{
 			"user_id": "359044179126386689",
 			"username": "Le Roi Chômeur",
-			"level": 4,
-			"xp": 2700,
+			"level": 5,
+			"xp": 5552,
 			"last_message": {
 				"content": "<:KappaLUL:379994313607872512>",
-				"timestamp": 1562532361786
+				"timestamp": 1562714537058
 			}
 		},
 		{
 			"user_id": "142942291126910976",
 			"username": "LeBosseur",
-			"level": 3,
-			"xp": 659,
+			"level": 4,
+			"xp": 1872,
 			"last_message": {
-				"content": "C'est pour les gros Pokémons",
-				"timestamp": 1562259920170
+				"content": "Quand tes f2p les ventilos peuvent gérer seuls",
+				"timestamp": 1562701105195
 			}
 		},
 		{
 			"user_id": "270607572208320512",
 			"username": "IssouGaming",
 			"level": 4,
-			"xp": 1192,
+			"xp": 2929,
 			"last_message": {
-				"content": "pourtant Sardoche proposait des révisions pour le bac S <:KappaLUL:379994313607872512>",
-				"timestamp": 1562530943335
+				"content": "J'ai pas de config spécifique, j'ai juste à appuyer sur un bouton et les ventilos tournent plus vite hehe",
+				"timestamp": 1562699284679
 			}
 		},
 		{
 			"user_id": "221346055051018242",
 			"username": "Le petit nicolas",
-			"level": 4,
-			"xp": 2917,
+			"level": 5,
+			"xp": 8606,
 			"last_message": {
-				"content": "<@359044179126386689> ta pote Julia elle vient de rater son bac pour la 2eme fois plutôt smart la ptite",
-				"timestamp": 1562530700786
+				"content": "Mdr 50° c'est avec le parasol !",
+				"timestamp": 1562698498251
 			}
 		},
 		{
 			"user_id": "191278491973582848",
 			"username": "Mayv",
-			"level": 3,
-			"xp": 475,
+			"level": 4,
+			"xp": 2379,
 			"last_message": {
-				"content": "https://pbs.twimg.com/media/D--tCPMXUAE3W1g?format=jpg&name=large",
-				"timestamp": 1562626089573
+				"content": "C pas un fake en plus",
+				"timestamp": 1562706765569
 			}
 		},
 		{
@@ -79,6 +79,16 @@
 			"last_message": {
 				"content": "https://coub.com/view/1uk3no",
 				"timestamp": 1562533784979
+			}
+		},
+		{
+			"user_id": "256458358171631616",
+			"username": "Bastif",
+			"level": 3,
+			"xp": 502,
+			"last_message": {
+				"content": "c'est pas le cooler boost ?",
+				"timestamp": 1562699527262
 			}
 		}
 	]

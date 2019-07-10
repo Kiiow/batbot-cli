@@ -11,7 +11,6 @@ class infos{
   static getProfile(message){
     message.delete();
     adminFunc.getJSONData('user', function(err, data){
-
       if(message.mentions.users.first() == undefined){
         adminFunc.getUser(message.member.id, data, function(err, userData, found){
           if(!found) return false;
@@ -74,15 +73,22 @@ class infos{
     message.delete();
     msgFunc.sendEmbed(message, {
       fields: [
-        { name: "Liste des commandes :",
-          value: "**:ping_pong: `.ping`** -- " + "Jouer au ~~PingPong~~ Tennis de table avec BatBot" +
+        { name: "Liste des commandes générales :",
+          value: "**:ping_pong: `.ping`** -- " + "Jouer au *~~PingPong~~* Tennis de table avec BatBot" +
           "\n**:book: `.wiki <recherche>`** -- " + "Renvoie le résultat trouvé sur wikipédia pour la recherche" +
           "\n**:clown: `.blague`** -- " + "Une petite blague de BatBot ?" +
           "\n**:video_game: `.profile <username>`** -- " + "Affiche le profile de la personne mentionnée" +
+          "\n**:trophy: `.top`** -- " + "Affiche le top des utilisateurs" +
+          "\n**:smiley: `.emojilist`** -- " + "Affiche la liste des émojis disponibles sur le serveur" +
           "\n**:pencil: `.help`** -- " + "Affiche la liste des commandes de BatBot"
+        },
+        { name: "** **\nCommandes de jeu :",
+          value: "\n**:dragon: `.pokeinfo <nom_pkmn>`** -- " + "Affiche les infos d'un pokémon" +
+          "\n**:dragon_face: `.pokestats <nom_pkmn>`** -- " + "Affiche les stats d'un pokémon"
         },
         { name : "** **\nAdmin commandes :",
           value : "\n**:octagonal_sign: `.stop`** -- " + "Arrête le bot" +
+          "\n**:smiley: `.emoji_add <nom> <url_img>`** -- " + "Ajoute une émoji sur le serveur" +
           "\n**:hammer_pick: `.add_admin <username>`** -- " + "Ajoute le joueur mentionné en temps qu'admin pour le bot" +
           "\n**:door: `.kick <username>`** -- " + "Kick l'utilisateur mentionné" +
           "\n**:no_entry: `.ban <username>`** -- " + "Banni l'utilisateur mentionné" +
@@ -91,6 +97,15 @@ class infos{
         }
       ]
     });
+  }
+
+  /**
+   * Donne le top de tous les utilisateurs
+   * @param  {[Discord.message]} message [Message de l'utilisateur]
+   */
+  static top(message){
+    message.delete();
+    msgFunc.sendCommingSoon(message, ".top");
   }
 
 }
