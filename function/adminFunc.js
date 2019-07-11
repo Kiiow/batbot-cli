@@ -29,7 +29,7 @@ class adminFunc {
 
   /**
    * Récupère le fichier JSON demandé
-   * @param  {[String]}   JSONFileName [Fichier à lire]
+   * @param  {[String]}   JSONFileName [Fichier à lire (ex: 'user')]
    * @param  {Function} callback     [Callback Function]
    */
   static getJSONData(JSONFileName, callback){

@@ -13,6 +13,7 @@ class msgFunc{
       author_name : val.author_name,
       author_avatar : val.author_avatar,
       description : val.description,
+      thumbnail : val.thumbnail,
       fields : val.fields,
       footer : val.footer,
       url : val.url
@@ -40,6 +41,7 @@ class msgFunc{
         author : { name : value.author_name, icon_url : value.author_avatar },
         url : value.url,
         description: value.description,
+        thumbnail : {url : value.thumbnail},
         fields : value.fields,
         footer : { text : value.footer }
       } });

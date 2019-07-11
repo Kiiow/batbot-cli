@@ -27,7 +27,7 @@ class Level{
       // Si l'utilisateur existe récupère l'objectJSON pour le traiter
       if(thiss.userExist(obj, message)){
         user = thiss.getUser(obj, message);
-        // Anti spam pour gagner de l'xp. les messages fonctionne toutes les 40 sec
+        // Anti spam pour gagner de l'xp. les messages fonctionne toutes les 20 sec
         if(message.createdTimestamp <= user.last_message.timestamp + 20000) return false;
         levelUp = thiss.addXp(user, message);
         thiss.changeLastMessage(user, message);
@@ -107,6 +107,7 @@ class Level{
   */
   static addXp(JSONObj, message){
     var xp = this.calcXp(message.content.length);
+    console.log("-- [xp:" + xp + "] " + JSONObj.username);
     var levelUp;
     JSONObj.xp += xp;
     while(JSONObj.xp > this.xpNeed(JSONObj.level)){
