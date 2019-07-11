@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const Bot = new Discord.Client();
 const Config = require('./config.json');
 
+const globalFunc = require('./function/globalFunc.js');
+
 const ping = require('./command/ping.js');
 const level = require('./command/level.js');
 const admin = require('./command/admin.js');
@@ -59,6 +61,7 @@ Bot.on('message', function(message){
   if(func != undefined && myFunc[func] != undefined){
     let action = myFunc[func].action;
     let filename = myFunc[func].filename;
+    globalFunc.addLogs(message, func);
     filename[action](message);
   }
   return false;

@@ -70,13 +70,14 @@ class Pokeinfo {
     let pokename = msgArray.join(' ');
     let pokemonId = "00" + pokemon.id;
     pokemonId = pokemonId.substring(pokemonId.length-3, pokemonId.length);
-    let urlImg = "https://raw.githubusercontent.com/KioHugo/BatBot/PokeData/images/" +
-                  pokemonId + this.formatePkmnName(pokemon, "url") + ".png";
+    let pkn = this.formatePkmnName(pokemon, "url2");
+    let urlImg = "https://play.pokemonshowdown.com/sprites/xydex/" + pkn + ".png";
+    let urlGif = "https://play.pokemonshowdown.com/sprites/xyani/" + pkn + ".gif";
     msgFunc.sendEmbed(message, {
       color : this.typeToColor(pokemon.type[0]),
       author_name : msgFunc.firstLetterCaps(pokename),
       author_avatar : urlImg,
-      thumbnail: urlImg,
+      thumbnail: urlGif,
       description : "** **",
       fields : [
         {
@@ -105,8 +106,9 @@ class Pokeinfo {
     let pokename = msgArray.join(' ');
     let pokemonId = "00" + pokemon.id;
     pokemonId = pokemonId.substring(pokemonId.length-3, pokemonId.length);
-    let urlImg = "https://raw.githubusercontent.com/KioHugo/BatBot/PokeData/images/" +
-                  pokemonId + this.formatePkmnName(pokemon, "url") + ".png";
+    let pkn = this.formatePkmnName(pokemon, "url2");
+    let urlImg = "https://play.pokemonshowdown.com/sprites/xydex/" + pkn + ".png";
+    let urlGif = "https://play.pokemonshowdown.com/sprites/xyani/" + pkn + ".gif";
     let dropList = [];
     pokemon.drops.forEach(function(drop){
       dropList.push(drop.nom);
@@ -115,7 +117,7 @@ class Pokeinfo {
       color : this.typeToColor(pokemon.type[0]),
       author_name : msgFunc.firstLetterCaps(pokename),
       author_avatar : urlImg,
-      thumbnail: urlImg,
+      thumbnail: urlGif,
       description : "** **",
       fields : [
         {
@@ -160,19 +162,28 @@ class Pokeinfo {
    */
    static formatePkmnName(pokemon, type){
      let pkmnName = pokemon.name.francais.toLowerCase();
-     if(type == "strat"){
-       pkmnName = pkmnName.replace('Mr. Mime', 'mr-mime');
-       pkmnName = pkmnName.replace('Mime Jr.', 'mime-jr');
-       pkmnName = pkmnName.replace(/é/gi, 'e');
-       pkmnName = pkmnName.replace(/♂/gi, '-m');
-       pkmnName = pkmnName.replace(/♀/gi, '-m');
-       pkmnName = pkmnName.replace(/: | |.|'/gi, '-');
-     }else if(type == "pixelmon"){
-       pkmnName = pkmnName.replace(/ /gi, '_');
-     }else if(type == "url"){
-       pkmnName = pokemon.name.english;
-       pkmnName = pkmnName.replace(/: | /gi, '_');
-       pkmnName = pkmnName.replace(/é/gi, 'e');
+     switch(type){
+       case "strat":
+         pkmnName = pkmnName.replace('Mr. Mime', 'mr-mime');
+         pkmnName = pkmnName.replace('Mime Jr.', 'mime-jr');
+         pkmnName = pkmnName.replace(/é/gi, 'e');
+         pkmnName = pkmnName.replace(/♂/gi, '-m');
+         pkmnName = pkmnName.replace(/♀/gi, '-m');
+         pkmnName = pkmnName.replace(/: | |.|'/gi, '-');
+         break;
+       case "pixelmon":
+         pkmnName = pkmnName.replace(/ /gi, '_');
+         break;
+       case "url":
+         pkmnName = pokemon.name.english;
+         pkmnName = pkmnName.replace(/: | /gi, '_');
+         pkmnName = pkmnName.replace(/é/gi, 'e');
+         break;
+       case "url2":
+         pkmnName = pokemon.name.english.toLowerCase();
+         pkmnName = pkmnName.replace(/: |\.| /gi, '');
+         pkmnName = pkmnName.replace(/é/gi, 'e');
+         break;
      }
      return pkmnName;
    }

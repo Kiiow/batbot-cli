@@ -105,7 +105,26 @@ class infos{
    */
   static top(message){
     message.delete();
-    msgFunc.sendCommingSoon(message, ".top");
+    // msgFunc.sendCommingSoon(message, ".top");
+    let users, thiss = this;
+    adminFunc.getJSONData('user', function(err, JSONObj){
+      users = JSONObj.users;
+      users.sort(function(a, b){ return b.xp - a.xp});
+      // console.log(users);
+      let i = 0, value = "** **\n";
+      let rankEmote = [":first_place:", ":second_place:", ":third_place:", ":four:", ":five:",
+        ":six:", ":seven:", ":eight:", ":nine:", ":keycap_ten:"];
+      while(i < 10 && i < users.length){
+        value += rankEmote[i] + " -- **" + users[i].username + "** *[xp: " + users[i].xp + "]*\n";
+        i++;
+      }
+      msgFunc.sendEmbed(message, {
+        fields : [{
+          name: ":trophy: Classement :",
+          value: value
+        }]
+      });
+    });
   }
 
 }
