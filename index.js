@@ -16,10 +16,12 @@ const infos = require('./command/infos.js');
 const pokeload = require('./command/pokeload.js');
 const pokeInfo = require('./command/pokeinfo.js');
 const emoji = require('./command/emoji.js');
+const config = require('./command/config.js');
+const announce = require('./command/announce.js');
 
 var myFunc = {
   ping : { filename : ping, action : "action" },
-  admin_add : { filename : admin, action : "add_admin" },
+  admin : { filename : admin, action : "adminCommand" },
   stop : { filename : stop, action : "action" },
   kick : { filename : dictator, action : "kick" },
   ban : { filename : dictator, action : "ban" },
@@ -28,13 +30,14 @@ var myFunc = {
   wiki : { filename : wiki, action: "search"},
   blague : { filename: blague, action: "getRandomBlague" },
   profile : { filename: infos, action: "getProfile" },
-  help : { filename: infos, action: "botCommandsInfos" },
+  help : { filename: infos, action: "helpCommand" },
   // pokeload : { filename: pokeload, action: "pokeLoad" },
   pokeinfo : { filename: pokeInfo, action: "pokeInfo" },
   pokestats : { filename: pokeInfo, action: "pokeStats" },
-  emoji_add : { filename: emoji, action: "addEmoji"},
-  emojilist : { filename: emoji, action: "emojiList" },
-  top : { filename: infos, action: "top" }
+  emoji : { filename: emoji, action: "emojiCommand" },
+  top : { filename: infos, action: "top" },
+  config : { filename: config, action: "configCommand"},
+  announce : { filename: announce, action: "announce" }
 };
 
 Bot.on('ready', function(){
@@ -51,8 +54,9 @@ Bot.on('ready', function(){
 Bot.on('message', function(message){
   let func;
   if(message.channel.type == 'dm') return false;
+  // Pour désactiver l'xp \/
   if(message.content.length >= 15) level.action(message);
-  if(message.content.startsWith('.')) func = ((message.content.split(" "))[0]).substr(1);
+  if(message.content.startsWith(Config.prefix)) func = ((message.content.split(" "))[0]).substr(1);
   if(message.content.startsWith('<@' + Bot.user.id + '>')){
     func = (message.content.split(" "))[1];
     if(func == undefined) func = "help";
@@ -61,7 +65,8 @@ Bot.on('message', function(message){
   if(func != undefined && myFunc[func] != undefined){
     let action = myFunc[func].action;
     let filename = myFunc[func].filename;
-    globalFunc.addLogs(message, func);
+    // Pour désactier les logs \/
+    // globalFunc.addLogs(message, func);
     filename[action](message);
   }
   return false;

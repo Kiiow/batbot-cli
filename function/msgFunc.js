@@ -5,9 +5,11 @@ class msgFunc{
    * Envoie un message en RichEmbed
    * @param  {[Discord.message]} message [message de l'utilisateur]
    * @param  {[JSONObject]} val     [Object JSON avec toutes les données]
+   * @param  {[Boolean]} chan     [True si le message est un channel]
+   * @param  {[Function]} callback     [A exécuter après l'envoie du message]
    * @structure {val} => color, author_name, author_avatar, description, footer, url
    */
-  static sendEmbed(message, val){
+  static sendEmbed(message, val, chan, callback){
     var value = {
       color : val.color,
       author_name : val.author_name,
@@ -35,7 +37,13 @@ class msgFunc{
         value[param] = '';
       }
     }
-    message.channel.send('', {
+    let channelSend;
+
+    // Vérifie si le paramètre message est un message ou un channel
+    if(chan) channelSend = message;
+    else channelSend = message.channel;
+
+    channelSend.send('', {
       embed: {
         color: value.color,
         author : { name : value.author_name, icon_url : value.author_avatar },
@@ -44,7 +52,13 @@ class msgFunc{
         thumbnail : {url : value.thumbnail},
         fields : value.fields,
         footer : { text : value.footer }
-      } });
+      } })
+        .then( (message) => {
+          if(callback != undefined) callback(null, message);
+        })
+        .catch( (err) => {
+          console.error(err);
+        });
   }
 
   /**

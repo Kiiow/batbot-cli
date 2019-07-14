@@ -4,12 +4,11 @@ const msgFunc = require('../function/msgFunc.js');
 class Clear{
 
   static delete(message){
-    message.delete();
     adminFunc.isAdmin(message.author.id, function(err, admin){
       if(admin){
         var nbMessage = parseInt((message.content.split(" "))[1]);
         if(!isNaN(nbMessage)){
-          message.channel.bulkDelete(nbMessage)
+          message.channel.bulkDelete(nbMessage+1)
             .catch(console.error);
           if((message.content.split(" "))[2] != undefined){
             var s = '';
