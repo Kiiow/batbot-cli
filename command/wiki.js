@@ -5,7 +5,7 @@ class Wiki{
 
   static search(message){
     message.delete();
-    var searchItem = message.content.split(' ')[1];
+    var searchItem = (adminFunc.removeItemByString(message.content.split(' '), '.wiki')).join(' ');
     if(searchItem == undefined){
       msgFunc.sendError(message, "Vous devez renseigner quelque chose à rechercher `.wiki <info>`");
       return false;

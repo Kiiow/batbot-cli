@@ -32,11 +32,32 @@ class globalFunc{
       "mm": date.getUTCMinutes(),
       "ss": date.getUTCSeconds()
     };
-    var regex = new RegExp(Object.keys(mapObj).join("|"),"gi");
-    let dateReturn = format.replace(regex, function(matched){
+    let dateReturn = this.replaceString(format, [], [], mapObj);
+    return dateReturn;
+  }
+
+  /**
+   * Remplace des caractères (search) par d'autres (replace) dans un String
+   * @param  {[String]} string  [String avec les éléments à remplacer]
+   * @param  {[Array]} search  [Valeurs à remplacer]
+   * @param  {[Array]} replace [Valeurs de remplacement]
+   * @return {[String | Boolean]}         [String avec les éléments remplacés, False si erreur]
+   */
+  static replaceString(string, search, replace, mapObj){
+    if(search.length != replace.length) return false;
+    if(mapObj == undefined){
+      let i = 0;
+      let mapObj = {};
+      while(i < search.length){
+        mapObj[search[i]] = replace[i];
+        i++;
+      }
+    }
+    let regex = new RegExp(Object.keys(mapObj).join("|"),"gi");
+    string = string.replace(regex, (matched) => {
       return mapObj[matched];
     });
-    return dateReturn;
+    return string;
   }
 
 

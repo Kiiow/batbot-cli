@@ -1,9 +1,27 @@
 {
-  "rank_level" : [
-    {
-      "libelle" : "Noob",
-      "id" : "579990985644179456",
-      "level" : 6000
-    }
-  ]
+	"rank_level": [
+		{
+			"libelle": "Noob",
+			"id": "579990985644179456",
+			"level": 6000
+		}
+	],
+	"servers": [
+		{
+			"name": "Club Wumpus",
+			"id": 326803046753501200,
+			"announce": 598935716197695500,
+			"roles" : {
+				"prison" : 1
+			}
+		},
+		{
+			"name": "BatBot",
+			"id": 482885405721493500,
+			"announce": 583227744251281400,
+			"roles" : {
+				"prison" : 60004763880875640
+			}
+		}
+	]
 }
