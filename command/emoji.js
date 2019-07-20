@@ -61,8 +61,7 @@ class Emoji{
    * @param  {[type]} message [description]
    */
   static emojiList(message){
-    message.delete();
-    let emojis = message.guild.emojis.map(e=>e.toString()).join(" ");
+    let emojis = message.guild.emojis.map( (e) => { e.toString(); }).join(" ");
     if(message.guild.emojis.array().length > 0){
       msgFunc.sendEmbed(message, {
         color : "infos",

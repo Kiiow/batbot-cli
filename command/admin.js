@@ -19,11 +19,38 @@ class Admin{
       case "add":
         this.add_admin(message);
         break;
+      case "list":
+        this.list_admin(message);
+        break;
       default:
         this.default_admin(message);
         break;
     }
 
+  }
+
+  /**
+   * Affiche la liste des administrateur sur le bot
+   * @param {[Discord.message]} message [Message de l'utilisateur]
+   */
+  static list_admin(message){
+    adminFunc.getJSONData('user', (err, JSONObj) => {
+      let i = 0;
+      let userString, user, adminUsers = [];
+      while(i < JSONObj.users.length){
+        if(JSONObj.users[i].admin == 1){
+          user = JSONObj.users[i];
+          adminUsers.push( "\n- " + user.username + " (<@!" + user.user_id.toString() + ">)" );
+        }
+        i++;
+      }
+      userString = adminUsers.join("");
+      msgFunc.sendEmbed(message, {
+        author_name : message.member.nickname,
+        author_avatar : message.author.avatarURL,
+        description : "**__Les administrateur du bot sont :__**\n" + userString
+      });
+    });
   }
 
   static default_admin(message){

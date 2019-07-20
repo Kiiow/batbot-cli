@@ -1,4 +1,5 @@
 const fs = require('fs');
+const globalFunc = require('../function/globalFunc.js');
 
 /**
 * Classe qui s'occupe du leveling des utilisateurs
@@ -107,7 +108,7 @@ class Level{
   */
   static addXp(JSONObj, message){
     var xp = this.calcXp(message.content.length);
-    console.log("-- [xp:" + xp + "] " + JSONObj.username);
+    console.log( globalFunc.getDate("hh:mm:ss-dd/MM/YYYY") + " -- [xp:" + xp + "] " + JSONObj.username);
     var levelUp;
     JSONObj.xp += xp;
     while(JSONObj.xp > this.xpNeed(JSONObj.level)){
