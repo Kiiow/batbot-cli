@@ -22,15 +22,22 @@ class globalFunc{
   static getDate(format, date){
     if(date == undefined) date = new Date();
     let month = date.getUTCMonth()+1;
+    let day = date.getUTCDate();
+    let hour = date.getUTCHours();
+    let minutes = date.getUTCMinutes();
+    let second = date.getUTCSeconds();
+    if((second.toString()).length == 1) second = "0" + second.toString();
+    if((minutes.toString()).length == 1) minutes = "0" + minutes.toString();
+    if((hour.toString()).length == 1) hour = "0" + hour.toString();
     if((month.toString()).length == 1) month = "0" + month.toString();
-
+    if((day.toString()).length == 1) day = "0" + day.toString();
     var mapObj = {
       "YYYY": date.getUTCFullYear(),
       "MM": month,
-      "dd": date.getUTCDate(),
-      "hh": date.getUTCHours(),
-      "mm": date.getUTCMinutes(),
-      "ss": date.getUTCSeconds()
+      "dd": day,
+      "hh": hour,
+      "mm": minutes,
+      "ss": second
     };
     let dateReturn = this.replaceString(format, [], [], mapObj);
     return dateReturn;
