@@ -10,6 +10,7 @@ class infos{
    */
   static getProfile(message){
     message.delete();
+    let thiss = this;
     adminFunc.getJSONData('user', function(err, data){
       if(message.mentions.users.first() == undefined){
         adminFunc.getUser(message.member.id, data, function(err, userData, found){
