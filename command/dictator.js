@@ -162,7 +162,7 @@ class Dictator{
               if(role.id == prisonId) prison = role;
             });
             let t = user.addRole(prison);
-            console.log(t);
+            // console.log(t);
           }
           msgFunc.sendEmbed(message, {
             color: "success",

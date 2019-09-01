@@ -3,52 +3,52 @@
 		{
 			"user_id": "231826744192139264",
 			"username": "JeanDictateur👑",
-			"level": 6,
-			"xp": 19988,
+			"level": 7,
+			"xp": 57328,
 			"last_message": {
-				"content": "ofc 13h 20h <:jpp:400280849146183681>",
-				"timestamp": 1563835951864
+				"content": "bah yes <:jpp:400280849146183681>",
+				"timestamp": 1567262663242
 			},
 			"admin": 1
 		},
 		{
 			"user_id": "359044179126386689",
 			"username": "Le Roi Chômeur",
-			"level": 5,
-			"xp": 10305,
+			"level": 6,
+			"xp": 26635,
 			"last_message": {
-				"content": "ça me fait penser au mec à la Jol qui était venu, et qui faisait l'américain à parler des sociétés qu'il achetait <:kappa:366991325469343744>",
-				"timestamp": 1563829266448
+				"content": "Les raids popent plus après 21h <:KappaLUL:379994313607872512>",
+				"timestamp": 1567203551693
 			}
 		},
 		{
 			"user_id": "142942291126910976",
 			"username": "LeBosseur",
-			"level": 5,
-			"xp": 8665,
+			"level": 7,
+			"xp": 39270,
 			"last_message": {
-				"content": "j'avoue que les italiennes",
-				"timestamp": 1563817228325
+				"content": "Ca donne aussi l'effet que je m'intéresse à plusieurs choses et tout <:kikoojapmda:378546195783745536>",
+				"timestamp": 1567262542859
 			}
 		},
 		{
 			"user_id": "270607572208320512",
 			"username": "IssouGaming",
-			"level": 5,
-			"xp": 7907,
+			"level": 6,
+			"xp": 18687,
 			"last_message": {
-				"content": "on se lève tôt pour bosser demain c'est normal",
-				"timestamp": 1563835943054
+				"content": "sûrement un raid <:kappa:366991325469343744>",
+				"timestamp": 1567195509841
 			}
 		},
 		{
 			"user_id": "221346055051018242",
-			"username": "Le petit nicolas",
-			"level": 6,
-			"xp": 23019,
+			"username": "NicolasFargePokemon",
+			"level": 7,
+			"xp": 62223,
 			"last_message": {
-				"content": "Profites en ! Je kifferais faire pareil, je m'étais dis que c'était cool de bosser que le matin mais au final je suis tellement mort quand je rentre que je dors tout l'après-midi",
-				"timestamp": 1563831396678
+				"content": "Tu risques rien à faire ça à part montrer que t'as envie de bosser chez eux",
+				"timestamp": 1567262990875
 			},
 			"admin": 0
 		},
@@ -56,20 +56,20 @@
 			"user_id": "191278491973582848",
 			"username": "Mayv",
 			"level": 5,
-			"xp": 4613,
+			"xp": 12109,
 			"last_message": {
-				"content": "https://twitter.com/homowithIuv/status/1152727373831450624",
-				"timestamp": 1563815299579
+				"content": "le mec vient de faire le first world",
+				"timestamp": 1567190434005
 			}
 		},
 		{
 			"user_id": "219541276725346304",
 			"username": "Zenwinks",
-			"level": 1,
-			"xp": 35,
+			"level": 2,
+			"xp": 211,
 			"last_message": {
-				"content": "Ça s'arrête à combien du coup ?",
-				"timestamp": 1562268622178
+				"content": "#tantquelescouuillessetouchentpascestpaspd",
+				"timestamp": 1567199712052
 			}
 		},
 		{
@@ -106,11 +106,41 @@
 		{
 			"user_id": "147043541908979713",
 			"username": "Démolichatte",
-			"level": 3,
-			"xp": 500,
+			"level": 4,
+			"xp": 1982,
 			"last_message": {
-				"content": "Vous êtes tous trop fébriles pour toucher à ce genre de meufs",
-				"timestamp": 1563209667122
+				"content": "Ouais j'ai laissé tomber mdr",
+				"timestamp": 1566998177910
+			}
+		},
+		{
+			"user_id": "175298968169742337",
+			"username": "Teatek",
+			"level": 3,
+			"xp": 382,
+			"last_message": {
+				"content": "normalement l'eni devrait bientôt me contacter",
+				"timestamp": 1567094271823
+			}
+		},
+		{
+			"user_id": "264720273637507072",
+			"username": "Arthur",
+			"level": 3,
+			"xp": 550,
+			"last_message": {
+				"content": "Je vais peut être être le seul à penser ça mais perso j'aime bien les streams de squeezie , certe il passe après Zerator ou Mister MV si'ils sont en live en même temps mais je pense qu'il peut apporter encore plus de monde à Zevent vous pensez pas  ?  😮",
+				"timestamp": 1566338247232
+			}
+		},
+		{
+			"user_id": "362988489018572810",
+			"username": "NICE TROLLER RIOT (GO IN HELL)",
+			"level": 1,
+			"xp": 23,
+			"last_message": {
+				"content": "<:LUL:377470639411298304>",
+				"timestamp": 1565723491599
 			}
 		}
 	]

@@ -27,7 +27,7 @@ class Announce{
               msgFunc.sendEmbed(channel, {
                 author_name: message.member.displayName,
                 author_avatar: message.author.avatarURL,
-                description : annonceMsg
+                description : "** **\n" + annonceMsg
               }, true);
             }
           });

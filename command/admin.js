@@ -17,7 +17,8 @@ class Admin{
     let command = message.content.split(' ')[1];
     switch(command){
       case "add":
-        this.add_admin(message);
+        msgFunc.sendCommingSoon(message, message.content);
+        // this.add_admin(message);
         break;
       case "list":
         this.list_admin(message);
@@ -55,12 +56,11 @@ class Admin{
 
   static default_admin(message){
     msgFunc.sendEmbed(message, {
-      author_name: message.member.displayName,
-      author_avatar: message.author.avatarURL,
       fields: [
         {
           name: "Commandes `.admin` :",
-          value: ":hammer_pick: **`.admin add <user>`** -- Ajoute un utilisateur en admin sur le Bot"
+          value: ":hammer_pick: **`.admin add <user>`** -- Ajoute un utilisateur en admin sur le Bot" +
+            "\n :scroll: **`.admin list`** -- Affiche la liste des admins sur le Bot"
         }
       ]
     });

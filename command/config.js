@@ -15,17 +15,19 @@ class Config{
     let thiss = this;
     adminFunc.isAdmin(message.author.id, (err, admin) => {
       if(admin){
-        let configItem = (message.content.split(' ')[1]).toLowerCase();
-        if(!message.guild.available){
-          msgFunc.sendError(message, "Je n'ai pas les autorisation nécessaires pour ces fonctionnalités");
-          return false;
-        }
+        let configItem = message.content.split(' ')[1];
         switch(configItem){
           case "announce":
+          case "annonce":
             thiss.confAnnounce(message);
             break;
           default:
-            msgFunc.sendError(message, "donnée à configurer non trouvée");
+            msgFunc.sendEmbed(message, {
+              fields : [{
+                name: "Commandes `.config` : ",
+                value: "\n**:loudspeaker: `.config announce <channel>`** -- " + "Configure le channel d'annonce du serveur"
+              }]
+            });
             break;
         }
         return false;
@@ -34,7 +36,6 @@ class Config{
         return false;
       }
     });
-    // msgFunc.sendCommingSoon(message);
   }
 
   /**
@@ -42,9 +43,6 @@ class Config{
    * @param  {[Discord.message]} message [message de l'utilisateur]
    */
   static confAnnounce(message){
-    // console.log(message.guild.id);
-    // console.log(message.guild.name);
-    // console.log(message.content);
     let announceChan = message.content.split(' ')[2];
     if(announceChan == undefined || !announceChan.match(/<#[0-9]*>/i)){
       msgFunc.sendError(message, "Vous devez me spécifier un channel pour les annonces `.config announce <channel>`");
