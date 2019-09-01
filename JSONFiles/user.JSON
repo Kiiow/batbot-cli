@@ -1,19 +1,21 @@
 {
 	"users": [
 		{
-			"user_id": "231826744192139264",
-			"username": "JeanDictateur👑",
+			"id": "231826744192139264",
+			"nickname": "JeanDictateur👑",
 			"level": 7,
-			"xp": 57328,
+			"xp": 57944,
 			"last_message": {
-				"content": "bah yes <:jpp:400280849146183681>",
-				"timestamp": 1567262663242
+				"content": "-profile <@598942264856805390>",
+				"timestamp": 1567373000430
 			},
-			"admin": 1
+			"admin": 1,
+			"username": "Draseres",
+			"discriminator": "6744"
 		},
 		{
-			"user_id": "359044179126386689",
-			"username": "Le Roi Chômeur",
+			"id": "359044179126386689",
+			"nickname": "Le Roi Chômeur",
 			"level": 6,
 			"xp": 26635,
 			"last_message": {
@@ -22,49 +24,57 @@
 			}
 		},
 		{
-			"user_id": "142942291126910976",
-			"username": "LeBosseur",
+			"id": "142942291126910976",
+			"nickname": "LeBosseur",
 			"level": 7,
-			"xp": 39270,
+			"xp": 39532,
 			"last_message": {
-				"content": "Ca donne aussi l'effet que je m'intéresse à plusieurs choses et tout <:kikoojapmda:378546195783745536>",
-				"timestamp": 1567262542859
-			}
-		},
-		{
-			"user_id": "270607572208320512",
-			"username": "IssouGaming",
-			"level": 6,
-			"xp": 18687,
-			"last_message": {
-				"content": "sûrement un raid <:kappa:366991325469343744>",
-				"timestamp": 1567195509841
-			}
-		},
-		{
-			"user_id": "221346055051018242",
-			"username": "NicolasFargePokemon",
-			"level": 7,
-			"xp": 62223,
-			"last_message": {
-				"content": "Tu risques rien à faire ça à part montrer que t'as envie de bosser chez eux",
-				"timestamp": 1567262990875
+				"content": "oui mais pour les petits oignons",
+				"timestamp": 1567370426502
 			},
-			"admin": 0
+			"username": "Az",
+			"discriminator": "0455"
 		},
 		{
-			"user_id": "191278491973582848",
-			"username": "Mayv",
-			"level": 5,
-			"xp": 12109,
+			"id": "270607572208320512",
+			"nickname": "IssouGaming",
+			"level": 6,
+			"xp": 18773,
 			"last_message": {
-				"content": "le mec vient de faire le first world",
-				"timestamp": 1567190434005
-			}
+				"content": "ouais mais si la meuf de 14 fait 22 ans j'y peux rien aussi",
+				"timestamp": 1567371341559
+			},
+			"username": "IssouGaming",
+			"discriminator": "3014"
 		},
 		{
-			"user_id": "219541276725346304",
-			"username": "Zenwinks",
+			"id": "221346055051018242",
+			"nickname": "NicolasFargePokemon",
+			"level": 7,
+			"xp": 63469,
+			"last_message": {
+				"content": "mec j'en connais des mecs comme toi <:jpp:400280849146183681>",
+				"timestamp": 1567372930455
+			},
+			"admin": 0,
+			"username": "Jean-Eude",
+			"discriminator": "9092"
+		},
+		{
+			"id": "191278491973582848",
+			"nickname": "Mayv",
+			"level": 5,
+			"xp": 12175,
+			"last_message": {
+				"content": "ouais mais ya que moi qui c'est bien la jouer sur ce serveur c sa le problème",
+				"timestamp": 1567353587799
+			},
+			"username": "Mayv",
+			"discriminator": "9820"
+		},
+		{
+			"id": "219541276725346304",
+			"nickname": "Zenwinks",
 			"level": 2,
 			"xp": 211,
 			"last_message": {
@@ -73,8 +83,8 @@
 			}
 		},
 		{
-			"user_id": "156127664741023744",
-			"username": "Attila le Eins",
+			"id": "156127664741023744",
+			"nickname": "Attila le Eins",
 			"level": 2,
 			"xp": 144,
 			"last_message": {
@@ -83,8 +93,8 @@
 			}
 		},
 		{
-			"user_id": "256458358171631616",
-			"username": "Bastif",
+			"id": "256458358171631616",
+			"nickname": "Bastif",
 			"level": 3,
 			"xp": 541,
 			"last_message": {
@@ -93,8 +103,8 @@
 			}
 		},
 		{
-			"user_id": "598942264856805390",
-			"username": "DrasTest",
+			"id": "598942264856805390",
+			"nickname": "DrasTest",
 			"level": 1,
 			"xp": 45,
 			"last_message": {
@@ -104,18 +114,20 @@
 			"admin": 1
 		},
 		{
-			"user_id": "147043541908979713",
-			"username": "Démolichatte",
+			"id": "147043541908979713",
+			"nickname": "Démolichatte",
 			"level": 4,
-			"xp": 1982,
+			"xp": 2752,
 			"last_message": {
-				"content": "Ouais j'ai laissé tomber mdr",
-				"timestamp": 1566998177910
-			}
+				"content": "Ouais mec ça va se passer exactement comme ça",
+				"timestamp": 1567371468840
+			},
+			"username": "CamilleStepOnMe",
+			"discriminator": "4704"
 		},
 		{
-			"user_id": "175298968169742337",
-			"username": "Teatek",
+			"id": "175298968169742337",
+			"nickname": "Teatek",
 			"level": 3,
 			"xp": 382,
 			"last_message": {
@@ -124,18 +136,20 @@
 			}
 		},
 		{
-			"user_id": "264720273637507072",
-			"username": "Arthur",
+			"id": "264720273637507072",
+			"nickname": "Arthur",
 			"level": 3,
-			"xp": 550,
+			"xp": 645,
 			"last_message": {
-				"content": "Je vais peut être être le seul à penser ça mais perso j'aime bien les streams de squeezie , certe il passe après Zerator ou Mister MV si'ils sont en live en même temps mais je pense qu'il peut apporter encore plus de monde à Zevent vous pensez pas  ?  😮",
-				"timestamp": 1566338247232
-			}
+				"content": "A domino's le connard qui commande a 5 minutes de la fin en livraison il reçoit jamais ça commande 😄",
+				"timestamp": 1567371149180
+			},
+			"username": "Hexod",
+			"discriminator": "2692"
 		},
 		{
-			"user_id": "362988489018572810",
-			"username": "NICE TROLLER RIOT (GO IN HELL)",
+			"id": "362988489018572810",
+			"nickname": "NICE TROLLER RIOT (GO IN HELL)",
 			"level": 1,
 			"xp": 23,
 			"last_message": {

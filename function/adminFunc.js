@@ -13,7 +13,7 @@ class adminFunc {
         // console.log(user_id);
         var admin = true;
         JSONObj.users.forEach(function(user){
-          if(user.user_id == user_id){
+          if(user.id == user_id){
             if(user.admin == 1){
               admin=true;
               return true;
@@ -41,6 +41,19 @@ class adminFunc {
   }
 
   /**
+   * Ecrit les modifications du fichier JSON
+   * @param  {[String]} JSONFileName [fichier JSON à modifier]
+   * @param  {[JSONObj]} JSONObj      [nouveau contenu du fichier JSON]
+   * @param {Function} callback [Callback Function]
+   */
+  static writeJSONData(JSONFileName, JSONObj, callback){
+    fs.writeFile('./JSONFiles/' + JSONFileName + '.json', JSON.stringify(JSONObj, null, '\t'), 'utf8', function(err, data){
+      if(err) console.error(err);
+      else if(callback != undefined) callback(null);
+    });
+  }
+
+  /**
    * Exécute une requête AJAX en POST sur l'url donné
    * @param  {[String]}   url      [url de la page]
    * @param  {Function} callback [Callback Function]
@@ -51,25 +64,6 @@ class adminFunc {
         callback(null, body);
       }
     });
-  }
-
-  /**
-   * Retourne l'utilisateur avec l'id donné
-   * @param  {[Int]}   user_id  [id de l'utilisateur]
-   * @param  {[Array]}   JSONArr  [Liste des utilisateurs]
-   * @param  {Function} callback [Callback Function]
-   */
-  static getUser(user_id, JSONArr, callback){
-    var userData;
-    var found = true;
-    JSONArr.users.forEach(function(user){
-      if(user.user_id == user_id){
-        userData = user;
-        return true;
-      }
-    });
-    if(userData == undefined) found = false;
-    callback(null, userData, found);
   }
 
     /**

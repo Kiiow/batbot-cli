@@ -1,6 +1,7 @@
-const fs = require('fs');
 const adminFunc = require('../function/adminFunc.js')
 const msgFunc = require('../function/msgFunc.js');
+const user_service = require('./services/user_service.js');
+const level_service = require('./services/level_service.js');
 
 class infos{
 
@@ -13,14 +14,24 @@ class infos{
     let thiss = this;
     adminFunc.getJSONData('user', function(err, data){
       if(message.mentions.users.first() == undefined){
-        adminFunc.getUser(message.member.id, data, function(err, userData, found){
-          if(!found) return false;
-          msgFunc.sendEmbed(message, thiss.getUserProfile(message, userData, "author"));
+        user_service.getUserCallback(message.member.id, data, function(err, userData, found){
+          if(!found){
+            msgFunc.sendError(message, "Vous n'avez pas encore de profil, parlez plus !");
+            return false;
+          }
+          msgFunc.sendEmbed(message, thiss.getUserProfile(message, userData, "author", data));
         });
       }else{
-        if(message.mentions.users.first().bot == true) return false;
-        adminFunc.getUser(message.mentions.users.first().id, data, function(err, userData, found){
-          msgFunc.sendEmbed(message, thiss.getUserProfile(message, userData, "mentions"));
+        if(message.mentions.users.first().bot == true){
+          msgFunc.sendError(message, "l'utilisateur mentionné est un Bot");
+          return false;
+        }
+        user_service.getUserCallback(message.mentions.users.first().id, data, function(err, userData, found){
+          if(!found){
+            msgFunc.sendError(message, "l'utilisateur mentionné n'a pas de profil");
+            return false;
+          }
+          msgFunc.sendEmbed(message, thiss.getUserProfile(message, userData, "mentions", data));
         });
       }
     });
@@ -31,29 +42,34 @@ class infos{
    * @param  {[Discord.message]} message [Message de l'utilisateur]
    * @param  {[JSONObject]} userData [Object JSON de l'utilisateur]
    * @param  {[String]} type     [type de profil à récup]
+   * @param {[JSONObject]} data [Fichier JSON des utilisateurs]
    * @return {[JSONObject]}          [Object JSON de l'embed à envoyer]
    */
-  static getUserProfile(message, userData, type){
-    let username, avatarURL, status, discriminator, color;
+  static getUserProfile(message, userData, type, data){
+    let nickname, avatarURL, status, discriminator, color, rank, roles = [];
+    rank = user_service.getRank(data, userData.id, true);
 
+    message.member.roles.forEach( (role) => {
+      if(role.name != "@everyone") roles.push("<@&" + role.id + ">");
+    });
+    roles = roles.join(', ');
     switch(type){
       case "mentions":
-        username = message.mentions.users.first().username;
+        nickname = message.mentions.users.first().username;
         avatarURL = message.mentions.users.first().avatarURL;
         status = message.mentions.users.first().presence.status;
         discriminator = message.mentions.users.first().discriminator;
         break;
       case "author":
         color = message.member.colorRole.color;
-        username = message.member.displayName;
+        nickname = message.member.displayName;
         avatarURL = message.author.avatarURL;
         status = message.member.presence.status;
         discriminator = message.author.discriminator;
         break;
     }
-
     let profile = {
-      author_name: username,
+      author_name: nickname,
       author_avatar: avatarURL,
       fields: [
         {
@@ -63,14 +79,25 @@ class infos{
         },
         {
           "name": "XP",
-          "value": userData.xp,
+          "value": userData.xp + "/" + level_service.xpNeed(userData.level),
           "inline": true
         },
         {
+          "name" : "Rôles",
+          "value" : roles
+        },
+        {
           "name": "Status",
-          "value": status
-        } ],
-      footer : username + "#" + discriminator,
+          "value": status,
+          "inline" : true
+        },
+        {
+          "name" : "Rank",
+          "value" : rank,
+          "inline" : true
+        }
+         ],
+      footer : userData.username + "#" + discriminator,
     }
     return profile;
   }
@@ -200,8 +227,9 @@ class infos{
       let i = 0, value = "** **\n";
       let rankEmote = [":first_place:", ":second_place:", ":third_place:", ":four:", ":five:",
         ":six:", ":seven:", ":eight:", ":nine:", ":keycap_ten:"];
+        let username;
       while(i < 10 && i < users.length){
-        value += rankEmote[i] + " -- **" + users[i].username + "** *[xp: " + users[i].xp + "]*\n";
+        value += rankEmote[i] + " -- **" + users[i].nickname + "** *[xp: " + users[i].xp + "]*\n";
         i++;
       }
       msgFunc.sendEmbed(message, {
