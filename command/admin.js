@@ -1,5 +1,6 @@
 const msgFunc = require('../function/msgFunc.js');
 const adminFunc = require('../function/adminFunc.js');
+const user_service = require('./services/user_service.js');
 const fs = require('fs');
 
 /**
@@ -17,8 +18,8 @@ class Admin{
     let command = message.content.split(' ')[1];
     switch(command){
       case "add":
-        msgFunc.sendCommingSoon(message, message.content);
-        // this.add_admin(message);
+        // msgFunc.sendCommingSoon(message, message.content);
+        this.add_admin(message);
         break;
       case "list":
         this.list_admin(message);
@@ -41,7 +42,7 @@ class Admin{
       while(i < JSONObj.users.length){
         if(JSONObj.users[i].admin == 1){
           user = JSONObj.users[i];
-          adminUsers.push( "\n- " + user.username + " (<@!" + user.user_id.toString() + ">)" );
+          adminUsers.push( "\n- " + user.nickname + " (<@!" + user.id.toString() + ">)" );
         }
         i++;
       }
@@ -80,27 +81,22 @@ class Admin{
           msgFunc.sendError(message, "Vous devez mentionner quelqu'un à passer admin `.admin_add <user>`");
         }else{
           adminFunc.getJSONData('user', (err, JSONObj) => {
-            JSONObj.users.map( userData => {
-              if(userData.user_id == userObj.id){
-                user = userData;
-              }
-            });
+            user = user_service.getUser(JSONObj, userObj, "user");
             if(user == undefined){
               // créé l'utilisateur
-              let user = thiss.createUser(userObj, userObj.id);
+              let user = user_service.createUserByMember(userObj.lastMessage.member);
               JSONObj.users.push(user);
             }
             user.admin = 1
-            // console.log(JSONObj);
-            fs.writeFile('./JSONFiles/user.json', JSON.stringify(JSONObj, null, '\t'), 'utf8', (err, data) => {
-              if(err) console.error(err);
-              else msgFunc.sendEmbed(message, {
+
+            adminFunc.writeJSONData('user', JSONObj, (err) => {
+              msgFunc.sendEmbed(message, {
                 color : "success",
                 author_name: message.member.displayName,
                 author_avatar: message.author.avatarURL,
                 description : "** **\nl'utilisateur <@!" + userObj.id + "> est maintenant admin"
               });
-            });
+            })
 
           });
         }
