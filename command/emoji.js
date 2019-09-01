@@ -45,7 +45,7 @@ class Emoji{
                     color : "success",
                     author_name : message.member.nickname,
                     author_avatar : message.author.avatarURL,
-                    description : "L'émoji `" + emojiName + "` à bien été ajoutée",
+                    description : "L'émoji `:" + emojiName + ":` à bien été ajoutée",
                 });
               }
             });
@@ -80,7 +80,7 @@ class Emoji{
     msgFunc.sendEmbed(message, {
       fields : [
         {
-          name: "Commandes `emoji` :",
+          name: "Commandes `.emoji` :",
           value: "\n**:smiley: `.emoji list`** -- " + "Affiche la liste des émojis disponibles sur le serveur" +
           "\n**:no_mouth: `.emoji add <nom> <url_img>`** -- " + "Ajoute une émoji sur le serveur"
         }

@@ -71,7 +71,7 @@ class msgFunc{
       color : 16711680,
       author_name : message.member.nickname,
       author_avatar : message.author.avatarURL,
-      description : "**Comming soon**",
+      description : "**Comming soon / En maintenance**",
       footer : footer
     });
   }

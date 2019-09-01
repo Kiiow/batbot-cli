@@ -85,6 +85,9 @@ class infos{
     let fields = [];
     switch(command){
       case "general":
+      case "gnrl":
+      case "général":
+      case "g":
         fields.push(this.getHelpGnrl());
         fields.push(this.getHelpGame());
         this.help(message, fields);
@@ -174,7 +177,7 @@ class infos{
    */
   static getHelpDefault(){
     let defaultHelp = {
-      name: "Commandes d'aides disponibles : ",
+      name: "Commandes `.help` : ",
       value: "\n**:gear: `.help general`** -- " + "Donne l'aide sur les commandes général" +
       "\n**:tools: `.help admin`** -- " + "Donne l'aide sur les commandes admin" +
       "\n**:hammer_pick: `.help all`** -- " + "Donne l'aide sur toutes les commandes"
