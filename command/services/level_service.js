@@ -1,4 +1,5 @@
 const globalFunc = require('../../function/globalFunc.js');
+const msgFunc = require('../../function/msgFunc.js');
 
 class level_service {
 
