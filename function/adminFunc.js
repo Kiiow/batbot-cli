@@ -59,10 +59,10 @@ class adminFunc {
    * @param  {Function} callback [Callback Function]
    */
   static ajaxRequest(url, callback){
-    request.post(url, {json: true}, function(err, res, body) {
+    request.get(url, {json: true}, function(err, res, body) {
       if (!err && res.statusCode === 200) {
         callback(null, body);
-      }
+      }else console.error(err);
     });
   }
 
