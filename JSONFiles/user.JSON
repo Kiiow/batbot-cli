@@ -3,11 +3,11 @@
 		{
 			"id": "231826744192139264",
 			"nickname": "JeanDictateur👑",
-			"level": 7,
-			"xp": 60885,
+			"level": 8,
+			"xp": 100404,
 			"last_message": {
-				"content": "tiens par contre ya des bouts de code ca fait 1an que je les ai fait",
-				"timestamp": 1568405485805
+				"content": "wtf 500 de spd 😮",
+				"timestamp": 1572801843792
 			},
 			"admin": 1,
 			"username": "Draseres",
@@ -16,23 +16,23 @@
 		{
 			"id": "359044179126386689",
 			"nickname": "Le Roi Chômeur",
-			"level": 6,
-			"xp": 27917,
+			"level": 7,
+			"xp": 48660,
 			"last_message": {
-				"content": "Et Path of Exile ?",
-				"timestamp": 1568393092425
+				"content": "<:ensueur:399939504598810634>",
+				"timestamp": 1572790093075
 			},
-			"username": "Citron pressé",
+			"username": "TheFrenchFaké",
 			"discriminator": "1463"
 		},
 		{
 			"id": "142942291126910976",
 			"nickname": "LeBosseur",
-			"level": 7,
-			"xp": 42341,
+			"level": 8,
+			"xp": 85778,
 			"last_message": {
-				"content": "ouais j'ai vu mdr",
-				"timestamp": 1568406047670
+				"content": "https://tenor.com/view/bubbles-sensitive-sad-gif-5317593",
+				"timestamp": 1572554757103
 			},
 			"username": "Az",
 			"discriminator": "0455"
@@ -40,11 +40,11 @@
 		{
 			"id": "270607572208320512",
 			"nickname": "IssouGaming",
-			"level": 6,
-			"xp": 19388,
+			"level": 7,
+			"xp": 36412,
 			"last_message": {
-				"content": "Jviens de passer à 25:75 dsl khey",
-				"timestamp": 1568407359063
+				"content": "<:mdrlagueuledefdp:427900905686564906>",
+				"timestamp": 1572651513266
 			},
 			"username": "IssouGaming",
 			"discriminator": "3014"
@@ -52,11 +52,11 @@
 		{
 			"id": "221346055051018242",
 			"nickname": "NicolasFargePokemon",
-			"level": 7,
-			"xp": 63027,
+			"level": 8,
+			"xp": 107389,
 			"last_message": {
-				"content": "aller kiss kiss",
-				"timestamp": 1568392945925
+				"content": "vous étiez chez Léo ce weekend ?",
+				"timestamp": 1572792743490
 			},
 			"admin": 0,
 			"username": "Jean-Eude",
@@ -65,11 +65,11 @@
 		{
 			"id": "191278491973582848",
 			"nickname": "Mayv",
-			"level": 5,
-			"xp": 12535,
+			"level": 6,
+			"xp": 18227,
 			"last_message": {
-				"content": "yes, mais pas grand chose a call comme les gens connaissent bien. Mise à part la fin ou ct chaud",
-				"timestamp": 1568406038288
+				"content": "tjr en retard là",
+				"timestamp": 1572798343915
 			},
 			"username": "Mayv",
 			"discriminator": "9820"
@@ -77,12 +77,14 @@
 		{
 			"id": "219541276725346304",
 			"nickname": "Zenwinks",
-			"level": 2,
-			"xp": 211,
+			"level": 3,
+			"xp": 916,
 			"last_message": {
-				"content": "#tantquelescouuillessetouchentpascestpaspd",
-				"timestamp": 1567199712052
-			}
+				"content": "Non c'est pour jouer à COD et pour me préparer à star wars + cyberpunk",
+				"timestamp": 1572547444849
+			},
+			"username": "Zenwinks",
+			"discriminator": "3771"
 		},
 		{
 			"id": "156127664741023744",
@@ -97,12 +99,14 @@
 		{
 			"id": "256458358171631616",
 			"nickname": "Bastif",
-			"level": 3,
-			"xp": 541,
+			"level": 4,
+			"xp": 1632,
 			"last_message": {
-				"content": "qui achete ses jeux sur instantGaming",
-				"timestamp": 1562965700198
-			}
+				"content": "ba je sais pas justement mdr, dans l'ideal il me faut la partie qui permet de generer un expression avec java.stack",
+				"timestamp": 1572710029904
+			},
+			"username": "Bastif",
+			"discriminator": "7672"
 		},
 		{
 			"id": "598942264856805390",
@@ -118,21 +122,23 @@
 		{
 			"id": "147043541908979713",
 			"nickname": "Démolichatte",
-			"level": 4,
-			"xp": 1982,
+			"level": 5,
+			"xp": 4944,
 			"last_message": {
-				"content": "Ouais j'ai laissé tomber mdr",
-				"timestamp": 1566998177910
-			}
+				"content": "Les homos de skt ont perdu on dirait",
+				"timestamp": 1572792748124
+			},
+			"username": "D.U.C",
+			"discriminator": "4704"
 		},
 		{
 			"id": "175298968169742337",
 			"nickname": "Teatek",
 			"level": 3,
-			"xp": 409,
+			"xp": 682,
 			"last_message": {
-				"content": "mais mdr vous parler de quoi ?",
-				"timestamp": 1568392173630
+				"content": "bah pareil que les autres",
+				"timestamp": 1572098397741
 			},
 			"username": "Teatek",
 			"discriminator": "3655"
@@ -141,20 +147,84 @@
 			"id": "264720273637507072",
 			"nickname": "Arthur",
 			"level": 3,
-			"xp": 550,
+			"xp": 598,
 			"last_message": {
-				"content": "Je vais peut être être le seul à penser ça mais perso j'aime bien les streams de squeezie , certe il passe après Zerator ou Mister MV si'ils sont en live en même temps mais je pense qu'il peut apporter encore plus de monde à Zevent vous pensez pas  ?  😮",
-				"timestamp": 1566338247232
-			}
+				"content": "Long Destroyer <:KappaLUL:379994313607872512>",
+				"timestamp": 1572119866842
+			},
+			"username": "Hexod",
+			"discriminator": "2692"
 		},
 		{
 			"id": "362988489018572810",
 			"nickname": "NICE TROLLER RIOT (GO IN HELL)",
-			"level": 1,
-			"xp": 23,
+			"level": 4,
+			"xp": 1112,
 			"last_message": {
-				"content": "<:LUL:377470639411298304>",
-				"timestamp": 1565723491599
+				"content": "au pire m'en bas les couilles",
+				"timestamp": 1572524265063
+			},
+			"username": "BestDarkShoot",
+			"discriminator": "2121"
+		},
+		{
+			"id": "239743740665659392",
+			"nickname": "valouga",
+			"username": "valouga",
+			"discriminator": "0312",
+			"level": 4,
+			"xp": 2198,
+			"last_message": {
+				"content": "<@231826744192139264>",
+				"timestamp": 1572801831003
+			}
+		},
+		{
+			"id": "378638700185255936",
+			"nickname": "steeve",
+			"username": "Intoxik",
+			"discriminator": "7392",
+			"level": 4,
+			"xp": 2382,
+			"last_message": {
+				"content": "Je dis pas qu'ils vont perdre (Meme si je pense fortement) mais balayer ce sera vraiment pas le cas mdr",
+				"timestamp": 1572338768432
+			}
+		},
+		{
+			"id": "356891250407768066",
+			"nickname": "BloodLeF2P",
+			"username": "Boi",
+			"discriminator": "4013",
+			"level": 3,
+			"xp": 851,
+			"last_message": {
+				"content": "<@270607572208320512> t'es sdf là du coup ?",
+				"timestamp": 1572530307124
+			}
+		},
+		{
+			"id": "175651061648850944",
+			"nickname": "Memes Emperor",
+			"username": "Tetras",
+			"discriminator": "1802",
+			"level": 1,
+			"xp": 21,
+			"last_message": {
+				"content": "<:jpp:400280849146183681>",
+				"timestamp": 1572097089249
+			}
+		},
+		{
+			"id": "225572483502178305",
+			"nickname": "PugMan",
+			"username": "Neerzox",
+			"discriminator": "0097",
+			"level": 2,
+			"xp": 237,
+			"last_message": {
+				"content": "Apres sur microservices faut penser qu'on as pas faut grand chose, on pourrais essayer de faire un truc plus complet. C'est un peu de la branlette ce qu'on as fait, on va avoir du mal as faire une bonne présentation",
+				"timestamp": 1572630749996
 			}
 		}
 	]
