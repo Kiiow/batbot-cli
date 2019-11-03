@@ -103,116 +103,6 @@ class infos{
   }
 
   /**
-   * Envoie le message d'help correspondant
-   * @param  {[Discord.message]} message [Message de l'utilisateur]
-   */
-  static helpCommand(message){
-    message.delete();
-    let command = message.content.split(' ')[1];
-    let fields = [];
-    switch(command){
-      case "general":
-      case "gnrl":
-      case "général":
-      case "g":
-        fields.push(this.getHelpGnrl());
-        fields.push(this.getHelpGame());
-        this.help(message, fields);
-        break;
-      case "admin":
-        fields.push(this.getHelpAdmin());
-        this.help(message, fields);
-        break;
-      case "all":
-        fields.push(this.getHelpGnrl());
-        fields.push(this.getHelpGame());
-        fields.push(this.getHelpAdmin());
-        this.help(message, fields);
-        break;
-      default:
-        fields.push(this.getHelpDefault());
-        this.help(message, fields);
-        break;
-    }
-  }
-
-  /**
-   * Affiche les informations sur toutes les commandes du bot
-   * @param  {[Discord.message]} message [Message de l'utilisateur]
-   * @param  {[Array]} fields [Tableau des différentes aides demandées]
-   */
-  static help(message, fields){
-    msgFunc.sendEmbed(message, {
-      fields: fields
-    });
-  }
-
-  /**
-   * Retourne l'aide général
-   * @return {[String]} [aide général]
-   */
-  static getHelpGnrl(){
-    let gnrlHelp = {
-      name: "Commandes générale :",
-      value: "**:ping_pong: `.ping`** -- " + "Jouer au *~~PingPong~~* Tennis de table avec BatBot" +
-      "\n**:book: `.wiki <recherche>`** -- " + "Renvoie le résultat trouvé sur wikipédia pour la recherche" +
-      "\n**:clown: `.blague`** -- " + "Une petite blague de BatBot ?" +
-      "\n**:video_game: `.profile <username>`** -- " + "Affiche le profile de la personne mentionnée" +
-      "\n**:trophy: `.top`** -- " + "Affiche le top des utilisateurs" +
-      "\n**:smiley: `.emoji list`** -- " + "Affiche la liste des émojis disponibles sur le serveur" +
-      "\n**:pencil: `.help`** -- " + "Affiche la liste des commandes de BatBot"
-    };
-    return gnrlHelp;
-  }
-
-  /**
-   * Retourne l'aide de jeu
-   * @return {[String]} [aide de jeu]
-   */
-  static getHelpGame(){
-    let gameHelp = {
-      name: "** **\nCommandes de jeu :",
-      value: "\n**:dragon: `.pokeinfo <nom_pkmn>`** -- " + "Affiche les infos d'un pokémon" +
-      "\n**:dragon_face: `.pokestats <nom_pkmn>`** -- " + "Affiche les stats d'un pokémon"
-    };
-    return gameHelp;
-  }
-
-  /**
-   * Retourne l'aide admin
-   * @return {[String]} [aide admin]
-   */
-  static getHelpAdmin(){
-    let adminHelp = {
-      name : "** **\nCommandes admin :",
-      value : "\n**:octagonal_sign: `.stop`** -- " + "Arrête le bot" +
-      "\n**:gear: `.config announce <channel>`** -- " + "Modifie le channel d'annonce du bot" +
-      "\n**:loudspeaker: `.announce <msg>`** -- " + "Envoie un message dans le channel d'annonce" +
-      "\n**:no_mouth: `.emoji add <nom> <url_img>`** -- " + "Ajoute une émoji sur le serveur" +
-      "\n**:hammer_pick: `.admin add <username>`** -- " + "Ajoute le joueur mentionné en temps qu'admin pour le bot" +
-      "\n**:door: `.kick <username>`** -- " + "Kick l'utilisateur mentionné" +
-      "\n**:no_entry: `.ban <username>`** -- " + "Banni l'utilisateur mentionné" +
-      "\n**:cop: `.prison <username>`** -- " + "Ajoute le rôle prison à l'utilisateur" +
-      "\n**:wastebasket: `.clear <nbMessage>`** -- " + "Supprime des messages"
-    };
-    return adminHelp;
-  }
-
-  /**
-   * Retourne l'aide par défault
-   * @return {[String]} [aide de défault]
-   */
-  static getHelpDefault(){
-    let defaultHelp = {
-      name: "Commandes `.help` : ",
-      value: "\n**:gear: `.help general`** -- " + "Donne l'aide sur les commandes général" +
-      "\n**:tools: `.help admin`** -- " + "Donne l'aide sur les commandes admin" +
-      "\n**:hammer_pick: `.help all`** -- " + "Donne l'aide sur toutes les commandes"
-    }
-    return defaultHelp;
-  }
-
-  /**
    * Donne le top de tous les utilisateurs / xp
    * @param  {[Discord.message]} message [Message de l'utilisateur]
    */
@@ -240,6 +130,112 @@ class infos{
       });
     });
   }
+
+  /**
+   * Envoie le message d'help correspondant
+   * @param  {[Discord.message]} message [Message de l'utilisateur]
+   */
+  static helpCommand(message){
+    message.delete();
+    let command = message.content.split(' ')[1];
+    let fields = [];
+    switch(command){
+      case "general":
+      case "gnrl":
+      case "général":
+      case "g":
+        this.getHelp("general", message);
+        break;
+      case "admin":
+        this.getHelp("admin", message);
+        break;
+      case "all":
+        this.getHelp(undefined, message);
+        break;
+      case "game":
+        this.getHelp("game", message);
+        break;
+      default:
+        this.getHelpDefault(message);
+        break;
+    }
+  }
+
+  static getHelp(category, message){
+    let thiss = this;
+    adminFunc.getJSONData('commands', (err, JSONObj) =>{
+      let commandGnrArray = [];
+      let commandGameArray = [];
+      let commandAdminArray = [];
+      JSONObj.Commands.sort(function(a, b){
+        return ((a.name == b.name) ? 0 : ((a.name > b.name) ? 1 : -1 ));
+      });
+      JSONObj.Commands.forEach(function(command){
+        let data = command.help_data;
+        if(!command.active_command) return false;
+        switch(data.category){
+          case "general":
+            commandGnrArray.push("**:" + data.icon + ": `" + data.command + "`** -- " + data.text);
+            break;
+          case "admin":
+            commandAdminArray.push("**:" + data.icon + ": `" + data.command + "`** -- " + data.text);
+            break;
+          case "game":
+            commandGameArray.push("**:" + data.icon + ": `" + data.command + "`** -- " + data.text);
+            break;
+        }
+      });
+      let commandGnr = commandGnrArray.join('\n');
+      let commandAdmin = commandAdminArray.join('\n');
+      let commandGame = commandGameArray.join('\n');
+      let fields = [];
+      switch(category){
+        case "general":
+          fields.push({ name : "Commandes général", value : commandGnr });
+          break;
+        case "admin":
+          fields.push({ name : "Commandes de jeu", value : commandGame });
+          break;
+        case "game":
+          fields.push({ name : "Commandes admin", value : commandAdmin });
+          break;
+        default:
+          fields.push({ name : "Commandes général", value : commandGnr + "\n** **" });
+          fields.push({ name : "Commandes de jeu", value : commandGame + "\n** **" });
+          fields.push({ name : "Commandes admin", value : commandAdmin });
+          break;
+      }
+      thiss.help(message, fields);
+    });
+  }
+
+  /**
+   * Affiche les informations sur toutes les commandes du bot
+   * @param  {[Discord.message]} message [Message de l'utilisateur]
+   * @param  {[Array]} fields [Tableau des différentes aides demandées]
+   */
+  static help(message, fields){
+    msgFunc.sendEmbed(message, {
+      fields: fields
+    });
+  }
+
+  /**
+   * Retourne l'aide par défault
+   * @return {[String]} [aide de défault]
+   */
+  static getHelpDefault(message){
+    let defaultHelp = {
+      name: "Commandes `.help` : ",
+      value: "\n**:gear: `.help general`** -- Donne l'aide sur les commandes général" +
+      "\n**:tools: `.help admin`** -- Donne l'aide sur les commandes admin" +
+      "\n**:video_game: `.help game`** -- Donne l'aide sur les commandes de jeu" +
+      "\n**:hammer_pick: `.help all`** -- Donne l'aide sur toutes les commandes"
+    }
+    this.help(message, [defaultHelp]);
+  }
+
+
 
 }
 

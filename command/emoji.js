@@ -33,7 +33,7 @@ class Emoji{
         let emojiName = message.content.split(' ')[2];
         let urlImg = message.content.split(' ')[3];
         if(emojiName == undefined || urlImg == undefined){
-          msgFunc.sendError(message, "Vous devez renseigner un nom d'émoji et l'url d'une image `.emoji_addd <nom> <url_img>`" )
+          msgFunc.sendError(message, "Vous devez renseigner un nom d'émoji et l'url d'une image `.emoji addd <nom> <url_img>`" )
         }else{
           message.guild.createEmoji(urlImg, emojiName)
             .catch(console.error)

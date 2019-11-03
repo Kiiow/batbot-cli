@@ -51,8 +51,8 @@
       "admin" : 1,
       "help_data" : {
         "icon" : "hammer_pick",
-        "command" : ".admin add <username",
-        "text" : "Ajoute le joueur mentionné en temps qu'admin pour le bot",
+        "command" : ".admin (option)",
+        "text" : "Affiche la liste des commandes admin",
         "category" :"admin"
       }
     },
@@ -264,6 +264,20 @@
         "command" : ".announce <msg>",
         "text" : "Envoie un message dans le channel d'annonce",
         "category" :"admin"
+      }
+    },
+    {
+      "name" : "sw",
+      "filename" : "sw",
+      "function" : "swCommand",
+      "active_command" : 1,
+      "active_logs" : 1,
+      "admin" : 0,
+      "help_data" : {
+        "icon" : "pencil",
+        "command" : ".sw (option)",
+        "text" : "Affiche la liste des commandes sur Summoners War",
+        "category" :"game"
       }
     }
   ]

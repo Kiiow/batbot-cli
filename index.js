@@ -5,6 +5,7 @@ const fs = require('fs');
 
 const globalFunc = require('./function/globalFunc.js');
 const adminFunc = require('./function/adminFUnc.js');
+const msgFunc = require('./function/msgFunc.js');
 const level = require('./command/level.js');
 
 Bot.on('ready', () => {
@@ -46,8 +47,20 @@ Bot.on('message', (message) => {
         }
       });
       if(userCommand != undefined && userCommand.active_command == 1){
-        const userFunc = require("./command/" + userCommand.filename + ".js");
-        let t = userFunc[userCommand.function](message);
+        try {
+          const userFunc = require("./command/" + userCommand.filename + ".js");
+          let t = userFunc[userCommand.function](message);
+        }catch (err){
+          let errMsg = "ERROR : ";
+          // console.log(err.message);
+          if(err.message.match(/function$/)){
+            errMsg += "Function non trouvée : {" + userCommand.filename + "."+ userCommand.function +"}";
+          }else{
+            errMsg = "Fichier non trouvé : {./command/" + userCommand.filename + ".js}";
+          }
+          console.log(errMsg);
+          msgFunc.sendError(message, errMsg);
+        }
       }
     });
   }
