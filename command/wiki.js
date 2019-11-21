@@ -3,19 +3,21 @@ const msgFunc = require('../function/msgFunc.js');
 
 class Wiki{
 
-  static search(message){
+  static search(message, logger){
     message.delete();
     var searchItem = (adminFunc.removeItemByString(message.content.split(' '), '.wiki')).join(' ');
     if(searchItem == undefined){
       msgFunc.sendError(message, "Vous devez renseigner quelque chose à rechercher `.wiki <info>`");
+      logger.log(1, `[${this.name}] Can't search nothing`)
       return false;
     }else{
       searchItem = searchItem.replace(' ', '%20');
     }
     var url = this.createWikiUrl(searchItem);
-    adminFunc.ajaxRequest(url, function(err, body){
+    adminFunc.ajaxRequest(url, (err, body) => {
       if(body.error == undefined){
         var linkPage = "\n**[" + String(body[1]) +"](" + String(body[3]) + ") **\n\n";
+        logger.log(3, `[${this.name}] Successfully requested Wikipedia page (${linkPage}) By ${message.member.user.username}#${message.member.user.discriminator}`)
         msgFunc.sendEmbed(message, {
           author_name : message.member.displayName,
           author_avatar : message.author.avatarURL,

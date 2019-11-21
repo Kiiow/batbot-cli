@@ -3,17 +3,17 @@ const msgFunc = require('../function/msgFunc.js');
 
 class Stop{
 
-  static action(message){
+  static action(message, logger){
     message.delete();
     adminFunc.isAdmin(message.author.id, (err, admin) => {
       if(admin){
-        message.channel.send("A bientôt ...");
-        setTimeout(function(){
+        message.channel.send(`A bientôt ...`);
+        setTimeout( () => {
+          logger.log(2, `[${this.name}] Stopping BatBot`);
           process.exit();
         }, 500);
-      }else msgFunc.sendError(message, "Vous devez être admin pour m'éteindre");
+      }else msgFunc.sendError(message, `Vous devez être admin pour m'éteindre`);
     });
-
 
   }
 
