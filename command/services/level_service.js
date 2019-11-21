@@ -1,6 +1,8 @@
 const globalFunc = require('../../function/globalFunc.js');
 const msgFunc = require('../../function/msgFunc.js');
 
+const global = new globalFunc();
+
 class level_service {
 
   /**
@@ -12,7 +14,7 @@ class level_service {
   */
   static addXp(JSONObj, message){
     var xp = this.calcXp(message.content.length);
-    console.log( globalFunc.getDate("hh:mm:ss-dd/MM/YYYY") + " -- [xp:" + xp + "] " + JSONObj.nickname);
+    global.log(2, `[${this.name}] Adding ${xp} xp to ${JSONObj.username}#${JSONObj.discriminator} `);
     var levelUp = false;
     JSONObj.xp += xp;
     while(JSONObj.xp > this.xpNeed(JSONObj.level)){

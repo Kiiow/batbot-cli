@@ -4,10 +4,10 @@
 			"id": "231826744192139264",
 			"nickname": "JeanDictateur👑",
 			"level": 8,
-			"xp": 100404,
+			"xp": 106921,
 			"last_message": {
-				"content": "wtf 500 de spd 😮",
-				"timestamp": 1572801843792
+				"content": "ah mais ca existe en plus les assert en python ? <:jpp:400280849146183681>",
+				"timestamp": 1574273118298
 			},
 			"admin": 1,
 			"username": "Draseres",
@@ -29,10 +29,10 @@
 			"id": "142942291126910976",
 			"nickname": "LeBosseur",
 			"level": 8,
-			"xp": 85778,
+			"xp": 87048,
 			"last_message": {
-				"content": "https://tenor.com/view/bubbles-sensitive-sad-gif-5317593",
-				"timestamp": 1572554757103
+				"content": "Je dois avoir des bases dans les langages qu'on a vu en cours comme y a pleins de logiciels mais le langage de prédilection sera le C#",
+				"timestamp": 1574179118106
 			},
 			"username": "Az",
 			"discriminator": "0455"
@@ -41,10 +41,10 @@
 			"id": "270607572208320512",
 			"nickname": "IssouGaming",
 			"level": 7,
-			"xp": 36412,
+			"xp": 36692,
 			"last_message": {
-				"content": "<:mdrlagueuledefdp:427900905686564906>",
-				"timestamp": 1572651513266
+				"content": "Mais 100% t'es pris gros chattard <:KappaLUL:379994313607872512>",
+				"timestamp": 1574095245174
 			},
 			"username": "IssouGaming",
 			"discriminator": "3014"
@@ -53,10 +53,10 @@
 			"id": "221346055051018242",
 			"nickname": "NicolasFargePokemon",
 			"level": 8,
-			"xp": 107389,
+			"xp": 108167,
 			"last_message": {
-				"content": "vous étiez chez Léo ce weekend ?",
-				"timestamp": 1572792743490
+				"content": "Nice ! Tu pars avec moi en formation la semaine prochaine à Paris ? 😁",
+				"timestamp": 1574179140604
 			},
 			"admin": 0,
 			"username": "Jean-Eude",
@@ -66,10 +66,10 @@
 			"id": "191278491973582848",
 			"nickname": "Mayv",
 			"level": 6,
-			"xp": 18227,
+			"xp": 20874,
 			"last_message": {
-				"content": "tjr en retard là",
-				"timestamp": 1572798343915
+				"content": "je confirme j'étais le conducteur",
+				"timestamp": 1574268032696
 			},
 			"username": "Mayv",
 			"discriminator": "9820"
@@ -99,34 +99,23 @@
 		{
 			"id": "256458358171631616",
 			"nickname": "Bastif",
-			"level": 4,
-			"xp": 1632,
+			"level": 5,
+			"xp": 5182,
 			"last_message": {
-				"content": "ba je sais pas justement mdr, dans l'ideal il me faut la partie qui permet de generer un expression avec java.stack",
-				"timestamp": 1572710029904
+				"content": "```<Provider store={ AppStore }>\n        <PersistGate loading={ null } persistor={ persistor} >\n            <Router history={ history }>\n                <Route path='/' component={ NavApp }>\n                    <Route onChange={ onChange } onEnter={ onEnter }>\n                        <IndexRoute component={ Dashboard } />\n                        <Route path='station/:code/:entryPoint/:authorization' component={ StationApp }/>\n                        <Route path='campaign/:id' component={ DashboardStationCampaign }/>\n                        <Route path='station/:code/event/:type/:request/:entryPoint' component={ EventForm } />\n                        <Route path='station/:code/contact/:type' component={ ContactForm } />\n                        <Route path='station/:code/contributor/:type' component={ ContributorForm } />\n                        <Route path='station/:code/charts/:type' component={ ChartsForm } />\n                        <Route path='installation/new' component={ InstallationCreationApp }/>\n                        <Route path='journal/view' component={ JournalDashboard }/>\n\n                    </Route>\n                    <Route path='login' component={ Login } />\n                    <Route path='confidentiality' component={ Confidentiality }/>\n                    <Route path='about' component={ About }/>\n                    <Route path='options' component={ Options } />\n                </Route>\n            </Router>\n        </PersistGate>\n    </Provider>```",
+				"timestamp": 1574243358622
 			},
 			"username": "Bastif",
 			"discriminator": "7672"
 		},
 		{
-			"id": "598942264856805390",
-			"nickname": "DrasTest",
-			"level": 1,
-			"xp": 45,
-			"last_message": {
-				"content": "-kick <@!231826744192139264>",
-				"timestamp": 1563062631710
-			},
-			"admin": 1
-		},
-		{
 			"id": "147043541908979713",
 			"nickname": "Démolichatte",
 			"level": 5,
-			"xp": 4944,
+			"xp": 6738,
 			"last_message": {
-				"content": "Les homos de skt ont perdu on dirait",
-				"timestamp": 1572792748124
+				"content": "J'ai un peu sué",
+				"timestamp": 1574199980156
 			},
 			"username": "D.U.C",
 			"discriminator": "4704"
@@ -159,10 +148,10 @@
 			"id": "362988489018572810",
 			"nickname": "NICE TROLLER RIOT (GO IN HELL)",
 			"level": 4,
-			"xp": 1112,
+			"xp": 1286,
 			"last_message": {
-				"content": "au pire m'en bas les couilles",
-				"timestamp": 1572524265063
+				"content": "la saison prochaine je fait mieux <:KappaLUL:379994313607872512>",
+				"timestamp": 1574194883499
 			},
 			"username": "BestDarkShoot",
 			"discriminator": "2121"
@@ -172,11 +161,11 @@
 			"nickname": "valouga",
 			"username": "valouga",
 			"discriminator": "0312",
-			"level": 4,
-			"xp": 2198,
+			"level": 5,
+			"xp": 6354,
 			"last_message": {
-				"content": "<@231826744192139264>",
-				"timestamp": 1572801831003
+				"content": "bien sur que ça existe les asserts",
+				"timestamp": 1574273259957
 			}
 		},
 		{
@@ -220,11 +209,23 @@
 			"nickname": "PugMan",
 			"username": "Neerzox",
 			"discriminator": "0097",
-			"level": 2,
-			"xp": 237,
+			"level": 3,
+			"xp": 344,
 			"last_message": {
-				"content": "Apres sur microservices faut penser qu'on as pas faut grand chose, on pourrais essayer de faire un truc plus complet. C'est un peu de la branlette ce qu'on as fait, on va avoir du mal as faire une bonne présentation",
-				"timestamp": 1572630749996
+				"content": "<@191278491973582848> \n```\n{\n    \"user\": \"hippo\",\n    \"password\": \"pwd\"\n}\n```",
+				"timestamp": 1574244341877
+			}
+		},
+		{
+			"id": "598942264856805390",
+			"nickname": "compte2dev",
+			"username": "DrasTest",
+			"discriminator": "2019",
+			"level": 1,
+			"xp": 60,
+			"last_message": {
+				"content": "mais omg faut plus que j'code",
+				"timestamp": 1574106284946
 			}
 		}
 	]

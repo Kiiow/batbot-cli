@@ -1,6 +1,111 @@
 const fs = require('fs');
+const winston = require('winston');
+
 
 class globalFunc{
+
+  /**
+   * Constructeur de globalFunc
+   * Initialise le logger winston et tous ses paramètres
+   */
+  constructor(){
+    let options = {
+      transport : {
+        file: {
+          level: 'debug',
+          filename: './logs/' + globalFunc.getDate("YYYY-MM-dd")  + '.log',
+          handleExceptions: true,
+          json: true,
+          maxsize: 5242880, // 5MB
+          maxFiles: 5,
+          colorize: false,
+        },
+        console: {
+          level: 'debug',
+          handleExceptions: true,
+          json: false,
+          format : winston.format.combine(
+            winston.format.colorize(),
+            winston.format.printf( (info) =>{
+              return `${info.date} [${info.level}] | ${info.app.name}(${info.app.version}) | ${info.message}`
+            })
+          ),
+          colorize: true,
+        }
+      },
+      customLevels : {
+        levels:{
+          fatal: -1,
+          error: 0,
+          warn: 1,
+          info: 2,
+          success: 3,
+          debug: 4
+        },
+        colors: {
+          fatal: 'red',
+          error: 'red',
+          warn: 'yellow',
+          info: 'blue',
+          success: 'green',
+          debug: 'magenta'
+        }
+      }
+    };
+
+    this.logger = winston.createLogger({
+      levels: options.customLevels.levels,
+      colorize: true,
+      format: winston.format.json(),
+      transports: [
+        new winston.transports.File( options.transport.file ),
+        new winston.transports.Console( options.transport.console )
+      ]
+    });
+    winston.addColors(options.customLevels.colors);
+  }
+  /**
+   * Envoie un message de log dans la console et sauvegarde le message dans un fichier de log
+   * @param  {int} level   [niveau du log]
+   * @param  {String} message [message du log]
+   */
+  log(level, message){
+    let lvl_text = "info";
+    switch(level){
+      case -1:
+        lvl_text = "fatal"
+        break;
+      case 0:
+        lvl_text = "error";
+        break;
+      case 1:
+        lvl_text = "warn";
+        break;
+      case 2:
+        lvl_text = "info";
+        break;
+      case 3:
+        lvl_text = "success";
+        break;
+      case 4:
+        lvl_text = "debug";
+        break;
+    }
+    try{
+      this.logger.log({
+        date : globalFunc.getDate("YYYY-MM-dd hh:mm:ss"),
+        app : {
+                name :'BatBot.js',
+                version: '2.0.1'
+              },
+        level : lvl_text,
+        message : message,
+        timestamp : Math.round(Date.now()/1000)
+      });
+    }catch(err){
+      console.error(err)
+    }
+  }
 
   /**
    * Retourne la date actuel en fonction du format donné
@@ -11,7 +116,7 @@ class globalFunc{
   static getDate(format, date){
     if(date == undefined){
       date = new Date();
-      date.setTime(date.getTime() + 7200000);
+      date.setTime(date.getTime() + 3600000);
     }
     let month = date.getUTCMonth()+1;
     let day = date.getUTCDate();

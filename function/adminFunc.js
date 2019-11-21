@@ -1,5 +1,8 @@
 const fs = require('fs');
 const request = require('request');
+const globalFunc = require('../function/globalFunc.js');
+
+const global = new globalFunc();
 
 class adminFunc {
   /**
@@ -8,11 +11,9 @@ class adminFunc {
    * @param {[callback]} callback [function de callback]
    */
   static isAdmin(user_id, callback){
-    this.getJSONData('user', function (err, JSONObj) {
-        // console.log(JSONObj);
-        // console.log(user_id);
+    this.getJSONData('user', (err, JSONObj) => {
         var admin = true;
-        JSONObj.users.forEach(function(user){
+        JSONObj.users.forEach( (user) => {
           if(user.id == user_id){
             if(user.admin == 1){
               admin=true;
@@ -33,10 +34,15 @@ class adminFunc {
    * @param  {Function} callback     [Callback Function]
    */
   static getJSONData(JSONFileName, callback){
-    fs.readFile('./JSONFiles/' + JSONFileName + '.json', function (err, content) {
-        if (err) return callback(err);
-        var JSONObj = JSON.parse(content);
-        callback(null, JSONObj);
+    fs.readFile('./JSONFiles/' + JSONFileName + '.json', (err, content) => {
+        if (err){
+          global.log(0, `Cannot Read JSONFile : ['./JSONFiles/${JSONFileName}.json']` + err.message);
+          return callback(err);
+        }
+        else{
+          var JSONObj = JSON.parse(content);
+          callback(null, JSONObj);
+        }
     });
   }
 
@@ -47,8 +53,8 @@ class adminFunc {
    * @param {Function} callback [Callback Function]
    */
   static writeJSONData(JSONFileName, JSONObj, callback){
-    fs.writeFile('./JSONFiles/' + JSONFileName + '.json', JSON.stringify(JSONObj, null, '\t'), 'utf8', function(err, data){
-      if(err) console.error(err);
+    fs.writeFile('./JSONFiles/' + JSONFileName + '.json', JSON.stringify(JSONObj, null, '\t'), 'utf8', (err, data) => {
+      if(err) global.log(0, `Cannot Save JSONFile : ['./JSONFiles/${JSONFileName}.json']` + err.message);
       else if(callback != undefined) callback(null);
     });
   }
@@ -59,10 +65,12 @@ class adminFunc {
    * @param  {Function} callback [Callback Function]
    */
   static ajaxRequest(url, callback){
-    request.get(url, {json: true}, function(err, res, body) {
+    request.get(url, {json: true}, (err, res, body) => {
       if (!err && res.statusCode === 200) {
         callback(null, body);
-      }else console.error(err);
+      }else{
+        global.log(0, `Cannot access website: ['${url}']` + err.message)
+      }
     });
   }
 

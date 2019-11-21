@@ -7,14 +7,14 @@ const level_service = require('./services/level_service.js');
 * @extends Command
 */
 class Level{
-  
+
   /**
   * Calcul et ajoute l'xp que l'utilisateur à gagné
   * Créer l'utilisateur si nécessaire
   * @param  {[Discord.message]} message [Message de l'utilisateur]
   * @return {[Boolean]}         [False si error ou utilisateur = BatBot]
   */
-  static action(message){
+  static action(message, logger){
     if(message.author.bot) return false;
     var thiss = this;
     // Lecture du fichier JSON
@@ -22,8 +22,8 @@ class Level{
       var user, levelUp;
 
       if(!user_service.userExist(JSONObj, message)){
-        console.log("creating user");
         let newUser = user_service.createUserByMember(message.member);
+        logger.log(2, `[${this.name}] Create user ${newUser.username + '#' + newUser.discriminator}`)
         JSONObj.users.push(newUser);
       }
 
@@ -36,6 +36,7 @@ class Level{
 
       if(levelUp){
         level_service.levelUp(message, user.level);
+        logger.log(2, `[${this.name}] User ${user.username + '#' + user.discriminator} leveled up`)
         // thiss.addRank(message, user.level);
       }
     });

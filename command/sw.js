@@ -3,7 +3,8 @@ const msgFunc = require('../function/msgFunc.js');
 
 class Sw{
 
-  static swCommand(message){
+  static swCommand(message, logger){
+    this.logger = logger
     message.delete();
     let command = message.content.split(' ')[1];
     switch(command){
@@ -23,16 +24,21 @@ class Sw{
     let monsterName = message.content.split(' ')[2];
     if(monsterName != undefined){
       url += monsterName;
-    } else {return false;}
-    let thiss = this;
-    adminFunc.ajaxRequest(url, function(err, data){
+    } else {
+      this.logger.log(1, `[${this.name}] Can't search information about nothing`);
+      return false;
+    }
+    this.logger.log(2, `[${this.name}] Searching information about ${monsterName}`);
+
+    adminFunc.ajaxRequest(url, (err, data) => {
       // Si pas de monstre
       if(data.count == 0){
         msgFunc.sendError(message, "Le monstre " + message.content.split(' ')[2] + " n'existe pas");
+        this.logger.log(2, `[${this.name}] The monste ${monsterName} doesn't exist`);
       }else if(data.count > 1){ // Si plusieurs monstres
         let nbMonster = parseInt(message.content.split(' ')[3]);
         if(nbMonster != undefined && !isNaN(nbMonster) && nbMonster-1 < data.count){
-          thiss.sendMonsterInfo(data.results[nbMonster-1], message);
+          this.sendMonsterInfo(data.results[nbMonster-1], message);
         }else{
           let monsterArray = [];
           data.results.forEach(function(monster){
@@ -43,9 +49,11 @@ class Sw{
               author_avatar : message.author.avatarURL,
               description: "Il existe plusieurs monstres commencant par `" + monsterName + "` : \n" + monsterArray.join(', ')
           });
+          this.logger.log(3, `[${this.name}] Successfully found information about multiple monster `)
         }
       }else{ // Si un monstre
-        thiss.sendMonsterInfo(data.results[0], message);
+        this.sendMonsterInfo(data.results[0], message);
+        this.logger.log(3, `[${this.name}] Successfully found information about one monster`)
       }
     });
 
