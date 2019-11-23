@@ -1,17 +1,23 @@
 {
-  "name": "batbot_2.0",
-  "version": "1.0.0",
-  "description": "",
+  "name": "BatBot.js",
+  "version": "2.0.2",
+  "description": "batbot is a discord bot designed in nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "systemctl status batbotlauncher.service"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KioHugo/BatBot.git"
+  },
+  "keywords": [
+    "batbot",
+    "discord"
+  ],
+  "author": "KioHugo",
   "license": "ISC",
-  "dependencies": {
-    "discord.js": "^11.5.0",
-    "nodemon": "^1.19.0",
-    "request": "^2.88.0",
-    "winston": "^3.2.1"
-  }
+  "bugs": {
+    "url": "https://github.com/KioHugo/BatBot/issues"
+  },
+  "homepage": "https://github.com/KioHugo/BatBot#readme"
 }

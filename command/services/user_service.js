@@ -1,5 +1,5 @@
 
-class user_service {
+class user_service{
 
   /**
   * Retourne si l'utilisateur existe ou non

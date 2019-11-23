@@ -3,19 +3,18 @@ const msgFunc = require('../function/msgFunc.js');
 
 class Blague{
 
-  static getRandomBlague(message){
+  static getRandomBlague(message, logger){
     message.delete();
-    adminFunc.ajaxRequest('http://www.blague.org/', function(err, content){
-      // console.log(content);
+    adminFunc.ajaxRequest('http://www.blague.org/', (err, content) => {
       var blague = content.substring(content.search('</h1>') + 5, content.search('</div>'));
       blague = blague.replace(/<br>/gi, '');
       msgFunc.sendEmbed(message, {
         author_name: message.member.displayName,
         author_avatar: message.author.avatarURL,
-        description: "** **\n" + blague + "\n** **",
+        description: blague,
         footer : 'http://www.blague.org/'
       });
-      // console.log(blague);
+      logger.log(3, `[${this.name}] Successfully generated a joke`);
     });
   }
 }

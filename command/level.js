@@ -16,7 +16,6 @@ class Level{
   */
   static action(message, logger){
     if(message.author.bot) return false;
-    var thiss = this;
     // Lecture du fichier JSON
     adminFunc.getJSONData('user', (err, JSONObj) => {
       var user, levelUp;
@@ -37,7 +36,7 @@ class Level{
       if(levelUp){
         level_service.levelUp(message, user.level);
         logger.log(2, `[${this.name}] User ${user.username + '#' + user.discriminator} leveled up`)
-        // thiss.addRank(message, user.level);
+        // this.addRank(message, user.level);
       }
     });
   }

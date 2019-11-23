@@ -3,7 +3,7 @@ const msgFunc = require('../function/msgFunc.js');
 
 class Clear{
 
-  static delete(message){
+  static delete(message, logger){
     adminFunc.isAdmin(message.author.id, function(err, admin){
       if(admin){
         var nbMessage = parseInt((message.content.split(" "))[1]);
@@ -19,6 +19,7 @@ class Clear{
               author_avatar : message.author.avatarURL,
               description : "Vous avez supprimé " + nbMessage + " message" + s +" !"
             });
+            logger.log(3, `[${this.name}] Successfully cleared ${nbMessage}`);
           }
         }else{
           msgFunc.sendEmbed(message, {
@@ -27,6 +28,7 @@ class Clear{
             author_avatar : message.author.avatarURL,
             description : "Vous devez donner un nombre de message à supprimer"
           });
+          logger.log(1, `[${this.name}] No amount of message foud`);
         }
       }else{
         msgFunc.sendEmbed(message, {
@@ -35,6 +37,7 @@ class Clear{
           author_avatar : message.author.avatarURL,
           description : "Vous devez être administrateur pour supprimer des messages"
         });
+        logger.log(1, `[${this.name}] Trying to clear message while not being admin`);
       }
     });
   }

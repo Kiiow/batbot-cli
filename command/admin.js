@@ -72,7 +72,6 @@ class Admin{
    * @param {[Discord.message]} message [message envoyé]
    */
   static add_admin(message){
-    let thiss = this;
     adminFunc.isAdmin(message.author.id, (err, admin) => {
       if(admin){
         let userObj = message.mentions.users.first();
