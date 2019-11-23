@@ -1,5 +1,6 @@
 const fs = require('fs');
 const winston = require('winston');
+const config = require('../package.json');
 
 
 class globalFunc{
@@ -27,7 +28,7 @@ class globalFunc{
           format : winston.format.combine(
             winston.format.colorize(),
             winston.format.printf( (info) =>{
-              return `${info.date} [${info.level}] | ${info.app.name}(${info.app.version}) | ${info.message}`
+              return `[${info.level}] | ${info.app.name}(${info.app.version}) | ${info.message}`
             })
           ),
           colorize: true,
@@ -95,8 +96,8 @@ class globalFunc{
       this.logger.log({
         date : globalFunc.getDate("YYYY-MM-dd hh:mm:ss"),
         app : {
-                name :'BatBot.js',
-                version: '2.0.1'
+                name :config.name,
+                version: config.version
               },
         level : lvl_text,
         message : message,

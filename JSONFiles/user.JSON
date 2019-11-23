@@ -4,10 +4,10 @@
 			"id": "231826744192139264",
 			"nickname": "JeanDictateur👑",
 			"level": 8,
-			"xp": 106921,
+			"xp": 108755,
 			"last_message": {
-				"content": "ah mais ca existe en plus les assert en python ? <:jpp:400280849146183681>",
-				"timestamp": 1574273118298
+				"content": "<:getshreked:597199589933711380>",
+				"timestamp": 1574367851234
 			},
 			"admin": 1,
 			"username": "Draseres",
@@ -17,10 +17,10 @@
 			"id": "359044179126386689",
 			"nickname": "Le Roi Chômeur",
 			"level": 7,
-			"xp": 48660,
+			"xp": 49372,
 			"last_message": {
-				"content": "<:ensueur:399939504598810634>",
-				"timestamp": 1572790093075
+				"content": "Et le dos cambré évidemment <:sheisougasm:641756025363365888>",
+				"timestamp": 1574363637942
 			},
 			"username": "TheFrenchFaké",
 			"discriminator": "1463"
@@ -29,10 +29,10 @@
 			"id": "142942291126910976",
 			"nickname": "LeBosseur",
 			"level": 8,
-			"xp": 87048,
+			"xp": 88319,
 			"last_message": {
-				"content": "Je dois avoir des bases dans les langages qu'on a vu en cours comme y a pleins de logiciels mais le langage de prédilection sera le C#",
-				"timestamp": 1574179118106
+				"content": "<@!359044179126386689> mdr je retrouve cette perle juste après ton post",
+				"timestamp": 1574363440706
 			},
 			"username": "Az",
 			"discriminator": "0455"
@@ -41,10 +41,10 @@
 			"id": "270607572208320512",
 			"nickname": "IssouGaming",
 			"level": 7,
-			"xp": 36692,
+			"xp": 37148,
 			"last_message": {
-				"content": "Mais 100% t'es pris gros chattard <:KappaLUL:379994313607872512>",
-				"timestamp": 1574095245174
+				"content": "ah nice, norage du site qui est mieux que celui de ta boite de dev <:KappaLUL:379994313607872512>",
+				"timestamp": 1574362157889
 			},
 			"username": "IssouGaming",
 			"discriminator": "3014"
@@ -53,10 +53,10 @@
 			"id": "221346055051018242",
 			"nickname": "NicolasFargePokemon",
 			"level": 8,
-			"xp": 108167,
+			"xp": 108281,
 			"last_message": {
-				"content": "Nice ! Tu pars avec moi en formation la semaine prochaine à Paris ? 😁",
-				"timestamp": 1574179140604
+				"content": "Mais moi les miens ils bouffent des croquettes et ils chient dans une litière j'ai pas de problème pour les habiller...",
+				"timestamp": 1574339909934
 			},
 			"admin": 0,
 			"username": "Jean-Eude",
@@ -100,10 +100,10 @@
 			"id": "256458358171631616",
 			"nickname": "Bastif",
 			"level": 5,
-			"xp": 5182,
+			"xp": 5901,
 			"last_message": {
-				"content": "```<Provider store={ AppStore }>\n        <PersistGate loading={ null } persistor={ persistor} >\n            <Router history={ history }>\n                <Route path='/' component={ NavApp }>\n                    <Route onChange={ onChange } onEnter={ onEnter }>\n                        <IndexRoute component={ Dashboard } />\n                        <Route path='station/:code/:entryPoint/:authorization' component={ StationApp }/>\n                        <Route path='campaign/:id' component={ DashboardStationCampaign }/>\n                        <Route path='station/:code/event/:type/:request/:entryPoint' component={ EventForm } />\n                        <Route path='station/:code/contact/:type' component={ ContactForm } />\n                        <Route path='station/:code/contributor/:type' component={ ContributorForm } />\n                        <Route path='station/:code/charts/:type' component={ ChartsForm } />\n                        <Route path='installation/new' component={ InstallationCreationApp }/>\n                        <Route path='journal/view' component={ JournalDashboard }/>\n\n                    </Route>\n                    <Route path='login' component={ Login } />\n                    <Route path='confidentiality' component={ Confidentiality }/>\n                    <Route path='about' component={ About }/>\n                    <Route path='options' component={ Options } />\n                </Route>\n            </Router>\n        </PersistGate>\n    </Provider>```",
-				"timestamp": 1574243358622
+				"content": "ca marchais poof ca marche plus",
+				"timestamp": 1574367848577
 			},
 			"username": "Bastif",
 			"discriminator": "7672"

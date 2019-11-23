@@ -12,29 +12,35 @@ class Config{
    */
   static configCommand(message){
     message.delete();
-    let thiss = this;
     adminFunc.isAdmin(message.author.id, (err, admin) => {
       if(admin){
         let configItem = message.content.split(' ')[1];
         switch(configItem){
           case "announce":
           case "annonce":
-            thiss.confAnnounce(message);
+            logger.log(2, `[${this.name}] Configuring announce`);
+            this.confAnnounce(message);
             break;
           default:
-            msgFunc.sendEmbed(message, {
-              fields : [{
-                name: "Commandes `.config` : ",
-                value: "\n**:loudspeaker: `.config announce <channel>`** -- " + "Configure le channel d'annonce du serveur"
-              }]
-            });
+            logger.log(1, `[${this.name}] Display config help module`);
+            this.defaultConfig(message);
             break;
         }
         return false;
       }else{
+        logger.log(1, `[${this.name}] Trying to config stuff while not being admin`);
         msgFunc.sendError(message, "Vous devez être admin pour utiliser cette commande");
         return false;
       }
+    });
+  }
+
+  static defaultConfig(message){
+    msgFunc.sendEmbed(message, {
+      fields : [{
+        name: "Commandes `.config` : ",
+        value: "\n**:loudspeaker: `.config announce <channel>`** -- " + "Configure le channel d'annonce du serveur"
+      }]
     });
   }
 

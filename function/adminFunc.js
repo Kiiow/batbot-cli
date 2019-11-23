@@ -1,6 +1,7 @@
 const fs = require('fs');
 const request = require('request');
 const globalFunc = require('../function/globalFunc.js');
+const config = require('../config.json');
 
 const global = new globalFunc();
 
@@ -34,7 +35,7 @@ class adminFunc {
    * @param  {Function} callback     [Callback Function]
    */
   static getJSONData(JSONFileName, callback){
-    fs.readFile('./JSONFiles/' + JSONFileName + '.json', (err, content) => {
+    fs.readFile(config.path_bot + 'JSONFiles/' + JSONFileName + '.json', (err, content) => {
         if (err){
           global.log(0, `Cannot Read JSONFile : ['./JSONFiles/${JSONFileName}.json']` + err.message);
           return callback(err);
@@ -53,7 +54,7 @@ class adminFunc {
    * @param {Function} callback [Callback Function]
    */
   static writeJSONData(JSONFileName, JSONObj, callback){
-    fs.writeFile('./JSONFiles/' + JSONFileName + '.json', JSON.stringify(JSONObj, null, '\t'), 'utf8', (err, data) => {
+    fs.writeFile(config.path_bot + 'JSONFiles/' + JSONFileName + '.json', JSON.stringify(JSONObj, null, '\t'), 'utf8', (err, data) => {
       if(err) global.log(0, `Cannot Save JSONFile : ['./JSONFiles/${JSONFileName}.json']` + err.message);
       else if(callback != undefined) callback(null);
     });

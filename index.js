@@ -4,12 +4,12 @@ const Config = require('./config.json');
 const fs = require('fs');
 
 const globalFunc = require('./function/globalFunc.js');
-const adminFunc = require('./function/adminFUnc.js');
+const adminFunc = require('./function/adminFunc.js');
 const msgFunc = require('./function/msgFunc.js');
 const level = require('./command/level.js');
 
 const global = new globalFunc();
-
+console.log(__dirname)
 global.log(2, 'Starting App');
 Bot.on('ready', () => {
   let bot_data = {

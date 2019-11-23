@@ -9,21 +9,20 @@ class Pokeload{
    * Charge toutes les informations nécessaires dans le JSON
    * @param  {[Discord.message]} message [message discord]
    */
-  static pokeLoad(message){
+  static pokeLoad(message, logger){
     message.delete();
-    message.channel.send('pokeload');
-    let thiss = this;
-    adminFunc.getJSONData('pokedex', function(err, JSONObj){
-      JSONObj.forEach(function(pokemon){
+    logger.log(4, `[${this.name}] Loading PokeData`);
+    adminFunc.getJSONData('pokedex', (err, JSONObj) => {
+      JSONObj.forEach((pokemon) => {
         // charge les données d'egg_group, nomFr, gender
         if(pokemon.name.francais == undefined || pokemon.name.francais == ""){
           console.log("-----> " + pokemon.name.english);
-          thiss.loadPkmnPage(pokemon.name.english, pokemon, JSONObj);
+          this.loadPkmnPage(pokemon.name.english, pokemon, JSONObj);
         }
         // charge les données de spawn et drops (pixelmon data)
         if(pokemon.drops == undefined){
           console.log("-----> " + pokemon.name.francais);
-          thiss.loadPixelmonPage(pokemon.name.english, pokemon, JSONObj);
+          this.loadPixelmonPage(pokemon.name.english, pokemon, JSONObj);
         }
       });
     });
@@ -44,15 +43,14 @@ class Pokeload{
     PkmnName = PkmnName.replace(/: | |.|'/gi, '-');
     let url = 'https://pokemondb.net/pokedex/' + PkmnName.toLowerCase();
     // console.log(url);
-    let thiss = this;
 
-    adminFunc.ajaxRequest(url, function(err, content){
-      let pokeFrName = thiss.getPokeFrName(content);
+    adminFunc.ajaxRequest(url, (err, content) => {
+      let pokeFrName = this.getPokeFrName(content);
       if(pokeFrName == "")pokeFrName == pokemon.name.english;
 
       // on modifie les infos de l'objet JSON
-      pokemon.egg_group = thiss.getEggGroup(content);
-      pokemon.gender = thiss.getGender(content);
+      pokemon.egg_group = this.getEggGroup(content);
+      pokemon.gender = this.getGender(content);
       pokemon.name.francais = pokeFrName;
       // on implémente le pkmn dans le JSON pokedex
       pokedex[(pokemon.id - 1)] = pokemon;
@@ -79,11 +77,10 @@ class Pokeload{
     PkmnName = PkmnName.replace(/ /gi, '_');
     let url = "https://pixelmonmod.com/wiki/index.php?title=" + PkmnName;
     console.log(url);
-    let thiss = this;
 
-    adminFunc.ajaxRequest(url, function(err, content){
-      let drops = thiss.getDrops(content);
-      let spawns = thiss.getSpawn(content);
+    adminFunc.ajaxRequest(url, (err, content) => {
+      let drops = this.getDrops(content);
+      let spawns = this.getSpawn(content);
       pokemon.drops = drops;
       pokemon.spawns = spawns;
       pokedex[(pokemon.id - 1)] = pokemon;

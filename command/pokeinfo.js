@@ -7,22 +7,22 @@ class Pokeinfo {
    * Affiche les informations d'un pokémon
    * @param  {[Discord.message]} message [message discord à traiter]
    */
-  static pokeInfo(message){
+  static pokeInfo(message, logger){
     message.delete();
     let msgArray = message.content.split(" ");
     msgArray.splice(0,1);
     let pokename = msgArray.join(' ');
+    logger.log(2, `[${this.name}] Searching informations about ${pokename}`);
     // console.log(pokename);
-    let thiss = this;
-    adminFunc.getJSONData('pokedex', function(err, JSONObj){
+    adminFunc.getJSONData('pokedex', (err, JSONObj) => {
       let id = 0, pokemon = {}, found = false;
       while(id < 809 && found == false){
         pokemon = JSONObj[id];
         if(pokemon.name.english.toLowerCase() == pokename.toLowerCase()){
-          thiss.sendInfo(pokemon, message);
+          this.sendInfo(pokemon, message);
           found = true;
         }else if(pokemon.name.francais.toLowerCase() == pokename.toLowerCase()){
-          thiss.sendInfo(pokemon, message);
+          this.sendInfo(pokemon, message);
           found = true;
         }else if(pokemon.id == 809 && !found){
           msgFunc.sendError(message, "Le pokémon " + pokename + " n'a pas été trouvé");
@@ -36,20 +36,20 @@ class Pokeinfo {
    * Affiche les stats d'un pokémon
    * @param  {[Discord.message]} message [message discord à traiter]
    */
-  static pokeStats(message){
+  static pokeStats(message, logger){
     message.delete();
     let pokename = (message.content.split(" "))[1];
+    logger.log(2, `[${this.name}] Searching stats for ${pokename}`);
     // console.log(pokename);
-    let thiss = this;
-    adminFunc.getJSONData('pokedex', function(err, JSONObj){
+    adminFunc.getJSONData('pokedex', (err, JSONObj) => {
       let id = 0, pokemon = {}, found = false;
       while(id < 809 && found == false){
         pokemon = JSONObj[id];
         if(pokemon.name.english.toLowerCase() == pokename.toLowerCase()){
-          thiss.sendStats(pokemon, message);
+          this.sendStats(pokemon, message);
           found = true;
         }else if(pokemon.name.francais.toLowerCase() == pokename.toLowerCase()){
-          thiss.sendStats(pokemon, message);
+          this.sendStats(pokemon, message);
           found = true;
         }else if(pokemon.id == 809 && !found){
           msgFunc.sendError(message, "Le pokémon " + pokename + " n'a pas été trouvé");

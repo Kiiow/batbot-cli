@@ -8,30 +8,34 @@ class infos{
   /**
    * Retourne les informations de l'utilisateur qui a envoyé le message ou celui cité
    * @param  {[Discord.message]} message [Message de l'utilisateur]
+   * @param  {[Logger]} logger [Logger winston]
    */
-  static getProfile(message){
+  static getProfile(message, logger){
+    this.logger = logger;
     message.delete();
-    let thiss = this;
-    adminFunc.getJSONData('user', function(err, data){
+    adminFunc.getJSONData('user', (err, data) => {
       if(message.mentions.users.first() == undefined){
-        user_service.getUserCallback(message.member.id, data, function(err, userData, found){
+        logger.log(2, `[${this.name}] Displaying profile of ${message.member.user.username}#${message.member.user.discriminator}`);
+        user_service.getUserCallback(message.member.id, data, (err, userData, found) => {
           if(!found){
             msgFunc.sendError(message, "Vous n'avez pas encore de profil, parlez plus !");
             return false;
           }
-          msgFunc.sendEmbed(message, thiss.getUserProfile(message, userData, "author", data));
+          msgFunc.sendEmbed(message, this.getUserProfile(message, userData, "author", data));
         });
       }else{
         if(message.mentions.users.first().bot == true){
+          logger.log(1, `[${this.name}] Trying to display profile of a bot`);
           msgFunc.sendError(message, "l'utilisateur mentionné est un Bot");
           return false;
         }
-        user_service.getUserCallback(message.mentions.users.first().id, data, function(err, userData, found){
+        user_service.getUserCallback(message.mentions.users.first().id, data, (err, userData, found) => {
           if(!found){
             msgFunc.sendError(message, "l'utilisateur mentionné n'a pas de profil");
             return false;
           }
-          msgFunc.sendEmbed(message, thiss.getUserProfile(message, userData, "mentions", data));
+          logger.log(2, `[${this.name}] Displaying profile of ${userData.username}#${userData.discriminator}`);
+          msgFunc.sendEmbed(message, this.getUserProfile(message, userData, "mentions", data));
         });
       }
     });
@@ -105,12 +109,14 @@ class infos{
   /**
    * Donne le top de tous les utilisateurs / xp
    * @param  {[Discord.message]} message [Message de l'utilisateur]
+   * @param  {[Logger]} logger [Logger winston]
    */
-  static top(message){
+  static top(message, logger){
+    logger.log(2, `[${this.name}] Displaying Scoreboard`);
     message.delete();
     // msgFunc.sendCommingSoon(message, ".top");
-    let users, thiss = this;
-    adminFunc.getJSONData('user', function(err, JSONObj){
+    let users;
+    adminFunc.getJSONData('user', (err, JSONObj) => {
       users = JSONObj.users;
       users.sort(function(a, b){ return b.xp - a.xp});
       // console.log(users);
@@ -134,8 +140,10 @@ class infos{
   /**
    * Envoie le message d'help correspondant
    * @param  {[Discord.message]} message [Message de l'utilisateur]
+   * @param  {[Logger]} logger [Logger winston]
    */
-  static helpCommand(message){
+  static helpCommand(message, logger){
+    logger.log(2, `[${this.name}] Asking for help`);
     message.delete();
     let command = message.content.split(' ')[1];
     let fields = [];
@@ -153,6 +161,8 @@ class infos{
         this.getHelp(undefined, message);
         break;
       case "game":
+      case "jeux":
+      case "jeu":
         this.getHelp("game", message);
         break;
       default:
@@ -162,8 +172,7 @@ class infos{
   }
 
   static getHelp(category, message){
-    let thiss = this;
-    adminFunc.getJSONData('commands', (err, JSONObj) =>{
+    adminFunc.getJSONData('commands', (err, JSONObj) => {
       let commandGnrArray = [];
       let commandGameArray = [];
       let commandAdminArray = [];
@@ -193,10 +202,10 @@ class infos{
         case "general":
           fields.push({ name : "Commandes général", value : commandGnr });
           break;
-        case "admin":
+        case "game":
           fields.push({ name : "Commandes de jeu", value : commandGame });
           break;
-        case "game":
+        case "admin":
           fields.push({ name : "Commandes admin", value : commandAdmin });
           break;
         default:
@@ -205,7 +214,7 @@ class infos{
           fields.push({ name : "Commandes admin", value : commandAdmin });
           break;
       }
-      thiss.help(message, fields);
+      this.help(message, fields);
     });
   }
 
