@@ -1,12 +1,27 @@
 const Discord = require('discord.js');
 const Bot = new Discord.Client();
-const Config = require('./config.json');
 const fs = require('fs');
 
 const globalFunc = require('./function/globalFunc.js');
 const adminFunc = require('./function/adminFunc.js');
 const msgFunc = require('./function/msgFunc.js');
 const level = require('./command/level.js');
+
+const CONFIG = {
+  PROJECT_PATH: process.env.PROJECT_PATH || __dirname,
+  BOT: {
+    NAME: process.env.BOT_NAME || "BatBot",
+    PROFIL_PICTURE: process.env.BOT_PROFIL_PICTURE || "",
+    TOKEN: process.env.BOT_TOKEN || "",
+    PREFIX: process.env.BOT_PREFIX || ".",
+    STATUS: {
+      "game": {
+        "name": process.env.BOT_STATUS_MESSAGE || "(.help)",
+        "type": process.env.BOT_STATUS_TYPE || "PLAYING",
+      }
+    }
+  }
+}
 
 const global = new globalFunc();
 console.log(__dirname)
@@ -28,7 +43,7 @@ Bot.on('ready', () => {
       global.log(3, 'Successfully saved bot info');
     });
   });
-  Bot.user.setPresence(Config.standard.presence);
+  Bot.user.setPresence(CONFIG.BOT.STATUS);
 });
 
 
@@ -39,7 +54,7 @@ Bot.on('message', (message) => {
   if(message.content.length >= 15 && !message.content.startsWith('.')){
     level.action(message, global);
   }
-  if(message.content.startsWith(Config.standard.prefix)) func = ((message.content.split(" "))[0]).substr(1);
+  if(message.content.startsWith(CONFIG.BOT.PREFIX)) func = ((message.content.split(" "))[0]).substr(1);
   if(message.content.startsWith('<@' + Bot.user.id + '>')){
     func = (message.content.split(" "))[1];
     if(func == undefined) func = "help";
@@ -73,10 +88,12 @@ Bot.on('message', (message) => {
 });
 
 // Connexion du Bot avec son Token
-Bot.login(Config.standard.token)
-  .then(global.log(3, 'Bot connected '))
+Bot.login(CONFIG.BOT.TOKEN)
+  .then(() => {
+    global.log(3, 'Bot connected ');
+  })
   .catch((err) => {
-    if(err) global.log(0, 'Error while connecting to discord ');
+    if(err) global.log(0, 'Error while trying to connect to discord whit token [' + CONFIG.BOT.TOKEN + ']');
   });
 
 // Si CTRL+C pour stop
