@@ -1,4 +1,13 @@
-/node_modules
+# NodeJS
+/node_modules/*
+
+# Config
 /config.json
 /desktop.ini
-*.log
+
+# Environment variable
+.env
+.envrc
+
+# Logs
+/logs/*.log
