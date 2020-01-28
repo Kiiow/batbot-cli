@@ -9,6 +9,7 @@ const level = require('./command/level.js');
 
 const CONFIG = {
   PROJECT_PATH: process.env.PROJECT_PATH || __dirname,
+  LOGS_PATH: process.env.LOGS_PATH || __dirname + "/logs",
   BOT: {
     NAME: process.env.BOT_NAME || "BatBot",
     PROFIL_PICTURE: process.env.BOT_PROFIL_PICTURE || "",
@@ -24,7 +25,6 @@ const CONFIG = {
 }
 
 const global = new globalFunc();
-console.log(__dirname)
 global.log(2, 'Starting App');
 Bot.on('ready', () => {
   let bot_data = {
@@ -79,7 +79,7 @@ Bot.on('message', (message) => {
             global.log(0, 'Function non trouvée : {' + userCommand.filename + "." + userCommand.function + '}');
           else
             global.log(0, err.message)
-            global.log(0, 'Fichier non trouvé : {./command/' + userCommand.filename + '.js}');
+            // global.log(0, 'Fichier non trouvé : {./command/' + userCommand.filename + '.js}');
           msgFunc.sendError(message, errMsg);
         }
       }
