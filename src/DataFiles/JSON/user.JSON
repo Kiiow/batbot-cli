@@ -1,0 +1,232 @@
+{
+	"users": [
+		{
+			"id": "231826744192139264",
+			"nickname": "JeanDictateur👑",
+			"level": 8,
+			"xp": 108755,
+			"last_message": {
+				"content": "<:getshreked:597199589933711380>",
+				"timestamp": 1574367851234
+			},
+			"admin": 1,
+			"username": "Draseres",
+			"discriminator": "6744"
+		},
+		{
+			"id": "359044179126386689",
+			"nickname": "Le Roi Chômeur",
+			"level": 7,
+			"xp": 49372,
+			"last_message": {
+				"content": "Et le dos cambré évidemment <:sheisougasm:641756025363365888>",
+				"timestamp": 1574363637942
+			},
+			"username": "TheFrenchFaké",
+			"discriminator": "1463"
+		},
+		{
+			"id": "142942291126910976",
+			"nickname": "LeBosseur",
+			"level": 8,
+			"xp": 88319,
+			"last_message": {
+				"content": "<@!359044179126386689> mdr je retrouve cette perle juste après ton post",
+				"timestamp": 1574363440706
+			},
+			"username": "Az",
+			"discriminator": "0455"
+		},
+		{
+			"id": "270607572208320512",
+			"nickname": "IssouGaming",
+			"level": 7,
+			"xp": 37148,
+			"last_message": {
+				"content": "ah nice, norage du site qui est mieux que celui de ta boite de dev <:KappaLUL:379994313607872512>",
+				"timestamp": 1574362157889
+			},
+			"username": "IssouGaming",
+			"discriminator": "3014"
+		},
+		{
+			"id": "221346055051018242",
+			"nickname": "NicolasFargePokemon",
+			"level": 8,
+			"xp": 108281,
+			"last_message": {
+				"content": "Mais moi les miens ils bouffent des croquettes et ils chient dans une litière j'ai pas de problème pour les habiller...",
+				"timestamp": 1574339909934
+			},
+			"admin": 0,
+			"username": "Jean-Eude",
+			"discriminator": "9092"
+		},
+		{
+			"id": "191278491973582848",
+			"nickname": "Mayv",
+			"level": 6,
+			"xp": 20874,
+			"last_message": {
+				"content": "je confirme j'étais le conducteur",
+				"timestamp": 1574268032696
+			},
+			"username": "Mayv",
+			"discriminator": "9820"
+		},
+		{
+			"id": "219541276725346304",
+			"nickname": "Zenwinks",
+			"level": 3,
+			"xp": 916,
+			"last_message": {
+				"content": "Non c'est pour jouer à COD et pour me préparer à star wars + cyberpunk",
+				"timestamp": 1572547444849
+			},
+			"username": "Zenwinks",
+			"discriminator": "3771"
+		},
+		{
+			"id": "156127664741023744",
+			"nickname": "Attila le Eins",
+			"level": 2,
+			"xp": 144,
+			"last_message": {
+				"content": "Pendant ce temps là : René",
+				"timestamp": 1563464929788
+			}
+		},
+		{
+			"id": "256458358171631616",
+			"nickname": "Bastif",
+			"level": 5,
+			"xp": 5901,
+			"last_message": {
+				"content": "ca marchais poof ca marche plus",
+				"timestamp": 1574367848577
+			},
+			"username": "Bastif",
+			"discriminator": "7672"
+		},
+		{
+			"id": "147043541908979713",
+			"nickname": "Démolichatte",
+			"level": 5,
+			"xp": 6738,
+			"last_message": {
+				"content": "J'ai un peu sué",
+				"timestamp": 1574199980156
+			},
+			"username": "D.U.C",
+			"discriminator": "4704"
+		},
+		{
+			"id": "175298968169742337",
+			"nickname": "Teatek",
+			"level": 3,
+			"xp": 682,
+			"last_message": {
+				"content": "bah pareil que les autres",
+				"timestamp": 1572098397741
+			},
+			"username": "Teatek",
+			"discriminator": "3655"
+		},
+		{
+			"id": "264720273637507072",
+			"nickname": "Arthur",
+			"level": 3,
+			"xp": 598,
+			"last_message": {
+				"content": "Long Destroyer <:KappaLUL:379994313607872512>",
+				"timestamp": 1572119866842
+			},
+			"username": "Hexod",
+			"discriminator": "2692"
+		},
+		{
+			"id": "362988489018572810",
+			"nickname": "NICE TROLLER RIOT (GO IN HELL)",
+			"level": 4,
+			"xp": 1286,
+			"last_message": {
+				"content": "la saison prochaine je fait mieux <:KappaLUL:379994313607872512>",
+				"timestamp": 1574194883499
+			},
+			"username": "BestDarkShoot",
+			"discriminator": "2121"
+		},
+		{
+			"id": "239743740665659392",
+			"nickname": "valouga",
+			"username": "valouga",
+			"discriminator": "0312",
+			"level": 5,
+			"xp": 6354,
+			"last_message": {
+				"content": "bien sur que ça existe les asserts",
+				"timestamp": 1574273259957
+			}
+		},
+		{
+			"id": "378638700185255936",
+			"nickname": "steeve",
+			"username": "Intoxik",
+			"discriminator": "7392",
+			"level": 4,
+			"xp": 2382,
+			"last_message": {
+				"content": "Je dis pas qu'ils vont perdre (Meme si je pense fortement) mais balayer ce sera vraiment pas le cas mdr",
+				"timestamp": 1572338768432
+			}
+		},
+		{
+			"id": "356891250407768066",
+			"nickname": "BloodLeF2P",
+			"username": "Boi",
+			"discriminator": "4013",
+			"level": 3,
+			"xp": 851,
+			"last_message": {
+				"content": "<@270607572208320512> t'es sdf là du coup ?",
+				"timestamp": 1572530307124
+			}
+		},
+		{
+			"id": "175651061648850944",
+			"nickname": "Memes Emperor",
+			"username": "Tetras",
+			"discriminator": "1802",
+			"level": 1,
+			"xp": 21,
+			"last_message": {
+				"content": "<:jpp:400280849146183681>",
+				"timestamp": 1572097089249
+			}
+		},
+		{
+			"id": "225572483502178305",
+			"nickname": "PugMan",
+			"username": "Neerzox",
+			"discriminator": "0097",
+			"level": 3,
+			"xp": 344,
+			"last_message": {
+				"content": "<@191278491973582848> \n```\n{\n    \"user\": \"hippo\",\n    \"password\": \"pwd\"\n}\n```",
+				"timestamp": 1574244341877
+			}
+		},
+		{
+			"id": "598942264856805390",
+			"nickname": "compte2dev",
+			"username": "DrasTest",
+			"discriminator": "2019",
+			"level": 1,
+			"xp": 60,
+			"last_message": {
+				"content": "mais omg faut plus que j'code",
+				"timestamp": 1574106284946
+			}
+		}
+	]
+}

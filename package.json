@@ -4,7 +4,7 @@
   "description": "batbot is a discord bot designed in nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "systemctl status batbotlauncher.service"
+    "test": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/KioHugo/BatBot/issues"
   },
-  "homepage": "https://github.com/KioHugo/BatBot#readme"
+  "homepage": "https://github.com/KioHugo/BatBot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "fs-extra": "^8.1.0",
+    "ramda": "^0.26.1",
+    "request": "^2.88.0",
+    "winston": "^3.2.1"
+  }
 }
