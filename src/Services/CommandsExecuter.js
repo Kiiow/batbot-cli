@@ -6,7 +6,7 @@ class CommandsExecuter {
 
   /**
    * Constructor of CommandsExecuteur
-   * @param {DIscord.message} message User message to analyze
+   * @param {Discord.message} message User message to analyze
    */
   constructor(message) {
     this.message = message;
@@ -14,7 +14,7 @@ class CommandsExecuter {
 
   /**
    * Execute a command
-   * @param {JSONObject} DATA Object with data of the command
+   * @param {JSON} DATA Object with data of the command
    *
    * @return {Promise} Promise
    * @resolve Do something after executing the command

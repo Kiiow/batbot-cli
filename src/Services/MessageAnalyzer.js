@@ -11,14 +11,14 @@ class MessageAnalyzer {
   }
 
   /**
-   * Analyze the discordMessage
-   * @resolve
-   * @reject [Error Si user = bot, si channel = dm, si commande par préfix/bot mention mais inconnu]
+   * Check if the message correspond to a command
+   * @resolve Data about the command
+   * @reject  Error If user = bot, If channel = dm, If unkown command
    */
   AnalyzeMsg() {
     return new Promise((resolve, reject) => {
       if(this.IsBotUser(this.message)) {
-        // INFO If need to do something with botMsg
+        // NOTE If need to do something with botMsg
       }else if(this.IsChannelTypeDM(this.message)){
         reject(Error("Not a correct channel ! trying to use command in DM"));
 

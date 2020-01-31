@@ -26,15 +26,15 @@ BatBot.on('ready', () => {
 });
 
 BatBot.on('message', (message) => {
-  let analyzer = new MessageAnalyzer(message, BatBot);
+  const ANALYZER = new MessageAnalyzer(message, BatBot);
 
-  analyzer.AnalyzeMsg()
+  ANALYZER.AnalyzeMsg()
     .then( (data) => {
 
       Logger.log(5, 'This is a correct command');
-      let executer = new CommandsExecuter(message);
-      executer.ExecuteCommand(data)
-        .then( () => {
+      const EXECUTER = new CommandsExecuter(message);
+      EXECUTER.ExecuteCommand(data)
+        .then( (_data) => {
           Logger.log(5, 'Do something after command execution');
         })
         .catch( (error) => {
@@ -46,10 +46,10 @@ BatBot.on('message', (message) => {
       Logger.log(0, error);
     })
     .finally( () => {
+      // TODO add xp si message length >= 15 && start pas par prefix
       Logger.log(5, 'So something after every message');
     });
 
-  // TODO add xp si message length >= 15 && start pas par prefix
 });
 
 // If CTRL+C to stop

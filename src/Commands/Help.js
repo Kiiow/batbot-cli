@@ -1,13 +1,18 @@
-const Command = require('../Command.js');
+const Command = require('../Command');
 const AccessData = require('../Services/AccessData');
 const R = require('ramda');
 
 class Help extends Command {
 
+  /**
+   * Send help about the bot
+   * @param  {Discord.message} message User message
+   */
   static action(message){
-    this.message = message;
     message.delete();
+    this.message = message;
     let helpCategAksed = message.content.split(' ')[1];
+    this.log(2, `Asking for some help about ${helpCategAksed}`);
     switch(helpCategAksed) {
       case "general":
         this.displayHelpFor("general");
@@ -27,6 +32,9 @@ class Help extends Command {
     }
   }
 
+  /**
+   * Display default help
+   */
   static displayHelpDefault() {
     const HELP_DEFAULT = {
       'fields': [
@@ -43,6 +51,10 @@ class Help extends Command {
     this.msg(this.message).sendEmbed(HELP_DEFAULT);
   }
 
+  /**
+   * Display help for a categorie
+   * @param  {String} categorie Name of the categorie
+   */
   static displayHelpFor(categorie){
     const FILTER_CATEG = categ => categ.help_data.category === categorie;
     const MAP_COMMAND_INFO = item => `**:${item.help_data.icon}: \`.${item.name}\`** -- ${item.help_data.text}`;
@@ -50,27 +62,40 @@ class Help extends Command {
     AccessData.ReadJSONFile("commands")
       .then((data) => {
         let commandsFiltered;
-        if(categorie.trim() != "all") {
+        let commands = [];
+        if(categorie != "all") {
           commandsFiltered = R.filter(FILTER_CATEG, data.Commands);
+          commands.push({
+            'name': `► Commandes ${categorie}`,
+            'value': R.map(MAP_COMMAND_INFO, commandsFiltered).join('\n')
+          });
         } else {
-          commandsFiltered = data.Commands;
+          let commandsData = {};
+          for (let command of data.Commands) {
+            let category = command.help_data.category;
+            if(commandsData[category] === undefined) {
+              commandsData[category] = []
+            } else {
+              commandsData[category].push(MAP_COMMAND_INFO(command))
+            }
+          }
+          for (let [key, value] of Object.entries(commandsData)) {
+            commands.push(
+              {
+                'name': `► Commandes ${key}`,
+                'value': value.join('\n')
+              });
+          }
         }
 
-        let commands = R.map(MAP_COMMAND_INFO, commandsFiltered).join('\n');
-        const HELP_INFO = {
-          'fields': [
-            {
-              'name': `Commandes ${categorie}`,
-              'value': commands
-            }
-          ]
-        };
+        const HELP_INFO = { 'fields': commands };
         this.msg(this.message).sendEmbed(HELP_INFO);
       })
       .catch((error) => {
         this.msg(this.message).sendError(`ERROR ${error.message}`);
       });
   }
+
 }
 
 module.exports = Help;
