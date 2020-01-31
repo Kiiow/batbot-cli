@@ -1,5 +1,5 @@
 const Command = require('../Command');
-const UserData = require('../Services/UserData');
+const UserDAL = require('../Dal/UserDAL');
 
 /**
  * Stop class
@@ -9,12 +9,13 @@ class Stop extends Command {
 
   /**
    * Stop the bot if the user is an admin
-   * @param  {Discord.message}  message Message of the user
+   * @param  {Discord.message}  message User message
+   * @return {Promise}                  Promise
    */
   static async action(message){
     message.delete();
     let userId = message.author.id;
-    let user = await UserData.getUserById(userId);
+    let user = await UserDAL.getUserById(userId);
 
     if(user.isAdmin()) {
       this.msg(message).sendBack(`A bientôt ...`);

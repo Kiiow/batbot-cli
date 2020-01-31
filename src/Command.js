@@ -17,7 +17,7 @@ class Command {
    * @infos             level   [-1: FATAL, 0: ERROR, 1: WARN, 2: INFO, 3: SUCCESS, 4: DEBUG, 5: MORE]
    * @param  {String}   message Message to log
    */
-  static log(level, message){ Logger.log(level, `[${this.name}] ` + message); }
+  static log(level, message){ Logger.log(level, `[${this.name}] ${message}`); }
 
   /**
    * Return the logger object

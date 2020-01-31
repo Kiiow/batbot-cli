@@ -69,6 +69,10 @@ class Logger {
     this.log(5, '[-] Logs output in : ' + CONFIG.LOGS_PATH);
   }
 
+  /**
+   * Initialize the winston logger
+   * @param  {JSON} OPTIONS   Options for the logger
+   */
   initLogger(OPTIONS) {
     this.logger = Winston.createLogger({
       levels: OPTIONS.customLevels.levels,
@@ -82,7 +86,12 @@ class Logger {
     Winston.addColors(OPTIONS.customLevels.colors);
   }
 
-  getLevel(id_lvl) {
+  /**
+   * Return the name of the log that correspond to the id given
+   * @param  {Number} idLvl   Id of the lvl
+   * @return {JSON}           Id and value that correspond to that id
+   */
+  getLevel(idLvl) {
     let levels = [
       {'id': -1, 'libelle': "FATAL"},
       {'id': 0, 'libelle': "ERROR"},
@@ -92,14 +101,14 @@ class Logger {
       {'id': 4, 'libelle': "DEBUG"},
       {'id': 5, 'libelle': "MORE"},
     ]
-    return R.find(R.propEq('id', id_lvl))(levels).libelle
+    return R.find(R.propEq('id', idLvl))(levels).libelle
   }
 
   /**
    * Send a log message and save it in a logs file
-   * @param  {int}      level   [Level of the log]
-   * @infos             level [-1: FATAL, 0: ERROR, 1: WARN, 2: INFO, 3: SUCCESS, 4: DEBUG, 5: MORE]
-   * @param  {String}   message [Message]
+   * @param  {int}      level   Log level
+   * [-1: FATAL, 0: ERROR, 1: WARN, 2: INFO, 3: SUCCESS, 4: DEBUG, 5: MORE]
+   * @param  {String}   message Message to put in the log
    */
   log(level, message) {
     try{
@@ -118,15 +127,30 @@ class Logger {
     }
   }
 
+  /**
+   * Add a key value couple in the context of the logger
+   * If the key already exist it will replace it
+   * @param  {String} key    Key that will define the couple
+   * @param  {any}    value  Value to put in the context
+   * @return {Boolean | any}        true if the key was added, if it was replace it return the old value
+   */
   contextAdd(key, value) {
     let index = R.findIndex(R.propEq('key', key))(this.context);
     if(index === -1){
       this.context.push({'key': key, 'value': value || ''});
+      return true;
     } else {
+      oldValue = this.context[index].value;
       this.context[index].value = value;
+      return oldValue;
     }
   }
 
+  /**
+   * Remove an item in the context by his key
+   * @param  {String} key The value of the key to remove
+   * @return {JSON}       the item that has been removed
+   */
   contextRemove(key) {
     let index = R.findIndex(R.propEq('key', key))(this.context);
     if(index === -1){
@@ -136,6 +160,10 @@ class Logger {
     }
   }
 
+  /**
+   * Remove the last thing added in the context
+   * @return {JSON} Last item
+   */
   contextRemoveLast(){
     return test.pop()
   }

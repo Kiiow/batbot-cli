@@ -10,7 +10,7 @@ class AccessData {
    * Read a jsonFile
    * @param {String} filename Name of the file in ./src/DataFiles/JSON/
    *
-   * @return {[Promise(JSONObject, String)]} Promise
+   * @return {Promise<JSON, String>} Promise
    * @resolve {JSONObj, FILE_PATH} Object found in the file, and full path to the file
    * @reject {Error}
    */

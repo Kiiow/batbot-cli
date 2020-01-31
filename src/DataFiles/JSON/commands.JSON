@@ -100,8 +100,8 @@
     },
     {
       "name" : "clear",
-      "filename" : "clear",
-      "function" : "delete",
+      "filename" : "Clear",
+      "function" : "action",
       "active_command" : true,
       "active_logs" : true,
       "admin" : true,
