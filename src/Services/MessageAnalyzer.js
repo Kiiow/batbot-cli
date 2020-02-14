@@ -40,7 +40,7 @@ class MessageAnalyzer {
               if(commandData){
                 return resolve(commandData);
               } else {
-                return reject(new UnkownCommandError(`Unkown command ${possibleCommand}`));
+                return reject(new UnkownCommandError(`Unkown command "${possibleCommand}"`));
               }
             })
             .catch( (error) => {
@@ -54,7 +54,6 @@ class MessageAnalyzer {
   /**
    * Analayze if message starts with prefix or bot mention.
    *  If start with bot mention replace it with prefix
-   *
    * @param {Discord.message} message Message discord to analyze
    * @param {String}          prefix  Prefix to execute bot command
    * @return {Boolean}                True if the message could be a command
@@ -75,7 +74,6 @@ class MessageAnalyzer {
 
   /**
    * True if the user is a bot false otherwise
-   *
    * @param {Discord.message} message Message discord send
    */
   IsBotUser(message) {

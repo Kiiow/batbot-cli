@@ -2,7 +2,6 @@ const Winston = require('Winston');
 const R = require('ramda');
 
 const CONFIG = require('../Config');
-const Global = require('../../function/globalFunc.js');
 
 /**
  * Class Logger
@@ -110,11 +109,13 @@ class Logger {
    * [-1: FATAL, 0: ERROR, 1: WARN, 2: INFO, 3: SUCCESS, 4: DEBUG, 5: MORE]
    * @param  {String}   message Message to put in the log
    */
-  log(level, message) {
+  log(level, message, error) {
     try{
+      level = this.getLevel(level);
+      if(level == 0 && error){ this.contextAdd('ERR', error); }
       this.logger.log({
         'timestamp' : Math.round(Date.now()/1000),
-        'level' : this.getLevel(level),
+        'level' : level,
         'app' : {
                 'name': CONFIG.BOT.NAME,
                 'version': CONFIG.BOT.VERSION,
@@ -125,6 +126,7 @@ class Logger {
     }catch(err){
       console.error(err)
     }
+    this.contextRemove('ERR');
   }
 
   /**

@@ -8,7 +8,7 @@ function getEnv(env, defVal) {
  */
 module.exports = {
   PROJECT_PATH: getEnv("PROJECT_PATH" || __dirname),
-  LOGS_PATH: getEnv("LOGS_PATH" || __dirname + "/logs"),
+  LOGS_PATH: getEnv("LOGS_PATH" || __dirname + "/src/DataFiles/Logs"),
   LOGGER: {
     CONSOLE: {
       LEVEL: getEnv("CONSOLE_LOGGER_LEVEL" || "MORE"),

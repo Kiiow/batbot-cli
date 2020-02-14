@@ -60,9 +60,7 @@ class MobsInfos extends Commands {
         .catch( (err, _res, _body) => {
 
           this.msg(message).sendError(`Erreur lors de l'accès aux données veuillez contacter un administrateur ou réessayer plus tard.`)
-          this.getLogger().contextAdd('ERR', err);
-          this.log(0, `ERROR while trying to get information on web site ${url}`);
-          this.getLogger().contextRemove('ERR');
+          this.log(0, `ERROR while trying to get information on web site ${url}`, err);
         });
   }
 
@@ -108,9 +106,7 @@ class MobsInfos extends Commands {
         })
         .catch( (err, _res, _body) => {
           this.msg(this.message).sendError(`Erreur lors de l'accès aux données veuillez contacter un administrateur ou réessayer plus tard.`)
-          this.getLogger().contextAdd('ERR', err);
-          this.log(0, `ERROR while trying to get more info for monster on web site ${url}`);
-          this.getLogger().contextRemove('ERR');
+          this.log(0, `ERROR while trying to get more info for monster on web site ${url}`, err);
         })
     })
   }

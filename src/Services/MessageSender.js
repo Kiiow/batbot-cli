@@ -5,14 +5,12 @@ class MessageSender {
 
   /**
    * Set le message
-   *
    * @param {Discord.message} message Instance du message
    */
   setMessage(message) { this.message = message; }
 
   /**
    * Send back a message in discord
-   *
    * @param  {String} [answer=""]         Message to sendBack
    * @return {Promise}
    */
@@ -22,7 +20,6 @@ class MessageSender {
 
   /**
    * Return the color that correspond to the message
-   *
    * @param  {String} colorName     Name of the color
    * @return {Integer}              Color
    */
@@ -46,7 +43,6 @@ class MessageSender {
 
   /**
    * Send an embed message in discord
-   *
    * @param  {JSON} parameters                   Different data to create the embed message
    * {
    * 'color': "Color of the embed default = 4886754",

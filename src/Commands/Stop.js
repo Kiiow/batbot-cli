@@ -22,8 +22,8 @@ class Stop extends Command {
       this.msg(message).sendBack(`A bientôt ...`)
         .then( () => { process.exit() });
     } else {
-      this.msg(message).sendError(`Vous devez être admin pour ça`)
-      this.log(2, `User ${user.fullName()} is not admin`);
+      this.msg(message).sendError(`Vous devez être admin pour m'arrêter`)
+      this.log(2, `User ${user.fullName()} is tryng to stop the bot`);
     }
   }
 
