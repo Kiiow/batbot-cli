@@ -2,13 +2,13 @@
   "name": "BatBot.js",
   "version": "2.0.2",
   "description": "batbot is a discord bot designed in nodejs",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "node index.js"
+    "test": ""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KioHugo/BatBot.git"
+    "url": "https://gitlab.com/KioHugo/BatBot"
   },
   "keywords": [
     "batbot",
@@ -17,7 +17,7 @@
   "author": "KioHugo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KioHugo/BatBot/issues"
+    "url": "https://gitlab.com/KioHugo/BatBot/issues"
   },
   "homepage": "https://github.com/KioHugo/BatBot#readme",
   "dependencies": {
