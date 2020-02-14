@@ -165,7 +165,7 @@ class Logger {
    * @return {JSON} Last item
    */
   contextRemoveLast(){
-    return test.pop()
+    return this.context.pop()
   }
 }
 

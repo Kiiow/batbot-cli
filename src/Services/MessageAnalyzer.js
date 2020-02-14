@@ -12,6 +12,8 @@ class MessageAnalyzer {
 
   /**
    * Check if the message correspond to a command
+   *
+   * @return {Promise}
    * @resolve Data about the command
    * @reject  Error If user = bot, If channel = dm, If unkown command
    */
@@ -26,7 +28,7 @@ class MessageAnalyzer {
           let possibleCommand = this.message.content.split(' ')[0]
           possibleCommand = R.drop(CONFIG.BOT.PREFIX.length, possibleCommand)
 
-          AccessData.ReadJSONFile('commands')
+          AccessData.readJSONFile('commands')
             .then( (data) => {
               let commandData = this.isMsgCommand(possibleCommand, data.Commands);
               if(commandData){
@@ -44,13 +46,12 @@ class MessageAnalyzer {
   }
 
   /**
-   * Analayze if message starts with prefix or bot mention
-   * If start with bot mention replace it with prefix
+   * Analayze if message starts with prefix or bot mention.
+   *  If start with bot mention replace it with prefix
    *
-   * @param {[Discord.message]} message [Message discord to analyze]
-   * @param {[String]}          prefix  [Prefix to execute bot command]
-   *
-   * @return {[Boolean]}                [True if the message could be a command]
+   * @param {Discord.message} message Message discord to analyze
+   * @param {String}          prefix  Prefix to execute bot command
+   * @return {Boolean}                True if the message could be a command
    */
   MsgStartWith(message, prefix) {
     let isPrefixCorrect = message.content.startsWith(prefix);
@@ -68,7 +69,8 @@ class MessageAnalyzer {
 
   /**
    * True if the user is a bot false otherwise
-   * @param {[Discord.message]} message [Message discord send]
+   *
+   * @param {Discord.message} message Message discord send
    */
   IsBotUser(message) {
     return message.author.bot;

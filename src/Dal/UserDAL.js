@@ -10,7 +10,7 @@ class UserData {
    * @return {User}         Object JSON de l'utilisateur
    */
   static async getUserById(userId) {
-    const USER_DATA = await AccessData.ReadJSONFile('user')
+    const USER_DATA = await AccessData.readJSONFile('user')
       .then( (data) => {
         let myUser = R.find(R.propEq('id', userId))(data.users || []);
         return myUser;
@@ -24,10 +24,10 @@ class UserData {
    * @return {Promise<JSON>} Object JSON avec tous les user
    */
   static async getAllUser() {
-    const USERS = await AccessData.ReadJSONFile('user')
+    const USERS = await AccessData.readJSONFile('user')
       .then( (data) => {
-        const createUser = item => new User(item);
-        let users = R.map(createUser, data.users);
+        const CREATE_USER = item => new User(item);
+        let users = R.map(CREATE_USER, data.users);
         return users;
       });
     return USERS;

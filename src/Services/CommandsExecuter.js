@@ -24,7 +24,7 @@ class CommandsExecuter {
     return new Promise((resolve,reject) => {
       try {
         const commandToExecute = require("../Commands/" + DATA.filename);
-        commandToExecute[DATA.function](this.message);
+        commandToExecute[(DATA.function || "action")](this.message);
         resolve();
       } catch (error) {
         reject(error);

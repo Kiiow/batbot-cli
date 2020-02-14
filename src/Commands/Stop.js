@@ -18,12 +18,11 @@ class Stop extends Command {
     let user = await UserDAL.getUserById(userId);
 
     if(user.isAdmin()) {
-      this.msg(message).sendBack(`A bientôt ...`);
-      setTimeout( () => {
-        this.log(2, `Stopping ${this.getConfig().BOT.NAME}`);
-        process.exit();
-      });
+      this.log(2, `Stopping ${this.getConfig().BOT.NAME}`);
+      this.msg(message).sendBack(`A bientôt ...`)
+        .then( () => { process.exit() });
     } else {
+      this.msg(message).sendError(`Vous devez être admin pour ça`)
       this.log(2, `User ${user.fullName()} is not admin`);
     }
   }
