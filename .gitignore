@@ -10,6 +10,7 @@
 .envrc
 
 # Logs
-/logs/*.log
+*.log
 
 # Other files
+!.gitkeep

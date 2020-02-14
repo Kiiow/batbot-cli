@@ -10,7 +10,6 @@ class AccessData {
 
   /**
    * Read a jsonFile
-   *
    * @param {String}  filename        Name of the file in "./src/DataFiles/JSON/"
    * @return {Promise<JSON, String>}  Object found in the file, and full path to the file
    */
@@ -31,7 +30,6 @@ class AccessData {
 
   /**
    * Execute a get request on a web page
-   *
    * @param  {String} url Url of the page to request
    * @return {Promise}    Result of the request
    */

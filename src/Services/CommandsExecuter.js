@@ -7,10 +7,13 @@ class CommandsExecuter {
 
   /**
    * Constructor of CommandsExecuteur
+   *
    * @param {Discord.message} message User message to analyze
+   * @param {Discord.Client}  bot     Instance of the bot
    */
-  constructor(message) {
+  constructor(message, bot) {
     this.message = message;
+    this.bot = bot;
   }
 
   /**
@@ -29,7 +32,7 @@ class CommandsExecuter {
           throw new NotAnActiveCommandError(`This is not an active command`);
         }
         const commandToExecute = require("../Commands/" + DATA.filename);
-        commandToExecute[(DATA.function || "action")](this.message);
+        commandToExecute[(DATA.function || "action")](this.message, this.bot);
         resolve();
       } catch (error) {
         reject(error);
