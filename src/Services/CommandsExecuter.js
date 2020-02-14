@@ -1,3 +1,4 @@
+const { NotAnActiveCommandError } = require('./Error/Errors');
 
 /**
  * Class CommandsExecuter
@@ -23,6 +24,10 @@ class CommandsExecuter {
   ExecuteCommand(DATA) {
     return new Promise((resolve,reject) => {
       try {
+        if(!DATA.active_command) {
+          this.message.channel.send(`Command \`${DATA.name}\` is not an active command`);
+          throw new NotAnActiveCommandError(`This is not an active command`);
+        }
         const commandToExecute = require("../Commands/" + DATA.filename);
         commandToExecute[(DATA.function || "action")](this.message);
         resolve();
