@@ -68,21 +68,20 @@ class Help extends Command {
       .then((data) => {
         let commandsFiltered;
         let commands = [];
-        if(categorie != "all") {
+        if(categorie != "all") { // Si une catégorie spécifique
           commandsFiltered = R.filter(FILTER_CATEG, data.Commands);
           commands.push({
             'name': `► Commandes ${categorie}`,
             'value': R.map(MAP_COMMAND_INFO, commandsFiltered).join('\n')
           });
-        } else {
+        } else { // Si toutes les catégories
           let commandsData = {};
           for (let command of data.Commands) {
             let category = command.help_data.category;
             if(commandsData[category] === undefined) {
               commandsData[category] = []
-            } else {
-              commandsData[category].push(MAP_COMMAND_INFO(command))
             }
+            commandsData[category].push(MAP_COMMAND_INFO(command))
           }
           for (let [key, value] of Object.entries(commandsData)) {
             commands.push({

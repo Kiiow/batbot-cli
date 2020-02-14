@@ -1,5 +1,6 @@
 const R = require('ramda');
 
+const {UnkownCommandError, NotANormalUserError, NotACorrectChannelError} = require('./Error/Errors');
 const AccessData = require('./AccessData');
 const CONFIG = require('../Config');
 
@@ -19,10 +20,15 @@ class MessageAnalyzer {
    */
   AnalyzeMsg() {
     return new Promise((resolve, reject) => {
+      if(!this.MsgStartWith(this.message, CONFIG.BOT.PREFIX)){
+        return;
+      }
+      let userInfo = {'id': this.message.author.id, 'username': this.message.author.username}
       if(this.IsBotUser(this.message)) {
-        // NOTE If need to do something with botMsg
+        return reject(new NotANormalUserError("A bot is trying to use commands", userInfo))
+
       }else if(this.IsChannelTypeDM(this.message)){
-        reject(Error("Not a correct channel ! trying to use command in DM"));
+        return reject(new NotACorrectChannelError("Not a correct channel ! trying to use command in DM or group DM", userInfo));
 
       } else if(this.MsgStartWith(this.message, CONFIG.BOT.PREFIX)){
           let possibleCommand = this.message.content.split(' ')[0]
@@ -32,13 +38,13 @@ class MessageAnalyzer {
             .then( (data) => {
               let commandData = this.isMsgCommand(possibleCommand, data.Commands);
               if(commandData){
-                resolve(commandData);
+                return resolve(commandData);
               } else {
-                reject(Error("Unkown command"));
+                return reject(new UnkownCommandError(`Unkown command ${possibleCommand}`));
               }
             })
             .catch( (error) => {
-              reject(error);
+              return reject(error);
             })
 
       }
@@ -77,7 +83,7 @@ class MessageAnalyzer {
   }
 
   IsChannelTypeDM(message) {
-    return message.channel.type === "dm";
+    return message.channel.type === "dm" || message.channel.type === "group";
   }
 }
 
