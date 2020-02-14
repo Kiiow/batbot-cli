@@ -38,7 +38,9 @@ BatBot.on('message', (message) => {
           Logger.log(5, 'Do something after command execution');
         })
         .catch( (error) => {
+          Logger.contextAdd('ERR', error);
           Logger.log(0, error);
+          Logger.contextRemove('ERR');
         })
 
     })
@@ -47,7 +49,7 @@ BatBot.on('message', (message) => {
     })
     .finally( () => {
       // TODO add xp si message length >= 15 && start pas par prefix
-      Logger.log(5, 'So something after every message');
+      Logger.log(5, 'Do something after every message');
     });
 
 });

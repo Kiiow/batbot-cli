@@ -4,21 +4,25 @@ class MessageSender {
   constructor(message){ this.message = message; }
 
   /**
-   * Set the message
-   * @param {Discord.message} message message instance
+   * Set le message
+   *
+   * @param {Discord.message} message Instance du message
    */
   setMessage(message) { this.message = message; }
 
   /**
-   * Renvoie un message
-   * @param  {String} [answer=""]         Message à renvoyer
+   * Send back a message in discord
+   *
+   * @param  {String} [answer=""]         Message to sendBack
+   * @return {Promise}
    */
   sendBack(answer = "") {
-    this.message.channel.send(answer);
+    return this.message.channel.send(answer);
   }
 
   /**
    * Return the color that correspond to the message
+   *
    * @param  {String} colorName     Name of the color
    * @return {Integer}              Color
    */
@@ -42,7 +46,18 @@ class MessageSender {
 
   /**
    * Send an embed message in discord
+   *
    * @param  {JSON} parameters                   Different data to create the embed message
+   * {
+   * 'color': "Color of the embed default = 4886754",
+   * 'author_name': "Name in the title of the embed",
+   * 'author_avatar': "Icon in the title of the embed",
+   * 'url': "",
+   * 'description': "Description of the embed",
+   * 'thumbnail': "Image at the top right of the embed",
+   * 'fields': [{'name': "List of fields in the embed", 'value': ""}],
+   * 'footer': "Data in the bottom of the embed",
+   * }
    * @param  {Discord.channel} [chan=undefined]  (Optional) Channel discord where the message need to be sent
    * @return {Discord.message}                   New message instance
    */

@@ -11,8 +11,9 @@ class Help extends Command {
   static action(message){
     message.delete();
     this.message = message;
+    this.PREF = this.getConfig().BOT.PREFIX;
     let helpCategAksed = message.content.split(' ')[1];
-    this.log(2, `Asking for some help about ${helpCategAksed}`);
+    this.log(2, `Asking for some help about ${helpCategAksed || "nothing"}`);
     switch(helpCategAksed) {
       case "general":
         this.displayHelpFor("general");
@@ -39,11 +40,11 @@ class Help extends Command {
     const HELP_DEFAULT = {
       'fields': [
         {
-          'name': "Commandes `.help` : ",
-          'value': "\n**:gear: `.help general`** -- Donne l'aide sur les commandes général" +
-                   "\n**:tools: `.help admin`** -- Donne l'aide sur les commandes admin" +
-                   "\n**:video_game: `.help game`** -- Donne l'aide sur les commandes de jeu" +
-                   "\n**:hammer_pick: `.help all`** -- Donne l'aide sur toutes les commandes"
+          'name': `Commandes \`${this.PREF}help\` : `,
+          'value': `\n**:gear: \`${this.PREF}help general\`** -- Donne l'aide sur les commandes général` +
+                   `\n**:tools: \`${this.PREF}help admin\`** -- Donne l'aide sur les commandes admin` +
+                   `\n**:video_game: \`${this.PREF}help game\`** -- Donne l'aide sur les commandes de jeu` +
+                   `\n**:hammer_pick: \`${this.PREF}help all\`** -- Donne l'aide sur toutes les commandes`
         }
       ]
     };
@@ -57,9 +58,13 @@ class Help extends Command {
    */
   static displayHelpFor(categorie){
     const FILTER_CATEG = categ => categ.help_data.category === categorie;
-    const MAP_COMMAND_INFO = item => `**:${item.help_data.icon}: \`.${item.name}\`** -- ${item.help_data.text}`;
+    const MAP_COMMAND_INFO = item => {
+      let text = `**:${item.help_data.icon}: \`${this.PREF}${(item.help_data.command || item.name)}\`** -- ${item.help_data.text}`;
+       if(!item.active_command) { text = `~~${text}~~`; }
+      return text
+    };
 
-    AccessData.ReadJSONFile("commands")
+    AccessData.readJSONFile("commands")
       .then((data) => {
         let commandsFiltered;
         let commands = [];
@@ -80,8 +85,7 @@ class Help extends Command {
             }
           }
           for (let [key, value] of Object.entries(commandsData)) {
-            commands.push(
-              {
+            commands.push({
                 'name': `► Commandes ${key}`,
                 'value': value.join('\n')
               });

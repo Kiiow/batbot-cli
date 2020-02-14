@@ -11,21 +11,26 @@ class Clear extends Command{
   static async action(message) {
     this.log(2, `Trying to clear some message`);
     let user = await UserDAL.getUserById(message.author.id);
+    await message.delete();
     if(user.isAdmin()) {
       let nbMessageToDelete = parseInt(message.content.split(' ')[1]);
-      if(!isNaN(nbMessageToDelete)) {
-        message.channel.bulkDelete(nbMessageToDelete+1)
-          .then( () => { this.log(2, `Deleted ${nbMessageToDelete}msg`) })
+
+      if(!isNaN(nbMessageToDelete) && nbMessageToDelete > 0 && nbMessageToDelete < 100) {
+
+        message.channel.bulkDelete(nbMessageToDelete)
+          .then( () => { this.log(2, `Deleted ${nbMessageToDelete} msg`) })
           .catch( (error) => {
+            this.msg(message).sendError(`Erreur lors de la suppression des messages, je ne peux pas supprimmer des messages vieux de plus de 2 semaines.`)
             this.getLogger().contextAdd('ERR', error);
             this.log(0, `Error while trying to delete messages`);
-            this.getLogger().contextRemoveLast();
+            this.getLogger().contextRemove('ERR');
           })
       } else {
-        this.msg(message).sendError("ERROR ALED FAUT METTRE UN NOMBRE DE MESSAGE A SUPPRIMMER")
-        this.log(5, `Well i'm there and i don' know why....`);
+        this.log(1, `First parameter isNaN or is < 0`);
+        this.msg(message).sendError("Vous devez spécifier un nombre de message à supprimer (0 < nbMessage < 100)");
       }
     } else {
+      this.log(0, `Only admin users are authorised to delete message`)
       this.msg(message).sendError(`Seul les admins peuvent effacer des messages`);
     }
   }

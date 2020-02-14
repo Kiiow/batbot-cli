@@ -3,28 +3,25 @@
     {
       "name" : "help",
       "filename" : "Help",
-      "function" : "action",
       "active_command" : true,
       "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "pencil",
-        "command" : ".help (option)",
-        "text" : "Affiche la liste des commandes de BatBot",
+        "command" : "help (option)",
+        "text" : "Affiche la liste des commandes du Bot",
         "category" :"general"
       }
     },
     {
       "name" : "ping",
       "filename" : "Ping",
-      "function" : "action",
       "active_command" : true,
       "active_logs" : false,
       "admin" : false,
       "help_data" : {
         "icon" : "ping_pong",
-        "command" : ".ping",
-        "text" : "Jouer au ~~PingPong~~ Tennis de table avec BatBot",
+        "text" : "Une petite partie avec le bot ?",
         "category" :"general"
       }
     },
@@ -32,12 +29,12 @@
       "name" : "admin",
       "filename" : "admin",
       "function" : "adminCommand",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "hammer_pick",
-        "command" : ".admin (option)",
+        "command" : "admin (option)",
         "text" : "Affiche la liste des commandes admin",
         "category" :"admin"
       }
@@ -46,12 +43,12 @@
       "name" : "wiki",
       "filename" : "wiki",
       "function" : "search",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "book",
-        "command" : ".wiki <recherche>",
+        "command" : "wiki <recherche>",
         "text" : "Renvoie le résultat trouvé sur wikipédia pour la recherche",
         "category" :"general"
       }
@@ -59,13 +56,11 @@
     {
       "name" : "stop",
       "filename" : "stop",
-      "function" : "action",
       "active_command" : true,
       "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "octagonal_sign",
-        "command" : ".stop",
         "text" : "Arrête le bot",
         "category" :"admin"
       }
@@ -74,12 +69,12 @@
       "name" : "kick",
       "filename" : "dictator",
       "function" : "kick",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "door",
-        "command" : ".kick <username>",
+        "command" : "kick <@user#0000>",
         "text" : "Kick l'utilisateur mentionné",
         "category" :"admin"
       }
@@ -88,26 +83,25 @@
       "name" : "ban",
       "filename" : "dictator",
       "function" : "ban",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "no_entry",
-        "command" : ".ban <username>",
-        "text" : "Bani l'utilisateur mentionné",
+        "command" : "ban <@user#0000>",
+        "text" : "Bani l'utilisateur mentionné ",
         "category" :"admin"
       }
     },
     {
       "name" : "clear",
       "filename" : "Clear",
-      "function" : "action",
       "active_command" : true,
       "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "wastebasket",
-        "command" : ".clear <nbMessage(s)>",
+        "command" : "clear <nbMessage(s)>",
         "text" : "Supprime des messages",
         "category" :"admin"
       }
@@ -116,12 +110,11 @@
       "name" : "blague",
       "filename" : "blague",
       "function" : "getRandomBlague",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "clown",
-        "command" : ".blague",
         "text" : "Une petite blague de BatBot ?",
         "category" :"general"
       }
@@ -130,26 +123,26 @@
       "name" : "profile",
       "filename" : "infos",
       "function" : "getProfile",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "newspaper",
-        "command" : ".profile <username>",
+        "command" : "profile (@user#0000)",
         "text" : "Affiche le profile de la personne mentionnée",
         "category" :"general"
       }
     },
     {
-      "name" : "pokeinfo",
+      "name" : "poke info",
       "filename" : "pokeinfo",
       "function" : "pokeInfo",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "dragon",
-        "command" : ".pokeinfo <nom_pkmn>",
+        "command" : "poke info <nom_pkmn>",
         "text" : "Affiche les infos d'un pokémon",
         "category" :"game"
       }
@@ -158,12 +151,12 @@
       "name" : "emoji",
       "filename" : "emoji",
       "function" : "emojiCommand",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "smiley",
-        "command" : ".emoji",
+        "command": "emoji (option)",
         "text" : "Affiche les commandes sur les emojis",
         "category" :"general"
       }
@@ -172,12 +165,11 @@
       "name" : "top",
       "filename" : "infos",
       "function" : "top",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "trophy",
-        "command" : ".top",
         "text" : "Affiche le top des utilisateurs",
         "category" :"general"
       }
@@ -186,12 +178,12 @@
       "name" : "config",
       "filename" : "config",
       "function" : "configCommand",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "gear",
-        "command" : ".config",
+        "command" : "config (option)",
         "text" : "Affiche les commandes de config",
         "category" :"admin"
       }
@@ -200,26 +192,24 @@
       "name" : "announce",
       "filename" : "announce",
       "function" : "announce",
-      "active_command" : true,
+      "active_command" : false,
       "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "loudspeaker",
-        "command" : ".announce <msg>",
+        "command" : "announce <msg>",
         "text" : "Envoie un message dans le channel d'annonce",
         "category" :"admin"
       }
     },
     {
       "name" : "sw",
-      "filename" : "sw",
-      "function" : "swCommand",
+      "filename" : "Game/Sw",
       "active_command" : true,
       "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "pencil",
-        "command" : ".sw (option)",
         "text" : "Affiche la liste des commandes sur Summoners War",
         "category" :"game"
       }
