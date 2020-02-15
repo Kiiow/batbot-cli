@@ -4,7 +4,6 @@
       "name" : "help",
       "filename" : "Help",
       "active_command" : true,
-      "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "pencil",
@@ -17,7 +16,6 @@
       "name" : "ping",
       "filename" : "Ping",
       "active_command" : true,
-      "active_logs" : false,
       "admin" : false,
       "help_data" : {
         "icon" : "ping_pong",
@@ -30,7 +28,6 @@
       "filename" : "admin",
       "function" : "adminCommand",
       "active_command" : false,
-      "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "hammer_pick",
@@ -44,7 +41,6 @@
       "filename" : "wiki",
       "function" : "search",
       "active_command" : false,
-      "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "book",
@@ -57,7 +53,6 @@
       "name" : "stop",
       "filename" : "stop",
       "active_command" : true,
-      "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "octagonal_sign",
@@ -70,7 +65,6 @@
       "filename" : "dictator",
       "function" : "kick",
       "active_command" : false,
-      "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "door",
@@ -84,7 +78,6 @@
       "filename" : "dictator",
       "function" : "ban",
       "active_command" : false,
-      "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "no_entry",
@@ -97,7 +90,6 @@
       "name" : "clear",
       "filename" : "Clear",
       "active_command" : true,
-      "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "wastebasket",
@@ -108,10 +100,8 @@
     },
     {
       "name" : "blague",
-      "filename" : "blague",
-      "function" : "getRandomBlague",
-      "active_command" : false,
-      "active_logs" : true,
+      "filename" : "Blague",
+      "active_command" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "clown",
@@ -124,7 +114,6 @@
       "filename" : "infos",
       "function" : "getProfile",
       "active_command" : false,
-      "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "newspaper",
@@ -138,7 +127,6 @@
       "filename" : "pokeinfo",
       "function" : "pokeInfo",
       "active_command" : false,
-      "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "dragon",
@@ -152,7 +140,6 @@
       "filename" : "emoji",
       "function" : "emojiCommand",
       "active_command" : false,
-      "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "smiley",
@@ -166,7 +153,6 @@
       "filename" : "infos",
       "function" : "top",
       "active_command" : false,
-      "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "trophy",
@@ -179,7 +165,6 @@
       "filename" : "config",
       "function" : "configCommand",
       "active_command" : false,
-      "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "gear",
@@ -193,7 +178,6 @@
       "filename" : "announce",
       "function" : "announce",
       "active_command" : false,
-      "active_logs" : true,
       "admin" : true,
       "help_data" : {
         "icon" : "loudspeaker",
@@ -206,7 +190,6 @@
       "name" : "sw",
       "filename" : "Game/Sw",
       "active_command" : true,
-      "active_logs" : true,
       "admin" : false,
       "help_data" : {
         "icon" : "pencil",

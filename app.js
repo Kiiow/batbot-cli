@@ -12,7 +12,7 @@ Logger.log(2, 'Starting App');
 // Bot connexion with his token
 BatBot.login(CONFIG.BOT.TOKEN)
   .then(() => {
-    Logger.log(3, 'Bot connected ');
+    Logger.log(3, `${CONFIG.BOT.NAME} connected `);
   })
   .catch((err) => {
     Logger.log(0, 'Error while trying to connect to discord whit token [' + CONFIG.BOT.TOKEN + ']', err);
@@ -57,7 +57,7 @@ process.on('SIGINT', () => {
 });
 
 process.on('exit', () => {
-  Logger.log(4, `Bot disconnected`);
+  Logger.log(4, `${CONFIG.BOT.NAME} disconnected`);
   BatBot.destroy();
 })
 

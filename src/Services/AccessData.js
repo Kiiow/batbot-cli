@@ -1,6 +1,7 @@
 const FileSys = require('fs-extra');
 const CONFIG = require('../Config');
 const request = require('request');
+const fetch = require('node-fetch');
 
 
 /**
@@ -30,18 +31,21 @@ class AccessData {
 
   /**
    * Execute a get request on a web page
-   * @param  {String} url Url of the page to request
-   * @return {Promise}    Result of the request
+   * @param  {String} url       Url of the page to request
+   * @param  {JSON}  [url = {}] Header of the request
+   * @return {Promise}          Result of the request
    */
-  static async getDataFromWeb(url) {
+  static async get(url, header = {}) {
     return new Promise( (resolve, reject) => {
-      request.get(url, {json: true}, (err, res, body) => {
-        if(err != null || res.statusCode != 200) {
-          return reject(err, res, body);
-        } else {
-          return resolve(res, body);
-        }
-      });
+      try {
+        fetch(url, header)
+          .then(res => {return res.json()})
+          .then(data => {return resolve(data)})
+          .catch(err => {return reject(err)})
+      }catch( error) {
+        return reject(error)
+      }
+
     });
   }
 
