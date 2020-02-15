@@ -31,8 +31,8 @@ class CommandsExecuter {
           this.message.channel.send(`Command \`${DATA.name}\` is not an active command`);
           throw new NotAnActiveCommandError(`This is not an active command`);
         }
-        const commandToExecute = require("../Commands/" + DATA.filename);
-        commandToExecute[(DATA.function || "action")](this.message, this.bot);
+        const commandToExecute = require(`../Commands/${DATA.filename}`);
+        commandToExecute[`${DATA.function || "action"}`](this.message, this.bot);
         resolve();
       } catch (error) {
         reject(error);
