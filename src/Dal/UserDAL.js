@@ -26,7 +26,7 @@ class UserData {
 
   /**
    * Return every users in the database
-   * 
+   *
    * @return {Promise<JSON>} Object JSON avec tous les user
    */
   static getAllUser() {
@@ -36,7 +36,7 @@ class UserData {
       AccessData.get(url)
         .then( (data) => {
           let users = data['_embedded'].users
-          users = R.map(CREATE_USER, users);
+          users = R.map((x => new User(x)), users);
           return resolve(users);
         })
         .catch( (err) => {
