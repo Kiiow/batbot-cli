@@ -3,6 +3,8 @@ const CONFIG = require('./src/Config');
 const Logger = require('./src/LoggerFactory');
 const MessageAnalyzer = require('./src/Services/MessageAnalyzer');
 const CommandsExecuter = require('./src/Services/CommandsExecuter');
+const LevelManager = require('./src/Services/LevelManager');
+const UserDal = require('./src/Dal/UserDAL');
 
 const Discord = require('discord.js');
 const BatBot = new Discord.Client();
@@ -28,7 +30,6 @@ BatBot.on('message', (message) => {
 
   ANALYZER.AnalyzeMsg()
     .then( (data) => {
-
       Logger.log(5, 'This is a correct command');
       const EXECUTER = new CommandsExecuter(message, BatBot);
       EXECUTER.ExecuteCommand(data)
@@ -44,9 +45,23 @@ BatBot.on('message', (message) => {
       Logger.log(0, error);
     })
     .finally( () => {
-      // TODO add xp si message length >= 15 && start pas par prefix && pas un bot
       Logger.log(5, 'Do something after every message');
     });
+
+    const LEVEL_MANAGER = new LevelManager(message, BatBot);
+    if(LEVEL_MANAGER.canEarnXp()) {
+      LEVEL_MANAGER.addXp()
+        .then( (user) => {
+          UserDal.updateUserXp(user)
+            .then( (data) => { Logger.log(2, `Added xp to ${user.fullName()}`); })
+            .catch( (err) => { Logger.log(0, `Error while trying to add xp to user ${user.fullName}`,err); })
+        })
+        .catch( (err) => {
+          if(err) {
+            Logger.log(0, `Erreur lors de l'ajout d'xp à l'utilisateur`, err);
+          }
+        })
+    }
 
 });
 
@@ -56,6 +71,7 @@ process.on('SIGINT', () => {
   process.exit(2);
 });
 
+// Kill the bot when process exit
 process.on('exit', () => {
   Logger.log(4, `${CONFIG.BOT.NAME} disconnected`);
   BatBot.destroy();

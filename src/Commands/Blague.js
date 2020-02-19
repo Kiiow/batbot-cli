@@ -10,7 +10,7 @@ class Blague extends Command {
     let header = {
         'headers': {
         'Content-Type': "application/json",
-        'Authorization' : "sz-2PLZ_PJdDWGFaPjeXf4JDTrAczWZjT.EcI1KqLTNmLaycB.2m2JK6-3RLjHUL",
+        'Authorization' : this.getConfig().API.BLAGUE_TOKEN,
       }
     }
     AccessData.get(url, header)
