@@ -105,14 +105,15 @@ class Logger {
 
   /**
    * Send a log message and save it in a logs file
-   * @param  {int}      level   Log level
+   * @param {int}       level   Log level
    * [-1: FATAL, 0: ERROR, 1: WARN, 2: INFO, 3: SUCCESS, 4: DEBUG, 5: MORE]
-   * @param  {String}   message Message to put in the log
+   * @param {String}    message Message to put in the log
+   * @param {Error}     error   Possible error to put in the log
    */
   log(level, message, error) {
     try{
       level = this.getLevel(level);
-      if(level == 0 && error){ this.contextAdd('ERR', error); }
+      if(error != undefined){ this.contextAdd('ERR', error); }
       this.logger.log({
         'timestamp' : Math.round(Date.now()/1000),
         'level' : level,

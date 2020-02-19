@@ -39,14 +39,34 @@ class AccessData {
     return new Promise( (resolve, reject) => {
       try {
         fetch(url, header)
-          .then(res => {return res.json()})
-          .then(data => {return resolve(data)})
-          .catch(err => {return reject(err)})
-      }catch( error) {
+          .then(res => {
+            return res.json();
+          })
+          .then(data => { return resolve(data) })
+          .catch(err => { return reject(err) })
+      }catch(error) {
         return reject(error)
       }
 
     });
+  }
+
+  static async post(url, body) {
+    let options = {
+      'method': 'POST',
+      'body': body
+    }
+    return new Promise( (resolve, reject) => {
+      try {
+        fetch(url, options)
+          .then( data => {
+            return resolve(data)
+          })
+          .catch( err => { return reject(err) })
+      } catch(error) {
+        return reject(error)
+      }
+    })
   }
 
 }

@@ -29,5 +29,9 @@ module.exports = {
         TYPE: getEnv("BOT_STATUS_TYPE" || "PLAYING"),
       }
     }
+  },
+  API: {
+    BLAGUE_TOKEN: "sz-2PLZ_PJdDWGFaPjeXf4JDTrAczWZjT.EcI1KqLTNmLaycB.2m2JK6-3RLjHUL",
+    BOT_BASE_URL: "http://127.0.0.1:8080/api",
   }
 };

@@ -1,5 +1,6 @@
 const Command = require('../Command');
 const AccessData = require('../Services/AccessData');
+const CommandsDAL = require('../Dal/CommandsDAL');
 const R = require('ramda');
 
 class Help extends Command {
@@ -57,27 +58,32 @@ class Help extends Command {
    * @param  {String} categorie Name of the categorie
    */
   static displayHelpFor(categorie){
-    const FILTER_CATEG = categ => categ.help_data.category === categorie;
+    const FILTER_CATEG = item =>{
+      console.log(item)
+      return item.category.libelle === categorie
+    };
     const MAP_COMMAND_INFO = item => {
-      let text = `**:${item.help_data.icon}: \`${this.PREF}${(item.help_data.command || item.name)}\`** -- ${item.help_data.text}`;
-       if(!item.active_command) { text = `~~${text}~~`; }
+      let text = `**:${item.help_data.icon}: \`${this.PREF}${(item.help_data.example || item.name)}\`** -- ${item.help_data.text_FR}`;
+       if(!item.active) { text = `~~${text}~~`; }
       return text
     };
 
-    AccessData.readJSONFile("commands")
+    // AccessData.readJSONFile("commands")
+    CommandsDAL.getAllCommands()
       .then((data) => {
-        let commandsFiltered;
+        let commandsFiltered = [];
         let commands = [];
         if(categorie != "all") { // Si une catégorie spécifique
-          commandsFiltered = R.filter(FILTER_CATEG, data.Commands);
+          commandsFiltered = R.filter(FILTER_CATEG, data);
           commands.push({
             'name': `► Commandes ${categorie}`,
             'value': R.map(MAP_COMMAND_INFO, commandsFiltered).join('\n')
           });
+
         } else { // Si toutes les catégories
           let commandsData = {};
-          for (let command of data.Commands) {
-            let category = command.help_data.category;
+          for (let command of data) {
+            let category = command.category.libelle;
             if(commandsData[category] === undefined) {
               commandsData[category] = []
             }
@@ -95,6 +101,7 @@ class Help extends Command {
         this.msg(this.message).sendEmbed(HELP_INFO);
       })
       .catch((error) => {
+        this.log(0, `Error while trying to display every commands`, error);
         this.msg(this.message).sendError(`ERROR ${error.message}`);
       });
   }

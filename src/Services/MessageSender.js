@@ -7,7 +7,10 @@ class MessageSender {
    * Set le message
    * @param {Discord.message} message Instance du message
    */
-  setMessage(message) { this.message = message; }
+  setMessage(message) {
+    this.message = message;
+    return this;
+  }
 
   /**
    * Send back a message in discord

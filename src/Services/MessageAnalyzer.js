@@ -3,6 +3,7 @@ const R = require('ramda');
 const {UnkownCommandError, NotANormalUserError, NotACorrectChannelError} = require('./Error/Errors');
 const AccessData = require('./AccessData');
 const CONFIG = require('../Config');
+const CommandsDal = require('../Dal/CommandsDAL');
 
 class MessageAnalyzer {
 
@@ -34,9 +35,9 @@ class MessageAnalyzer {
           let possibleCommand = this.message.content.split(' ')[0]
           possibleCommand = R.drop(CONFIG.BOT.PREFIX.length, possibleCommand)
 
-          AccessData.readJSONFile('commands')
+          CommandsDal.getAllCommands()
             .then( (data) => {
-              let commandData = this.isMsgCommand(possibleCommand, data.Commands);
+              let commandData = this.isMsgCommand(possibleCommand, data);
               if(commandData){
                 return resolve(commandData);
               } else {
@@ -60,10 +61,10 @@ class MessageAnalyzer {
    */
   MsgStartWith(message, prefix) {
     let isPrefixCorrect = message.content.startsWith(prefix);
-    let isMentionned = message.content.startsWith('<@!' + this.bot.user.id + '>');
+    let isMentionned = message.content.startsWith(`<@!${this.bot.user.id}>`);
 
     if(isMentionned){
-      this.message.content = message.content.replace('<@!' + this.bot.user.id + '> ', prefix);
+      this.message.content = message.content.replace(`<@!${this.bot.user.id}> `, prefix);
     }
     return  isPrefixCorrect || isMentionned
   }
