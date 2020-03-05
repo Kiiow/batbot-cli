@@ -1,4 +1,4 @@
-const Winston = require('Winston');
+const Winston = require('winston');
 const R = require('ramda');
 
 const CONFIG = require('../Config');
