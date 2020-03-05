@@ -51,17 +51,26 @@ class AccessData {
     });
   }
 
-  static async post(url, body) {
-    let options = {
+  /**
+   * Do a post request on a url
+   *
+   * @param  {String}  url          Url à requêter
+   * @param  {JSON}  body           Body de la requête
+   * @param  {JSON}  [headers={}]   Header de la requête
+   * @return {Promise}              Réponse de la requête
+   */
+  static async post(url, body, headers = {}) {
+    headers['Content-Type'] = 'application/json';
+    const OPTIONS = {
       'method': 'POST',
-      'body': body
+      'body': JSON.stringify(body),
+      'headers': headers,
     }
     return new Promise( (resolve, reject) => {
       try {
-        fetch(url, options)
-          .then( data => {
-            return resolve(data)
-          })
+        fetch(url, OPTIONS)
+          .then( data => data.json())
+          .then( res => { return resolve(res); })
           .catch( err => { return reject(err) })
       } catch(error) {
         return reject(error)

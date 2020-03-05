@@ -9,6 +9,7 @@ class MessageAnalyzer {
 
   constructor(message, Bot) {
     this.message = message;
+    this.isCommand = false;
     this.bot = Bot;
   }
 
@@ -22,7 +23,7 @@ class MessageAnalyzer {
   AnalyzeMsg() {
     return new Promise((resolve, reject) => {
       if(!this.MsgStartWith(this.message, CONFIG.BOT.PREFIX)){
-        return;
+        return reject();
       }
       let userInfo = {'id': this.message.author.id, 'username': this.message.author.username}
       if(this.IsBotUser(this.message)) {
@@ -39,12 +40,15 @@ class MessageAnalyzer {
             .then( (data) => {
               let commandData = this.isMsgCommand(possibleCommand, data);
               if(commandData){
+                this.isCommand = true;
                 return resolve(commandData);
               } else {
+                this.isCommand = false;
                 return reject(new UnkownCommandError(`Unkown command "${possibleCommand}"`));
               }
             })
             .catch( (error) => {
+              this.isCommand = false;
               return reject(error);
             })
 
