@@ -2,6 +2,14 @@ function getEnv(env, defVal) {
   return process.env[env] || defVal;
 }
 
+function toBool(val) {
+  try {
+    return val == 1 || val.toLowerCase() == "true";
+  } catch (_err) {
+    return false;
+  }
+}
+
 /**
  * Configuration of the bot
  * @type {JSONObject}
@@ -24,10 +32,15 @@ module.exports = {
     TOKEN: getEnv("BOT_TOKEN", ""),
     PREFIX: getEnv("BOT_PREFIX", "."),
     STATUS: {
-      GAME: {
-        NAME: getEnv("BOT_STATUS_MESSAGE", "(.help)"),
-        TYPE: getEnv("BOT_STATUS_TYPE", "PLAYING"),
-      }
+      'game': {
+        'name': getEnv("BOT_STATUS_MESSAGE", "(.help)"),
+        'type': getEnv("BOT_STATUS_TYPE", "PLAYING"),
+      },
+      'status' : getEnv("BOT_STATUS_STATUS", "online"),
+    },
+    SETTINGS: { // TODO utiliser ces settings pour activer / désactiver certains parties du bot
+      BRAIN_ACTIVE: toBool(getEnv("BOT_BRAIN_ACTIVE", false)),
+      XP_ACTIVE: toBool(getEnv("BOT_XP_ACTIVE", false)),
     }
   },
   API: {

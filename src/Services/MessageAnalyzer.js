@@ -68,6 +68,7 @@ class MessageAnalyzer {
     let isMentionned = message.content.startsWith(`<@!${this.bot.user.id}>`);
 
     if(isMentionned){
+      message.oldContent = message.content;
       this.message.content = message.content.replace(`<@!${this.bot.user.id}> `, prefix);
     }
     return  isPrefixCorrect || isMentionned
