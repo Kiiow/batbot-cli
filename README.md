@@ -9,32 +9,51 @@
 BatBot is a discord bot developped in [Node.Js][node-js] by Me !
 
 
-##### ➤ Functionality:
-BatBot can do a lot of different stuff (and he's still learning !)
-
-|  Command    |                Action              |           option          | Categorie |
-|-------------|------------------------------------|---------------------------|-----------|
-| `.blague`   | A little joke from BatBot ?        | `None`                    | [general] |
-| `.emoji`    | Display help on Emoji module       | `(add|list)`              | [general] |
-| `.google`   | Doing some research on google      | `<research>`              | [general] |
-| `.help`     | Display help on help module        | `(general|admin|game|all)`| [general] |
-| `.ping`     | Playing tennis table with the bot ?| `None`                    | [general] |
-| `.profile`  | Display Profile informations       | `(@user)`                 | [general] |
-| `.top`      | Display the scoreboard             | `None`                    | [general] |
-| `.wiki`     | Search information on Wikipedia    | `<research>`              | [general] |
-|             |                                    |                           |           |
-| `.pokeinfo` | Getting informations about a pkmn  | `<pkmn_name>`             | [game]    |
-| `.pokestats`| Getting stats of a pkmn            | `<pkmn_name>`             | [game]    |
-| `.sw`       | Display help on SummonersWar module| `(info)`                  | [game]    |
-|             |                                    |                           |           |
-| `.admin`    | Display help on Admin module       | `(add|list)`              | [admin]   |
-| `.announce` | Do an announce in a specific chan  | `<message>`               | [admin]   |
-| `.ban`      | Ban a certain user                 | `<@user>`                 | [admin]   |
-| `.clear`    | Erase a certain number of message  | `<nbMessage(s)>`          | [admin]   |
-| `.config`   | Display help on Config module      | `(announce)`              | [admin]   |
-| `.kick`     | Kick a user                        | `<@user>`                 | [admin]   |
-| `.prison`   | Add the prison role to a user      | `<@user>`                 | [admin]   |
-| `.stop`     | Stop the bot                       | `None`                    | [admin]   |
+##### ➤ Tree view:
+.
+├── app.js
+├── package.json
+├── package-lock.json
+├── README.md
+└── src
+    ├── Command.js
+    ├── Commands
+    │   ├── Blague.js
+    │   ├── Clear.js
+    │   ├── Game
+    │   │   ├── SW
+    │   │   │   └── MobsInfos.js
+    │   │   └── Sw.js
+    │   ├── Help.js
+    │   ├── Ping.js
+    │   ├── Stop.js
+    │   └── Top.js
+    ├── Config.js
+    ├── Dal
+    │   ├── CommandsDAL.js
+    │   └── UserDAL.js
+    ├── DataFiles
+    │   ├── JSON
+    │   └── Logs
+    │       └── BatBot.log
+    ├── LoggerFactory.js
+    ├── Services
+    │   ├── AccessData.js
+    │   ├── CommandsExecuter.js
+    │   ├── Error
+    │   │   └── Errors.js
+    │   ├── Level
+    │   │   └── LevelService.js
+    │   ├── LevelManager.js
+    │   ├── Logger.js
+    │   ├── MessageAnalyzer.js
+    │   └── MessageSender.js
+    ├── src
+    │   └── DataFiles
+    │       └── Logs
+    └── Util
+        ├── Command.js
+        └── User.js
 
 ##### ➤ Module:
 

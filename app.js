@@ -11,6 +11,7 @@ const UserDal = require('./src/Dal/UserDAL');
 
 const Discord = require('discord.js');
 const BatBot = new Discord.Client();
+const R = require('ramda');
 
 Logger.log(2, 'Starting App');
 
@@ -46,28 +47,28 @@ BatBot.on('message', (message) => {
 
     })
     .catch( (error) => {
-      switch(error) {
+      if(error == undefined) return;
+      switch(error.name) {
         case "FetchError":
           Logger.log(-1, `The API doesn't seem to be launched, or isn't accessible !`);
-          // MessageSender.setMessage(message).sendError("Problème de configuration du bot, veuillez contacter un admin");
-          break;
-        case undefined:
-          // Logger.log(0, `Undefined ERROR`);
+          MessageSender.setMessage(message).sendError("Problème de configuration du bot, veuillez contacter un admin");
           break;
         default:
-          Logger.log(0, error);
+          Logger.log(0, error, error);
       }
     })
     .finally( () => {
       Logger.log(5, 'Do something after every message');
-      if(!ANALYZER.isCommand) {
+      if(!ANALYZER.isCommand && CONFIG.BOT.SETTINGS.BRAIN) {
         let BRAIN = new Brain(message, BatBot);
         BRAIN.ThinkAndSpeak()
-          .then( () => { })
+          .then( (data) => {
+            BRAIN.TreatmentData(data);
+          })
           .catch( (err) => {
             switch(err) {
               case undefined:
-                Logger.log(0, 'Bot not mentionned');
+                Logger.log(5, 'Bot not mentionned');
                 break;
               default:
                 console.log(err);
