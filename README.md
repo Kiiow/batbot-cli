@@ -6,58 +6,97 @@
 </p>
 
 ##### ➤ Presentation:
-BatBot is a discord bot developped in [Node.Js][node-js] by Me !
+BatBot is a discord bot developped in [Node.Js][node-js] !
 
+##### ➤ Default Config File (.envrc) :
+```SHELL
+# General Config
+export APP_NAME="AppDefaultName";
+export APP_VERSION="0.0.0";
+export PROJECT_PATH="/your/project/path";
+
+# Logger Config
+export CONSOLE_LOGGER_ACTIVE="true";
+export CONSOLE_LOGGER_LEVEL="MROE";
+
+export FILE_LOGGER_ACTIVE="true";
+export FILE_LOGGER_LEVEL="MORE";
+
+export LOGS_PATH="/your/log/path";
+export LOG_FILENAME="Logs";
+export LOGGER_DISPLAY_ERROR="true";
+
+# Bot Config
+export BOT_NAME="BotDefaultName";
+export BOT_VERSION="0.0.0";
+export BOT_PROFIL_PICTURE=;
+export BOT_TOKEN="your_token";
+export BOT_PREFIX="!";
+
+export BOT_STATUS_MESSAGE="default env";
+export BOT_STATUS_TYPE="LISTENING";
+export BOT_STATUS_STATUS="online";
+
+export BOT_BRAIN_ACTIVE="false";
+export BOT_XP_ACTIVE="false";
+
+# API Config
+export API_GOOGLE_AI_TOKEN="your_token";
+export API_BLAGUE_TOKEN="your_token";
+export API_BOT_BASE_URL="http://127.0.0.1:8080/api";
+```
 
 ##### ➤ Tree view:
-.
-├── app.js
-├── package.json
-├── package-lock.json
-├── README.md
-└── src
-    ├── Command.js
-    ├── Commands
-    │   ├── Blague.js
-    │   ├── Clear.js
-    │   ├── Game
-    │   │   ├── SW
-    │   │   │   └── MobsInfos.js
-    │   │   └── Sw.js
-    │   ├── Help.js
-    │   ├── Ping.js
-    │   ├── Stop.js
-    │   └── Top.js
-    ├── Config.js
-    ├── Dal
-    │   ├── CommandsDAL.js
-    │   └── UserDAL.js
-    ├── DataFiles
-    │   ├── JSON
-    │   └── Logs
-    │       └── BatBot.log
-    ├── LoggerFactory.js
-    ├── Services
-    │   ├── AccessData.js
-    │   ├── CommandsExecuter.js
-    │   ├── Error
-    │   │   └── Errors.js
-    │   ├── Level
-    │   │   └── LevelService.js
-    │   ├── LevelManager.js
-    │   ├── Logger.js
-    │   ├── MessageAnalyzer.js
-    │   └── MessageSender.js
-    ├── src
-    │   └── DataFiles
-    │       └── Logs
-    └── Util
-        ├── Command.js
-        └── User.js
+.\
+├── app.js\
+├── package.json\
+├── package-lock.json\
+├── README.md\
+└── src\
+    ├── Command.js\
+    ├── Commands\
+    |   ├── Admin\
+    │   │   ├── Bot.js\
+    │   ├── Blague.js\
+    │   ├── Clear.js\
+    │   ├── Game\
+    │   │   ├── SW\
+    │   │   │   └── MobsInfos.js\
+    │   │   └── Sw.js\
+    │   ├── Help.js\
+    │   ├── Ping.js\
+    │   ├── Stop.js\
+    │   └── Top.js\
+    ├── Config.js\
+    ├── Dal\
+    │   ├── CommandsDAL.js\
+    │   └── UserDAL.js\
+    ├── DataFiles\
+    │   ├── JSON\
+    │   └── Logs\
+    │       └── Logs.log\
+    ├── LoggerFactory.js\
+    ├── Services\
+    │   ├── AccessData.js\
+    │   ├── CommandsExecuter.js\
+    │   ├── Error\
+    │   │   └── Errors.js\
+    │   ├── Level\
+    │   │   └── LevelService.js\
+    │   ├── LevelManager.js\
+    │   ├── Logger.js\
+    │   ├── MessageAnalyzer.js\
+    │   └── MessageSender.js\
+    ├── src\
+    │   └── DataFiles\
+    │       └── Logs\
+    └── Util\
+        ├── Command.js\
+        └── User.js\
 
 ##### ➤ Module:
 
-```sh
+```SHELL
   npm install discord.js
   npm install fs-extra
   npm install Winston

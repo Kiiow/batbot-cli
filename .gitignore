@@ -7,7 +7,7 @@
 
 # Environment variable
 .env
-.envrc
+.envrc*
 
 # Logs
 *.log

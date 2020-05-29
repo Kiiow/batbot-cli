@@ -15,19 +15,26 @@ function toBool(val) {
  * @type {JSONObject}
  */
 module.exports = {
+  APP_NAME: getEnv("APP_NAME", "BatDev"),
+  APP_VERSION: getEnv("APP_VERSION", "1.0.0"),
   PROJECT_PATH: getEnv("PROJECT_PATH", __dirname),
-  LOGS_PATH: getEnv("LOGS_PATH", __dirname + "/src/DataFiles/Logs"),
+  NODE_ENV : getEnv("NODE_ENV", "production"),
   LOGGER: {
     CONSOLE: {
+      ACTIVE: toBool(getEnv("CONSOLE_LOGGER_ACTIVE", true)),
       LEVEL: getEnv("CONSOLE_LOGGER_LEVEL", "MORE"),
     },
     FILE: {
+      ACTIVE: toBool(getEnv("FILE_LOGGER_ACTIVE", true)),
       LEVEL: getEnv("FILE_LOGGER_LEVEL", "DEBUG"),
-    }
+    },
+    LOGS_PATH: getEnv("LOGS_PATH", __dirname + "/src/DataFiles/Logs"),
+    LOG_FILENAME: getEnv("LOG_FILENAME", "Bot"),
+    DISPLAY_ERROR: toBool(getEnv("LOGGER_DISPLAY_ERROR", true)),
   },
   BOT: {
     NAME: getEnv("BOT_NAME", "BatDev"),
-    VERSION: getEnv("BOT_VERSION", "0.0.0"),
+    VERSION: getEnv("BOT_VERSION", "1.0.0"),
     PROFIL_PICTURE: getEnv("BOT_PROFIL_PICTURE", ""),
     TOKEN: getEnv("BOT_TOKEN", ""),
     PREFIX: getEnv("BOT_PREFIX", "."),
@@ -44,8 +51,8 @@ module.exports = {
     }
   },
   API: {
-    GOOGLE_AI_TOKEN: "84687e22274a4178b31567fa51ff8009",
-    BLAGUE_TOKEN: "sz-2PLZ_PJdDWGFaPjeXf4JDTrAczWZjT.EcI1KqLTNmLaycB.2m2JK6-3RLjHUL",
-    BOT_BASE_URL: "http://127.0.0.1:8080/api",
+    GOOGLE_AI_TOKEN: getEnv("API_GOOGLE_AI_TOKEN", undefined),
+    BLAGUE_TOKEN: getEnv("API_BLAGUE_TOKEN", undefined),
+    BOT_BASE_URL: getEnv("API_BOT_BASE_URL", "http://127.0.0.1:8080/api"),
   }
 };

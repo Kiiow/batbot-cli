@@ -1,5 +1,7 @@
 const CONFIG = require('./src/Config');
-console.log(CONFIG);
+console .log(`■■■■■■■■■■■■■■■■■■■■■■■■[  Bot start  ]■■■■■■■■■■■■■■■■■■■■■■■■`);
+console.log(`Config :`, CONFIG);
+console.log('■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■');
 
 const Logger = require('./src/LoggerFactory');
 const MessageAnalyzer = require('./src/Services/MessageAnalyzer');
@@ -59,7 +61,7 @@ BatBot.on('message', (message) => {
     })
     .finally( () => {
       Logger.log(5, 'Do something after every message');
-      if(!ANALYZER.isCommand && CONFIG.BOT.SETTINGS.BRAIN) {
+      if(!ANALYZER.isCommand && CONFIG.BOT.SETTINGS.BRAIN_ACTIVE) {
         let BRAIN = new Brain(message, BatBot);
         BRAIN.ThinkAndSpeak()
           .then( (data) => {
@@ -80,7 +82,7 @@ BatBot.on('message', (message) => {
     });
 
     const LEVEL_MANAGER = new LevelManager(message, BatBot);
-    if(LEVEL_MANAGER.canEarnXp()) {
+    if(LEVEL_MANAGER.canEarnXp() && CONFIG.BOT.SETTINGS.XP_ACTIVE) {
       LEVEL_MANAGER.addXp()
         .then( (user) => {
           UserDal.updateUserXp(user)
@@ -110,7 +112,7 @@ process.on('exit', () => {
 process.on('uncaughtException', (error) => {
   Logger.log(-1, '[Uncaught Expression] ', error);
   console.log(error);
-  console.log('-----------------------------');
+  console.log('■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■');
   console.log(error.stack);
   process.exit(99);
 });
