@@ -19,7 +19,7 @@ class Logger {
     let transportData = { };
     if(CONFIG.LOGGER.CONSOLE.ACTIVE) {
       transportData.console = {
-        level: CONFIG.LOGGER.CONSOLE.LEVEL,
+        level: CONFIG.NODE_ENV === "test" ? [] : CONFIG.LOGGER.CONSOLE.LEVEL,
         handleExceptions: true,
         json: false,
         format : Winston.format.combine(
@@ -35,7 +35,7 @@ class Logger {
     }
     if(CONFIG.LOGGER.FILE.ACTIVE) {
       transportData.file = {
-        level: CONFIG.LOGGER.FILE.LEVEL,
+        level: CONFIG.NODE_ENV === "test" ? [] : CONFIG.LOGGER.FILE.LEVEL,
         filename: `${CONFIG.LOGGER.LOGS_PATH}/${CONFIG.LOGGER.LOG_FILENAME}.log`,
         handleExceptions: true,
         json: true,
