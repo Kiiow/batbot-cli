@@ -16,7 +16,6 @@ class UserData {
     return new Promise( (resolve, reject) => {
         AccessData.get(url)
         .then( (data) => {
-          console.log(data);
           return resolve(new User(data));
         })
         .catch( (err) => {

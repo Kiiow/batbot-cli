@@ -31,7 +31,35 @@ class MobsInfos extends Commands {
         } else if (data.count > 1){ // Si plus d'un monstre trouvé
 
           let SECOND_PARAM = this.message.content.split(' ')[3] // Check si le user à demendé un certain mob
-          if(SECOND_PARAM && !isNaN(SECOND_PARAM) && (SECOND_PARAM-1 < data.count && SECOND_PARAM-1 > 0)) {
+          if(SECOND_PARAM && isNaN(SECOND_PARAM)) {
+            let listMonster = [];
+            data.results.forEach( (monster) => { listMonster.push(`**${monster.name}**`); });
+            let errDesc = '**:no_entry: Le deuxième paramètre ne peut pas être du texte**';
+            this.msg(message).sendEmbed({
+              'color': 'error',
+              'author_name' : message.member.nickname,
+              'author_avatar' : message.author.avatarURL,
+              'description': `${errDesc}\r\n\r\nIl existe plusieurs monstres commencant par \`${MONSTER_NAME}\` :
+                ${listMonster.join(', ')}`
+            })
+            this.log(1, `Trying to display informations with second param isNaN`);
+            return;
+          }
+          if(SECOND_PARAM && !(SECOND_PARAM-1 < data.count && SECOND_PARAM-1 >= 0)) {
+            let listMonster = [];
+            data.results.forEach( (monster) => { listMonster.push(`**${monster.name}**`); });
+            let errDesc = '**:no_entry: Le deuxième paramètre est trop grand ou trop petit essayez avec un autre nombre**';
+            this.msg(message).sendEmbed({
+              'color': 'error',
+              'author_name' : message.member.nickname,
+              'author_avatar' : message.author.avatarURL,
+              'description': `${errDesc}\r\n\r\nIl existe plusieurs monstres commencant par \`${MONSTER_NAME}\` :
+                ${listMonster.join(', ')}`
+            })
+            this.log(1, `Trying to display informations with second param to big or to low`);
+            return;
+          }
+          if(SECOND_PARAM) {
             this.getEmbedDataAbout(data.results[SECOND_PARAM-1].com2us_id)
               .then( (embedData) => {
                 this.msg(message).sendEmbed(embedData);
