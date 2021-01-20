@@ -59,24 +59,44 @@ class AccessData {
    * @param  {JSON}  [headers={}]   Header de la requête
    * @return {Promise}              Réponse de la requête
    */
-  static async post(url, body, headers = {}) {
-    headers['Content-Type'] = 'application/json';
-    const OPTIONS = {
-      'method': 'POST',
-      'body': JSON.stringify(body),
-      'headers': headers,
-    }
-    return new Promise( (resolve, reject) => {
-      try {
-        fetch(url, OPTIONS)
-          .then( data => data.json())
-          .then( res => { return resolve(res); })
-          .catch( err => { return reject(err) })
-      } catch(error) {
-        return reject(error)
-      }
-    })
-  }
+   static async post(url, body, headers = {}) {
+     headers['Content-Type'] = 'application/json';
+     const OPTIONS = {
+       'method': 'POST',
+       'body': JSON.stringify(body),
+       'headers': headers,
+     }
+     return new Promise( (resolve, reject) => {
+       try {
+         fetch(url, OPTIONS)
+           .then( data => data.json())
+           .then( res => { return resolve(res); })
+           .catch( err => { return reject(err) })
+       } catch(error) {
+         return reject(error)
+       }
+     })
+   }
+
+
+   static async put(url, body, headers = {}) {
+     headers['Content-Type'] = 'application/json';
+     const OPTIONS = {
+       'method': 'PUT',
+       'body': JSON.stringify(body),
+       'headers': headers,
+     }
+     return new Promise( (resolve, reject) => {
+       try {
+         fetch(url, OPTIONS)
+           .then( data => data.json())
+           .then( res => { return resolve(res); })
+           .catch( err => { return reject(err) })
+       } catch(error) {
+         return reject(error)
+       }
+     })
+   }
 
 }
 

@@ -53,10 +53,12 @@ BatBot.on('message', (message) => {
       switch(error.name) {
         case "FetchError":
           Logger.log(-1, `The API doesn't seem to be launched, or isn't accessible !`);
-          MessageSender.setMessage(message).sendError("Problème de configuration du bot, veuillez contacter un admin");
+          MessageSender.setMessage(message).sendError("Problème de configuration du bot, merci de contacter un admin");
           break;
         default:
+          MessageSender.setMessage(message).sendError("Erreur inconue, merci de contacter un admin");
           Logger.log(0, error, error);
+          break;
       }
     })
     .finally( () => {

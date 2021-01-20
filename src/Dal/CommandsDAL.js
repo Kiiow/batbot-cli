@@ -20,7 +20,7 @@ class CommandsDAL {
     return new Promise( (resolve, reject) => {
       AccessData.get(url)
         .then((data) => {
-          let commandList = data['_embedded'].commands;
+          let commandList = data;
           commandList = R.map(TRANSFORM_COMMANDS, commandList)
           return resolve(commandList);
         })
@@ -31,6 +31,5 @@ class CommandsDAL {
   }
 
 }
-
 
 module.exports = CommandsDAL

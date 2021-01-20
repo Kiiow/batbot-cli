@@ -21,9 +21,9 @@
   },
   "homepage": "https://github.com/KioHugo/BatBot#readme",
   "dependencies": {
-    "discord.js": "^11.5.1",
+    "discord.js": "^11.6.4",
     "fs-extra": "^8.1.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "ramda": "^0.26.1",
     "request": "^2.88.2",
     "winston": "^3.2.1"

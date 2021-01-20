@@ -125,7 +125,7 @@ class MobsInfos extends Commands {
           });
 
           return resolve({
-            'author_name': this.message.member.nickname,
+            'author_name': this.message.author.username,
             'author_avatar': this.message.author.avatarURL,
             'description': `\n** **`,
             'thumbnail': MOB_IMG_ICO,

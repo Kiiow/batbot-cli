@@ -33,8 +33,8 @@ class MessageAnalyzer {
         return reject(new NotACorrectChannelError("Not a correct channel ! trying to use command in DM or group DM", userInfo));
 
       } else if(this.MsgStartWith(this.message, CONFIG.BOT.PREFIX)){
-          let possibleCommand = this.message.content.split(' ')[0]
-          possibleCommand = R.drop(CONFIG.BOT.PREFIX.length, possibleCommand)
+          let possibleCommand = this.message.content.split(' ')[0];
+          possibleCommand = R.drop(CONFIG.BOT.PREFIX.length, possibleCommand);
 
           CommandsDal.getAllCommands()
             .then( (data) => {

@@ -47,8 +47,8 @@ class Profile extends Command {
   }
 
   static async displayOwnProfile(message) {
-    this.log(2, "Displaying own profile");
-    let member = message.member;
+    this.log(2, "Displaying own profile");    
+    let member = message.author;
     try {
       let userInfo = await UserDal.getUserById(member.id);
       this.msg(message).sendEmbed(await this.getProfile(member, userInfo));
@@ -64,11 +64,11 @@ class Profile extends Command {
     const sortByXp = R.sortBy(R.compose(R.prop('xp')));
     userList = R.reverse(sortByXp(userList));
     let rankNumber = 1 + R.findIndex(R.propEq('id', member.id))(userList);
-    let nickname = member.displayName;
-    let userName = member.user.username;
-    let avatarURL = member.user.avatarURL;
+    let nickname = member.username;
+    let userName = member.username;
+    let avatarURL = member.defaultAvatarURL;
     let status = member.presence.status;
-    let discriminator = member.user.discriminator;
+    let discriminator = member.discriminator;
 
     switch(status) {
       case "offline":

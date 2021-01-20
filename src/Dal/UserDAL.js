@@ -3,7 +3,7 @@ const User = require('../Util/User.js');
 const R = require('ramda');
 const CONFIG = require('../Config');
 
-class UserData {
+class UserDAL {
 
   /**
    * Return a user from the database by his ID
@@ -12,11 +12,12 @@ class UserData {
    * @return {User}            Object user
    */
   static async getUserById(userId) {
-    let url = `${CONFIG.API.BOT_BASE_URL}/users/${userId}`;
+    let url = `${CONFIG.API.BOT_BASE_URL}/user/${userId}`;
     return new Promise( (resolve, reject) => {
         AccessData.get(url)
         .then( (data) => {
-          return resolve(new User(data));
+          let u = new User(data);
+          return resolve(u);
         })
         .catch( (err) => {
           return reject(err);
@@ -35,9 +36,32 @@ class UserData {
     return new Promise( (resolve, reject) => {
       AccessData.get(url)
         .then( (data) => {
-          let users = data['_embedded'].users
+          let users = data;
           users = R.map((x => new User(x)), users);
           return resolve(users);
+        })
+        .catch( (err) => {
+          return reject(err);
+        })
+    })
+  }
+
+  static createUser(user) {
+    let url = `${CONFIG.API.BOT_BASE_URL}/user`;
+    
+    return new Promise( (resolve, reject) => {
+      AccessData.post(url, {
+        "id": user.id,
+        "nickname": user.nickname,
+        "level": user.level,
+        "xp": user.xp,
+        "ts_last_xp": undefined,
+        "admin": false,
+        "username": user.username,
+        "discriminator": user.discriminator
+      }).then( (data) => {
+          let u = new User(data);
+          return resolve(u);
         })
         .catch( (err) => {
           return reject(err);
@@ -52,12 +76,16 @@ class UserData {
    * @return {Promise}
    */
   static updateUserXp(user) {
-    let url = `${CONFIG.API.BOT_BASE_URL}/users/search/updateUserXp`;
-    url += `?id=${user.id}&xp=${user.xp}&level=${user.level}`;
+    let url = `${CONFIG.API.BOT_BASE_URL}/user/${user.id}`;
 
     return new Promise( (resolve, reject) => {
-      AccessData.get(url)
-        .then( (data) => {
+      AccessData.put(url, {
+        "nickname": user.nickname,
+        "username": user.username,
+        "discriminator": user.discriminator,
+        "xp": user.xp,
+        "level": user.level
+      }).then( (data) => {
           return resolve(data);
         })
         .catch( (err) => {
@@ -68,4 +96,4 @@ class UserData {
 
 }
 
-module.exports = UserData;
+module.exports = UserDAL;

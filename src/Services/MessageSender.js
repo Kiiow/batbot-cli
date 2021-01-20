@@ -99,7 +99,7 @@ class MessageSender {
   sendError(text, footer_infos, chan=undefined) {
     const PARAMS = {
       'color' : 16711680,
-      'author_name' : this.message.member.displayName,
+      'author_name' : this.message.author.username,
       'author_avatar' : this.message.author.avatarURL,
       'description' : text,
       'footer' : footer_infos || ''
