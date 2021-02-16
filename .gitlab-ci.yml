@@ -2,6 +2,7 @@ image: node:latest
 stages:
   - setup
   - test
+  - deploy
 
 cache:
   paths:
@@ -18,3 +19,18 @@ test:
   stage: test
   script:
     - npm run test ./test/Discord/
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  before_script:
+  - apt-get update -qq
+  - apt-get install -qq git
+  - 'which ssh-agent || ( apt-get install -qq openssh-client)'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$PRIVATE_SSH_KEY")
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ssh $SERVER_USER@$SERVER_HOST "cd /var/app/$PROJECT_NAME && git checkout master && git pull origin master && exit"
