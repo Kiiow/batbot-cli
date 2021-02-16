@@ -13,14 +13,14 @@ class Stop extends Command {
    * @return {Promise}                  Promise
    */
   static async action(message){
-    message.delete();
+    await message.delete();
     let userId = message.author.id;
     let user = await UserDAL.getUserById(userId);
 
     if(user.isAdmin()) {
       this.log(2, `Stopping ${this.getConfig().BOT.NAME}`);
       this.msg(message).sendBack(`A bientôt ...`)
-        .then( () => { process.exit() });
+        .then( () => { if(this.getConfig().NODE_ENV != "test") process.exit(); });
     } else {
       this.msg(message).sendError(`Vous devez être admin pour m'arrêter`)
       this.log(2, `User ${user.fullName()} is tryng to stop the bot`);

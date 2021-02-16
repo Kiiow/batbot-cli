@@ -3,8 +3,13 @@
   "version": "2.0.2",
   "description": "batbot is a discord bot designed in nodejs",
   "main": "app.js",
+  "jest": {
+    "setupFiles": [
+      "./test/jest-setup.js"
+    ]
+  },
   "scripts": {
-    "test": ""
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -27,5 +32,9 @@
     "ramda": "^0.26.1",
     "request": "^2.88.2",
     "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "jest-mock-console": "^1.0.1"
   }
 }
