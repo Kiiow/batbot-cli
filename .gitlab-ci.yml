@@ -1,6 +1,6 @@
 image: node:latest
 stages:
-#   - setup
+  - setup
   - test
   - deploy
 
@@ -8,18 +8,18 @@ cache:
   paths:
     - node_modules/
 
-# setup:
-#   stage: setup
-#   script:
-#     - npm install
-#   tags:
-#     - docker
+setup:
+  stage: setup
+  script:
+    - npm install
+    - npm audit fix
+  tags:
+    - docker
 
 test:
   stage: test
   script:
-    - npm install
-    - npm test ./test/Discord/
+    - npm run test ./test/Discord/
 
 deploy:
   stage: deploy
