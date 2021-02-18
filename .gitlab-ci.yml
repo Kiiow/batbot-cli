@@ -25,6 +25,7 @@ deploy:
   stage: deploy
   only:
     - master
+  when: manual
   before_script:
   - apt-get update -qq
   - apt-get install -qq git

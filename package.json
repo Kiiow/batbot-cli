@@ -1,5 +1,5 @@
 {
-  "name": "BatBot.js",
+  "name": "batbot.js",
   "version": "2.0.2",
   "description": "batbot is a discord bot designed in nodejs",
   "main": "app.js",
