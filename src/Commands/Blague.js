@@ -18,8 +18,8 @@ class Blague extends Command {
         let question = data.joke.question;
         let answer = data.joke.answer;
         this.msg(message).sendEmbed({
-          'author_name': message.author.username,
-          'author_avatar': message.author.avatarURL,
+          'author_name': 'Blague',
+          // 'author_avatar': message.author.avatarURL,
           'description': `${question}\n ||${answer}||`,
           'footer': "https://blague.xyz"
         });

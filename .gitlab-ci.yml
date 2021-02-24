@@ -36,3 +36,5 @@ deploy:
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
     - ssh $SERVER_USER@$SERVER_HOST "cd /var/app/$PROJECT_NAME && git checkout master && git pull origin master && exit"
+    # Check script authorization
+    # service reload

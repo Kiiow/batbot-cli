@@ -1,6 +1,6 @@
 const R = require('ramda');
 
-const {UnkownCommandError, NotANormalUserError, NotACorrectChannelError} = require('./Error/Errors');
+const {UnknownCommandError, NotANormalUserError, NotACorrectChannelError} = require('./Error/Errors');
 const AccessData = require('./AccessData');
 const CONFIG = require('../Config');
 const CommandsDal = require('../Dal/CommandsDAL');
@@ -44,7 +44,7 @@ class MessageAnalyzer {
                 return resolve(commandData);
               } else {
                 this.isCommand = false;
-                return reject(new UnkownCommandError(`Unkown command "${possibleCommand}"`));
+                return reject(new UnknownCommandError(`Unkown command "${possibleCommand}"`));
               }
             })
             .catch( (error) => {

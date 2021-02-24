@@ -32,7 +32,7 @@ class LevelManager {
     return new Promise( (resolve, reject) => {
       UserDal.getUserById(this.message.author.id)
         .then( async (user) => {
-          if(user.id == undefined) {
+          if(user.id == undefined) { // If the user does not exist in the database
             let discordUser = {
               "id": this.message.author.id,
               "nickname": (this.message.member != null ? this.message.member.nickname : this.message.author.username),
@@ -42,19 +42,19 @@ class LevelManager {
               "discriminator": this.message.author.discriminator
             }
             user = await UserDal.createUser(discordUser);
-          } else {
+          } else { // Update userInformation if the user exist
             user.username = this.message.author.username;
             user.discriminator = this.message.author.discriminator;
             
             if(this.message.member != null) user.nickname = this.message.member.nickname;
             else user.nickname = this.message.author.username;
           }
-          let wait = 40;
+          const wait = 40;
           // Check if last message ts wa more than 40sec from now
           if((new Date().getTime()+3600000) <= (new Date(user.ts_last_xp).getTime() + wait*1000) ) {
             return reject();
           }
-          let xpToAdd = LevelService.calcXp(this.message.content.length);
+          const xpToAdd = LevelService.calcXp(this.message.content.length);
           if(user.xp == undefined) user.xp = xpToAdd
           else user.xp += xpToAdd;
 

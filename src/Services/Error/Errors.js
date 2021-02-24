@@ -42,9 +42,9 @@ class NotACorrectChannelError extends Error {
     Error.captureStackTrace(this, this.constructor);
   }
 }
-class UnkownCommandError extends Error {
+class UnknownCommandError extends Error {
   /**
-   * UnkownCommandError constructor
+   * UnknownCommandError constructor
    *
    * @param {String} message     Description of the error
    * @param {String} commandName Name of the command
@@ -60,6 +60,6 @@ class UnkownCommandError extends Error {
 module.exports = {
   NotAnActiveCommandError,
   NotACorrectChannelError,
-  UnkownCommandError,
+  UnknownCommandError,
   NotANormalUserError
 };

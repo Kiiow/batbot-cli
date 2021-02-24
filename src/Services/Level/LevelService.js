@@ -12,11 +12,6 @@ class LevelService {
     xp = Math.round(xp/100)*100;
     return Math.round(xp);
   }
-
-  // static getEmoteByRank() {
-  //   let rankEmote = [":first_place:", ":second_place:", ":third_place:", ":four:", ":five:", ":six:", ":seven:", ":eight:", ":nine:", ":keycap_ten:"];
-  //
-  // }
 }
 
 module.exports = LevelService;

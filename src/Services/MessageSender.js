@@ -61,6 +61,8 @@ class MessageSender {
    * @return {Discord.message}                   New message instance
    */
   sendEmbed(parameters, chan = undefined) {
+    let userNickname = this.message.member.nickname;
+    let userAvatar = this.message.author.displayAvatarURL;
     const EMBED_VALUES = {
       'color': this.getColorEmbed(parameters.color),
       'author': {
@@ -74,7 +76,8 @@ class MessageSender {
       },
       'fields': parameters.fields || '',
       'footer': {
-        'text': parameters.footer || ''
+        'icon_url': userAvatar,
+        'text': parameters.footer ? `${userNickname} • ${parameters.footer}` : userNickname
       }
     };
 

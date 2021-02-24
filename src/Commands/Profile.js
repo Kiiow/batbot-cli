@@ -32,23 +32,13 @@ class Profile extends Command {
 
     } else {
       this.displayOwnProfile(message);
-      // this.log(2, "Displaying own profile");
-      // let member = message.member;
-      // try {
-      //   let userInfo = await UserDal.getUserById(member.id);
-      //   this.msg(message).sendEmbed(await this.getProfile(member, userInfo));
-      // } catch (error) {
-      //   console.log(error);
-      //   this.log(0, `Error while trying to display profile`, error);
-      //   this.msg(message).sendError(`Erreur lors de la récupération de votre profile`);
-      // }
-
     }
   }
 
   static async displayOwnProfile(message) {
     this.log(2, "Displaying own profile");    
     let member = message.author;
+    member.nickname = message.member.nickname;
     try {
       let userInfo = await UserDal.getUserById(member.id);
       this.msg(message).sendEmbed(await this.getProfile(member, userInfo));
@@ -64,9 +54,8 @@ class Profile extends Command {
     const sortByXp = R.sortBy(R.compose(R.prop('xp')));
     userList = R.reverse(sortByXp(userList));
     let rankNumber = 1 + R.findIndex(R.propEq('id', member.id))(userList);
-    let nickname = member.username;
     let userName = member.username;
-    let avatarURL = member.defaultAvatarURL;
+    let avatarURL = member.displayAvatarURL;
     let status = member.presence.status;
     let discriminator = member.discriminator;
 
@@ -84,18 +73,19 @@ class Profile extends Command {
         status = ":yellow_circle: Inactif";
         break;
     }
-    let profile = {
-      'author_name': `${userName}#${discriminator} - (${nickname})`,
-      'author_avatar': avatarURL,
-      'description': "---------------------------------------------------",
-      fields: [
+    const PROFILE = {
+      'author_name': `${userName}#${discriminator}`,
+      'description': `** **`,
+      'thumbnail': avatarURL,
+      'fields': [
+        {'name': 'User', 'value': `<@!${member.id}>`},
         {'name': 'Level', 'value': `${userInfo.level}`, 'inline': true},
         {'name': 'XP', 'value': `${userInfo.xp}/**${LevelService.xpNeed(userInfo.level)}**`, 'inline': true},
         {'name': 'Status', 'value': status},
-        {'name': 'Rank', 'value': `${rankNumber}`, 'inline': true},
-      ],
+        {'name': 'Rank', 'value': `${rankNumber}/${userList.length}`, 'inline': true},
+      ]
     }
-    return profile;
+    return PROFILE;
   }
 }
 
