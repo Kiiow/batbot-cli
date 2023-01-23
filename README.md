@@ -1,4 +1,6 @@
 # BatBot
+**/!\** The bot is not up to date with discordjs library and discord APIs
+
 \
 A discord Bot developped in [Node.js][node-js-link] \
 \
